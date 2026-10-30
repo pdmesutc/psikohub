@@ -363,7 +363,7 @@
 
             let customListings = JSON.parse(localStorage.getItem('psikohub_custom_listings') || '[]');
 
-            // Varsayılan sabit örnek ilan (diğerleriyle birebir aynı stil ve bilgilere sahip)
+            // Varsayılan sabit örnek ilan (Stili diğerleriyle %100 eşitlendi)
             let html = `
                 <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                     <div>
@@ -371,7 +371,7 @@
                         <h4 class="font-bold text-slate-900 mt-1 text-xs sm:text-sm">Klinik Gözlem ve Uygulamalı Vaka Staj Protokolü</h4>
                         <p class="text-[11px] text-slate-500 mt-0.5">Pendik & Kartal Şube • 4 / 6 Dolu • Ücretsiz (Gönüllü)</p>
                     </div>
-                    <div class="flex items-center gap-2">
+                    <div class="flex items-center gap-2 shrink-0">
                         <button onclick="togglePublishStateDefault()" id="defaultPublishBtn" class="text-[11px] font-bold text-emerald-700 bg-white px-3.5 py-1.5 rounded-xl border border-emerald-200 transition shadow-2xs">
                             Yayında
                         </button>
@@ -395,11 +395,11 @@
                             <button onclick="togglePublishState(${index})" class="text-[11px] font-bold ${pubClass} px-3.5 py-1.5 rounded-xl border transition shadow-2xs">
                                 ${pubText}
                             </button>
-                            <button onclick="openEditModal(${index})" class="text-amber-600 hover:text-amber-700 p-2 bg-white rounded-xl border border-amber-200 transition shadow-2xs" title="İlanı Düzenle">
-                                <i class="fa-solid fa-pen text-xs"></i>
+                            <button onclick="openEditModal(${index})" class="text-[11px] font-bold text-amber-700 bg-amber-50 hover:bg-amber-100 px-3.5 py-1.5 rounded-xl border border-amber-200 transition shadow-2xs flex items-center gap-1.5">
+                                <i class="fa-solid fa-pen text-[10px]"></i> İlanı Düzenle
                             </button>
-                            <button onclick="deleteCustomListing(${index})" class="text-rose-600 hover:text-rose-700 p-2 bg-white rounded-xl border border-rose-200 transition shadow-2xs" title="İlanı Sil">
-                                <i class="fa-solid fa-trash-can text-xs"></i>
+                            <button onclick="deleteCustomListing(${index})" class="text-[11px] font-bold text-rose-700 bg-rose-50 hover:bg-rose-100 px-3.5 py-1.5 rounded-xl border border-rose-200 transition shadow-2xs flex items-center gap-1.5">
+                                <i class="fa-solid fa-trash-can text-[10px]"></i> İlanı Sil
                             </button>
                         </div>
                     </div>
@@ -449,7 +449,6 @@
             
             if (customListings[index]) {
                 let rawTitle = document.getElementById('editQuotaTitle').value.trim();
-                // İlk harfi büyük yapma garantisi
                 let formattedTitle = rawTitle.charAt(0).toLocaleUpperCase('tr-TR') + rawTitle.slice(1);
 
                 customListings[index].title = formattedTitle;
@@ -523,8 +522,7 @@
             event.preventDefault();
             const type = document.getElementById('modalQuotaType').value;
             let rawTitle = document.getElementById('modalQuotaTitle').value.trim();
-            // İlk harfi otomatik büyük yapma kuralı
-            const title = rawTitle.charAt(0).toLocaleUpperCase('tr-TR') + rawTitle.slice(1);
+            let formattedTitle = rawTitle.charAt(0).toLocaleUpperCase('tr-TR') + rawTitle.slice(1);
 
             const count = document.getElementById('modalQuotaCount').value;
             const price = document.getElementById('modalQuotaPrice').value;
@@ -554,7 +552,7 @@
                 targetAudienceName: 'Yetişkin',
                 ecol: 'integrative',
                 ecolName: 'Uzmanlık',
-                title: title,
+                title: formattedTitle,
                 provider: currentRole === 'kurum' ? 'Özel Pendik Hera Aile Danışma Merkezi' : 'Doç. Dr. Mesut Çakır',
                 format: 'Online',
                 formatDisplay: 'Çevrim İçi',
@@ -580,7 +578,7 @@
                 customListings.push(newListing);
                 localStorage.setItem('psikohub_custom_listings', JSON.stringify(customListings));
                 
-                alert(`"${title}" kontenjanı başarıyla açıldı ve ana vitrinde yayına alındı!`);
+                alert(`"${formattedTitle}" kontenjanı başarıyla açıldı ve ana vitrinde yayına alındı!`);
                 closeModal('newProgramModal');
                 renderCustomListings();
             } catch (err) {
