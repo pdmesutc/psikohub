@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sağlayıcı Akreditasyon Sözleşmesi | PsikoHub</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            primary: '#1e3a5f',
+                            secondary: '#0f766e',
+                            accent: '#d97706',
+                            hera: '#256839',
+                            heradark: '#12612d'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Üst Bar -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-primary to-brand-secondary flex items-center justify-center text-white shadow-md shadow-brand-primary/20">
+                        <i class="fa-solid fa-brain text-base"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-bold tracking-tight text-slate-900">Psiko<span class="text-brand-secondary">Hub</span></span>
+                        <span class="hidden sm:inline-block text-[10px] tracking-wider uppercase font-semibold text-slate-500 ml-2">| Sağlayıcı Akreditasyonu</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="flex items-center space-x-4 text-xs">
+                <a href="index.html" class="font-semibold text-slate-600 hover:text-brand-secondary flex items-center gap-1.5 transition">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>Ana Sayfaya Dön</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Ana İçerik -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10 w-full flex-1">
+        <div class="bg-white rounded-3xl border border-slate-200 p-8 sm:p-12 shadow-xs space-y-6">
+            
+            <div class="border-b border-slate-100 pb-6">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-brand-secondary bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+                    Kurum ve Süpervizör Taahhütnamesi
+                </span>
+                <h1 class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-3">
+                    Sağlayıcı Akreditasyon ve Müfredat Taahhüt Sözleşmesi
+                </h1>
+                <p class="text-xs text-slate-400 mt-1">Yürürlük Tarihi: 2026 Dönemi</p>
+            </div>
+
+            <div class="space-y-4 text-xs text-slate-600 leading-relaxed">
+                <h3 class="font-bold text-slate-900 text-sm pt-2">1. Sözleşmenin Konusu ve Kapsamı</h3>
+                <p>
+                    Bu sözleşme; PsikoHub platformu üzerinden akredite eğitim, klinik staj protokolü veya süpervizyon kontenjanı yayınlayan kurumların (Aile Danışma Merkezleri, Enstitüler) ve bağımsız süpervizörlerin uyacağı etik, akademik ve yasal standartları belirler.
+                </p>
+
+                <h3 class="font-bold text-slate-900 text-sm pt-2">2. Sağlayıcı Yetki ve Sorumlulukları</h3>
+                <ul class="list-disc pl-5 space-y-1">
+                    <li><strong>Ruhsat ve Teyit:</strong> Kurumsal sağlayıcılar Bakanlık ruhsatlarını, süpervizörler ise akademik unvan tescillerini eksiksiz beyan etmekle yükümlüdür.</li>
+                    <li><strong>Müfredat Sadakati:</strong> İlan detaylarında yayınlanan toplam saat, vaka analizi ve modüler içerikler eksiksiz olarak sunulmalıdır.</li>
+                    <li><strong>YÖK Lisans Kriteri:</strong> Sağlayıcılar, ilanlarında belirttikleri önkoşullara (Örn: Psikoloji/PDR 4. Sınıf veya Mezuniyet) uymak zorundadır. Platform dışından unvansız kişilerin eğitime dahil edilmesi yasaktır.</li>
+                </ul>
+
+                <h3 class="font-bold text-slate-900 text-sm pt-2">3. Staj ve Süpervizyon Güvencesi</h3>
+                <p>
+                    Gönüllü/ücretsiz staj protokollerinde stajyerlerden hiçbir gizli ücret talep edilemez. Süpervizyon oturumlarında vaka gizliliği (KVKK) esastır; paylaşılan vakalar yalnızca eğitim amaçlı kapalı grupta tutulur.
+                </p>
+
+                <h3 class="font-bold text-slate-900 text-sm pt-2">4. Yaptırımlar ve Akreditasyon İptali</h3>
+                <p>
+                    Eksik saat bildirimi, taahhüt edilen müfredata uyulmaması veya mesleki etik ihlali tespiti durumunda PsikoHub Etik Komisyonu sağlayıcının ilanlarını askıya alma ve akreditasyonunu feshetme hakkını saklı tutar.
+                </p>
+            </div>
+
+            <div class="pt-6 border-t border-slate-100 flex justify-end">
+                <a href="saglayici-giris.html" class="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-6 py-3 rounded-xl transition shadow-xs">
+                    Sağlayıcı Portalına Dön
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400">
+        <p>PsikoHub © 2026 | Ruh Sağlığı Mesleki Standartlar ve Sağlayıcı Akreditasyonu</p>
+    </footer>
+</body>
+</html>

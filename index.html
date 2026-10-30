@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PsikoHub | Ruh Sağlığı Uzmanlık Ağı</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            primary: '#1e3a5f',
+                            secondary: '#0f766e',
+                            accent: '#d97706',
+                            hera: '#256839',
+                            heradark: '#12612d'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' }
+                        }
+                    },
+                    animation: {
+                        marquee: 'marquee 30s linear infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .marquee-pause:hover .marquee-track {
+            animation-play-state: paused;
+        }
+        /* Mobil Drawer Animasyon Geçişi */
+        #mobileFilterDrawer {
+            transition: transform 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Üst Bar / Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-primary to-brand-secondary flex items-center justify-center text-white shadow-md shadow-brand-primary/20">
+                        <i class="fa-solid fa-brain text-base"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-bold tracking-tight text-slate-900">Psiko<span class="text-brand-secondary">Hub</span></span>
+                        <span class="hidden sm:inline-block text-[10px] tracking-wider uppercase font-semibold text-slate-500 ml-2">| Mesleki Liyakatin Dijital Güvencesi</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="flex items-center space-x-3 sm:space-x-4 text-xs">
+                <a href="uzman-dogrulama.html" class="hidden md:flex font-semibold text-slate-600 hover:text-brand-secondary items-center gap-1.5 transition">
+                    <i class="fa-solid fa-shield-halved text-brand-secondary"></i>
+                    <span>Uzman Doğrula</span>
+                </a>
+                <a href="saglayici-giris.html" class="hidden sm:flex font-semibold text-slate-600 hover:text-brand-primary items-center gap-1.5 transition">
+                    <i class="fa-solid fa-building-columns text-slate-400"></i>
+                    <span>Kurumsal / Eğitmen</span>
+                </a>
+                <div class="flex items-center space-x-2 border-l border-slate-200 pl-3">
+                    <button onclick="openDirectLoginModal()" class="font-bold text-slate-700 hover:text-brand-secondary px-2.5 py-2 transition">
+                        Giriş Yap
+                    </button>
+                    <a href="bireysel-kayit.html" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-3.5 py-2 rounded-xl transition shadow-xs flex items-center gap-1.5">
+                        <i class="fa-solid fa-user-plus"></i>
+                        <span>Kayıt Ol</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Ana Gövde -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-1">
+        
+        <!-- HERO & ARAMA MOTORU -->
+        <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-brand-primary rounded-3xl p-6 sm:p-8 text-white mb-6 shadow-xs relative overflow-hidden">
+            <div class="max-w-3xl relative z-10 space-y-2.5">
+                <div class="flex flex-wrap items-center gap-2">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 tracking-wider">
+                        <i class="fa-solid fa-shield-check"></i> E-Devlet YÖK Teyitli • Resmi Kurum & Lisans Ağı
+                    </span>
+                    <span class="hidden md:inline-block text-[11px] text-slate-300 font-medium italic">
+                        "Mesleki liyakatin dijital güvencesi."
+                    </span>
+                </div>
+
+                <h1 class="text-xl sm:text-3xl font-extrabold tracking-tight leading-tight">
+                    Ruh Sağlığı Uzmanlık Ağı: Eğitim, Süpervizyon ve Staj Protokolleri
+                </h1>
+
+                <p class="text-xs text-slate-300 leading-relaxed max-w-2xl">
+                    Yetkili uzmanların ve kurumsal merkezlerin sunduğu klinik çalışma imkanlarını şeffafça keşfedin; doğrulanmış akademik liyakatinizle başvurunuzu tek tıkla yapın.
+                </p>
+
+                <div class="pt-2 max-w-2xl flex flex-col sm:flex-row gap-2">
+                    <div class="relative flex-1">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-xs"></i>
+                        <input type="text" id="heroSearch" oninput="triggerMarketSearch()" placeholder="Eğitim, ekol, süpervizör veya danışma merkezi ara..." class="w-full bg-white text-slate-800 text-xs rounded-xl pl-9 pr-4 py-2.5 font-medium border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-secondary/40 transition">
+                    </div>
+                    <button onclick="triggerMarketSearch()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-6 py-2.5 rounded-xl transition shadow-xs flex items-center justify-center gap-1.5 shrink-0">
+                        <span>Kontenjanları Bul</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="absolute -right-10 -bottom-10 opacity-15 text-white text-[14rem] pointer-events-none hidden lg:block">
+                <i class="fa-solid fa-brain"></i>
+            </div>
+        </div>
+
+        <!-- DOĞRUDAN İLAN VİTRİNİ -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            
+            <!-- Sol Filtre Paneli (Masaüstünde Görünür - Mobilde Gizlenir) -->
+            <aside class="hidden lg:block lg:col-span-3 bg-white rounded-3xl border border-slate-200 p-5 shadow-xs space-y-5">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
+                        <i class="fa-solid fa-sliders text-brand-secondary"></i> Filtrele
+                    </h3>
+                    <button onclick="resetMarketFilters()" class="text-[11px] font-semibold text-slate-400 hover:text-rose-600 transition">
+                        Temizle
+                    </button>
+                </div>
+
+                <!-- 1. Program Türü -->
+                <div>
+                    <label class="block font-bold text-slate-700 text-xs mb-2">Program Türü</label>
+                    <div class="space-y-1.5 text-xs">
+                        <label class="flex items-center space-x-2 cursor-pointer p-1 rounded-lg hover:bg-slate-50 transition">
+                            <input type="radio" name="marketType" value="all" checked onchange="syncAndSearch('marketType', 'all')" class="text-brand-secondary focus:ring-0">
+                            <span class="font-medium text-slate-700">Tümü</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer p-1 rounded-lg hover:bg-slate-50 transition">
+                            <input type="radio" name="marketType" value="egitim" onchange="syncAndSearch('marketType', 'egitim')" class="text-brand-secondary focus:ring-0">
+                            <span class="font-medium text-slate-700">Akredite Eğitim</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer p-1 rounded-lg hover:bg-slate-50 transition">
+                            <input type="radio" name="marketType" value="supervizyon" onchange="syncAndSearch('marketType', 'supervizyon')" class="text-brand-secondary focus:ring-0">
+                            <span class="font-medium text-slate-700">Süpervizyon</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer p-1 rounded-lg hover:bg-slate-50 transition">
+                            <input type="radio" name="marketType" value="staj" onchange="syncAndSearch('marketType', 'staj')" class="text-brand-secondary focus:ring-0">
+                            <span class="font-medium text-slate-700">Klinik Staj</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 2. Çalışma Alanı -->
+                <div>
+                    <label class="block font-bold text-slate-700 text-xs mb-1.5">Çalışma Alanı</label>
+                    <select id="marketTargetAudience" onchange="syncAndSearch('targetAudience', this.value)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 text-xs focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-secondary/30 transition">
+                        <option value="all">Tüm Çalışma Alanları</option>
+                        <option value="cocuk">Çocuk</option>
+                        <option value="ergen">Ergen</option>
+                        <option value="yetiskin">Yetişkin</option>
+                        <option value="cift_aile">Çift ve Aile</option>
+                    </select>
+                </div>
+
+                <!-- 3. Terapi Ekolü -->
+                <div>
+                    <label class="block font-bold text-slate-700 text-xs mb-1.5">Terapi Ekolü</label>
+                    <select id="marketEcol" onchange="syncAndSearch('ecol', this.value)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 text-xs focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-secondary/30 transition">
+                        <option value="all">Tüm Ekoller</option>
+                        <option value="cbt">Bilişsel Davranışçı (BDT)</option>
+                        <option value="psychoanalytic">Psikanalitik & Dinamik</option>
+                        <option value="humanistic">Hümanistik & Varoluşçu</option>
+                        <option value="systemic">Sistemik, Çift & Aile</option>
+                        <option value="postmodern">Postmodern & Çözüm Odaklı</option>
+                        <option value="trauma_somatic">Travma & EMDR / Somatik</option>
+                        <option value="child_dev">Çocuk & Oyun Terapisi</option>
+                        <option value="expressive">Sanat & Psikodrama</option>
+                        <option value="integrative">Bütüncül Terapi</option>
+                    </select>
+                </div>
+
+                <!-- 4. Katılım Türü -->
+                <div>
+                    <label class="block font-bold text-slate-700 text-xs mb-1.5">Katılım Türü</label>
+                    <select id="marketFormat" onchange="syncAndSearch('format', this.value)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 text-xs focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-secondary/30 transition">
+                        <option value="all">Tüm Katılım Türleri</option>
+                        <option value="Online">Çevrim İçi (Online)</option>
+                        <option value="Yuzyuze">Yüz Yüze</option>
+                        <option value="Hibrid">Hibrit</option>
+                    </select>
+                </div>
+
+                <!-- 5. Dinamik 81 İl ve İlçe -->
+                <div class="space-y-2">
+                    <div>
+                        <label class="block font-bold text-slate-700 text-xs mb-1">Şehir (İl)</label>
+                        <select id="marketCity" onchange="onCityChange(this.value, false)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 text-xs focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-secondary/30 transition">
+                            <option value="all">Tüm Şehirler</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 text-xs mb-1">İlçe</label>
+                        <select id="marketDistrict" onchange="syncAndSearch('district', this.value)" disabled class="w-full bg-slate-100 border border-slate-200 rounded-xl px-2.5 py-2 text-xs text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-secondary/30 transition">
+                            <option value="all">Önce İl Seçiniz</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 6. Özel Filtre: Gönüllü / Ücretsiz Staj -->
+                <div class="pt-2 border-t border-slate-100">
+                    <label class="flex items-center space-x-2 cursor-pointer bg-emerald-50/70 p-2.5 rounded-xl border border-emerald-200">
+                        <input type="checkbox" id="marketFreeOnly" onchange="syncAndSearch('freeOnly', this.checked)" class="rounded text-emerald-600 focus:ring-0">
+                        <span class="text-xs font-bold text-emerald-900">Yalnızca Ücretsiz / Gönüllü Stajlar</span>
+                    </label>
+                </div>
+
+                <!-- Sağlayıcı Çağrısı -->
+                <div class="p-3.5 rounded-2xl bg-slate-900 text-white space-y-1.5">
+                    <span class="text-[10px] uppercase font-bold text-emerald-400 block tracking-wider">Kurum veya Süpervizör müsünüz?</span>
+                    <p class="text-[11px] text-slate-300 leading-relaxed">
+                        Akredite kontenjanlarınızı yayınlamak için başvurunuzu yapın.
+                    </p>
+                    <a href="saglayici-giris.html" class="inline-block pt-1 font-bold text-xs text-white hover:text-emerald-300 underline transition">
+                        Sağlayıcı Portalı →
+                    </a>
+                </div>
+            </aside>
+
+            <!-- Sağ İlan Vitrini -->
+            <section class="lg:col-span-9 space-y-4">
+                
+                <!-- MOBİL FİLTRELEME BUTONU VE DURUM BİLGİSİ (Sadece Mobilde Görünür) -->
+                <div class="lg:hidden flex items-center justify-between bg-white p-3.5 rounded-2xl border border-slate-200 shadow-xs">
+                    <div>
+                        <span class="text-xs font-bold text-slate-800" id="marketResultCountMobile">
+                            İlanlar: Yükleniyor...
+                        </span>
+                    </div>
+                    <button onclick="toggleMobileDrawer(true)" class="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-4 py-2 rounded-xl transition shadow-xs flex items-center gap-1.5">
+                        <i class="fa-solid fa-sliders text-emerald-400"></i>
+                        <span>Filtrele</span>
+                    </button>
+                </div>
+
+                <div class="hidden lg:flex items-center justify-between pb-1 border-b border-slate-200/60">
+                    <span class="text-xs font-bold text-slate-800" id="marketResultCount">
+                        Yayındaki Güncel İlanlar: Yükleniyor...
+                    </span>
+                    <span class="text-[11px] text-slate-400">
+                        Üye olmadan tüm detayları inceleyebilirsiniz.
+                    </span>
+                </div>
+
+                <div id="marketCardsGrid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+                    <!-- Dinamik doldurulur -->
+                </div>
+            </section>
+
+        </div>
+
+        <!-- SAYAÇLAR & UZMAN LİSANS SORGULAMA -->
+        <section class="mt-16 bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-xs">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7">
+                    <div class="mb-4">
+                        <span class="text-xs font-bold uppercase tracking-wider text-brand-hera block">Doğrulanmış Liyakat Göstergeleri</span>
+                        <h2 class="text-lg sm:text-xl font-extrabold text-slate-900 mt-0.5">Liyakat ve Akreditasyon Güvencesi</h2>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-2 gap-4">
+                        <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/70 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-100/70 text-emerald-800 flex items-center justify-center text-lg shrink-0">
+                                <i class="fa-solid fa-user-graduate"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xl font-black text-slate-900 leading-none">1.450+</span>
+                                <span class="text-[11px] font-bold text-slate-700 block mt-0.5">YÖK Teyitli Lisansiyer</span>
+                            </div>
+                        </div>
+
+                        <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/70 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-teal-100/70 text-teal-800 flex items-center justify-center text-lg shrink-0">
+                                <i class="fa-solid fa-building-shield"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xl font-black text-slate-900 leading-none">85+</span>
+                                <span class="text-[11px] font-bold text-slate-700 block mt-0.5">Akredite Danışma Merkezi</span>
+                            </div>
+                        </div>
+
+                        <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/70 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-blue-100/70 text-blue-800 flex items-center justify-center text-lg shrink-0">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xl font-black text-slate-900 leading-none">12.000+</span>
+                                <span class="text-[11px] font-bold text-slate-700 block mt-0.5">Tamamlanan Saat</span>
+                            </div>
+                        </div>
+
+                        <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/70 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-purple-100/70 text-purple-800 flex items-center justify-center text-lg shrink-0">
+                                <i class="fa-solid fa-stamp"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xl font-black text-brand-hera leading-none">%100</span>
+                                <span class="text-[11px] font-bold text-slate-700 block mt-0.5">Akademik Liyakat Şartı</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-6 text-white shadow-xs flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-[10px] font-bold tracking-wider uppercase px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-400/20">
+                                Kamusal Doğrulama
+                            </span>
+                            <i class="fa-solid fa-shield-halved text-emerald-400 text-sm"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-white leading-tight">Uzman Lisans Sorgulama</h3>
+                        <p class="text-xs text-slate-300 mt-1 leading-relaxed">
+                            PsikoHub bünyesindeki bir uzmanın doğrulanmış lisans durumunu ve akademik bilgilerini anlık sorgulayın.
+                        </p>
+                    </div>
+
+                    <form onsubmit="handleQuickVerify(event)" class="mt-4 space-y-2">
+                        <div class="relative">
+                            <i class="fa-solid fa-user-check absolute left-3.5 top-3 text-slate-400 text-xs"></i>
+                            <input type="text" id="verifyInput" placeholder="Uzmanın Adı ve Soyadı..." class="w-full bg-slate-800/90 text-white placeholder-slate-400 text-xs rounded-xl pl-9 pr-3 py-2.5 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-secondary/50 font-medium">
+                        </div>
+                        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-2.5 rounded-xl transition shadow-xs flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-magnifying-glass text-xs"></i>
+                            <span>Sorgula</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- AKREDİTE MERKEZLER & SÜPERVİZÖRLER VİTRİNİ -->
+        <section class="mt-14">
+            <div class="text-center max-w-2xl mx-auto mb-6">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-hera">Güvenilir İş Birlikleri & Liyakat Ağı</span>
+                <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-1">Akredite Merkezler ve Süpervizörler</h2>
+                <p class="text-xs text-slate-500 mt-1.5">
+                    Bakanlık ruhsatlı danışma merkezleri ve onaylı süpervizörler ile mesleki liyakat bir arada.
+                </p>
+            </div>
+
+            <div class="relative overflow-hidden rounded-3xl bg-white border border-slate-200 p-5 shadow-xs marquee-pause">
+                <div class="flex items-center gap-4 w-max marquee-track animate-marquee">
+                    <div class="w-64 h-28 rounded-2xl bg-[#1b5e20] text-white px-4 py-3 flex items-center justify-center shadow-xs hover:shadow-md transition duration-200 hover:-translate-y-0.5 border border-emerald-900/40 shrink-0">
+                        <div class="flex items-center gap-2.5">
+                            <div class="text-2xl text-white">
+                                <i class="fa-solid fa-people-roof"></i>
+                            </div>
+                            <div class="border-l border-white/60 pl-2.5">
+                                <span class="block text-lg font-black tracking-tight leading-none">HERA</span>
+                                <span class="block text-[10px] font-medium tracking-wide text-emerald-100 mt-0.5">Aile Danışma Merkezi</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-64 h-28 rounded-2xl bg-[#1b6b72] text-white px-4 py-3 flex flex-col items-center justify-center text-center shadow-xs hover:shadow-md transition duration-200 hover:-translate-y-0.5 border border-teal-900/40 shrink-0">
+                        <span class="block text-base font-extrabold tracking-tight leading-tight">Doç. Dr.</span>
+                        <span class="block text-lg font-black tracking-tight leading-tight mt-0.5">Mesut ÇAKIR</span>
+                    </div>
+
+                    <div class="w-64 h-28 rounded-2xl bg-[#1e3a5f] text-white px-4 py-3 flex items-center justify-center shadow-xs hover:shadow-md transition duration-200 hover:-translate-y-0.5 border border-blue-900/40 shrink-0">
+                        <div class="flex items-center gap-2.5">
+                            <div class="text-2xl text-white">
+                                <i class="fa-solid fa-building-columns"></i>
+                            </div>
+                            <div class="border-l border-white/60 pl-2.5">
+                                <span class="block text-base font-black tracking-tight leading-none">SİSTEMİK</span>
+                                <span class="block text-[10px] font-medium tracking-wide text-blue-100 mt-0.5">Aile & Çift Enstitüsü</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-64 h-28 rounded-2xl bg-[#283593] text-white px-4 py-3 flex flex-col items-center justify-center text-center shadow-xs hover:shadow-md transition duration-200 hover:-translate-y-0.5 border border-indigo-900/40 shrink-0">
+                        <span class="block text-sm font-extrabold tracking-tight leading-tight">Dr. Öğr. Üyesi</span>
+                        <span class="block text-lg font-black tracking-tight leading-tight mt-0.5">Ayşe YILMAZ</span>
+                    </div>
+
+                    <div class="w-64 h-28 rounded-2xl bg-[#14532d] text-white px-4 py-3 flex items-center justify-center shadow-xs hover:shadow-md transition duration-200 hover:-translate-y-0.5 border border-emerald-950/40 shrink-0">
+                        <div class="flex items-center gap-2.5">
+                            <div class="text-2xl text-white">
+                                <i class="fa-solid fa-hospital-user"></i>
+                            </div>
+                            <div class="border-l border-white/60 pl-2.5">
+                                <span class="block text-base font-black tracking-tight leading-none">AVRASYA</span>
+                                <span class="block text-[10px] font-medium tracking-wide text-emerald-100 mt-0.5">Klinik Psikoloji Enstitüsü</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kopyalar -->
+                    <div class="w-64 h-28 rounded-2xl bg-[#1b5e20] text-white px-4 py-3 flex items-center justify-center shadow-xs hover:shadow-md transition duration-200 hover:-translate-y-0.5 border border-emerald-900/40 shrink-0">
+                        <div class="flex items-center gap-2.5">
+                            <div class="text-2xl text-white">
+                                <i class="fa-solid fa-people-roof"></i>
+                            </div>
+                            <div class="border-l border-white/60 pl-2.5">
+                                <span class="block text-lg font-black tracking-tight leading-none">HERA</span>
+                                <span class="block text-[10px] font-medium tracking-wide text-emerald-100 mt-0.5">Aile Danışma Merkezi</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-64 h-28 rounded-2xl bg-[#1b6b72] text-white px-4 py-3 flex flex-col items-center justify-center text-center shadow-xs hover:shadow-md transition duration-200 hover:-translate-y-0.5 border border-teal-900/40 shrink-0">
+                        <span class="block text-base font-extrabold tracking-tight leading-tight">Doç. Dr.</span>
+                        <span class="block text-lg font-black tracking-tight leading-tight mt-0.5">Mesut ÇAKIR</span>
+                    </div>
+
+                    <div class="w-64 h-28 rounded-2xl bg-[#1e3a5f] text-white px-4 py-3 flex items-center justify-center shadow-xs hover:shadow-md transition duration-200 hover:-translate-y-0.5 border border-blue-900/40 shrink-0">
+                        <div class="flex items-center gap-2.5">
+                            <div class="text-2xl text-white">
+                                <i class="fa-solid fa-building-columns"></i>
+                            </div>
+                            <div class="border-l border-white/60 pl-2.5">
+                                <span class="block text-base font-black tracking-tight leading-none">SİSTEMİK</span>
+                                <span class="block text-[10px] font-medium tracking-wide text-blue-100 mt-0.5">Aile & Çift Enstitüsü</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-64 h-28 rounded-2xl bg-[#283593] text-white px-4 py-3 flex flex-col items-center justify-center text-center shadow-xs hover:shadow-md transition duration-200 hover:-translate-y-0.5 border border-indigo-900/40 shrink-0">
+                        <span class="block text-sm font-extrabold tracking-tight leading-tight">Dr. Öğr. Üyesi</span>
+                        <span class="block text-lg font-black tracking-tight leading-tight mt-0.5">Ayşe YILMAZ</span>
+                    </div>
+
+                    <div class="w-64 h-28 rounded-2xl bg-[#14532d] text-white px-4 py-3 flex items-center justify-center shadow-xs hover:shadow-md transition duration-200 hover:-translate-y-0.5 border border-emerald-950/40 shrink-0">
+                        <div class="flex items-center gap-2.5">
+                            <div class="text-2xl text-white">
+                                <i class="fa-solid fa-hospital-user"></i>
+                            </div>
+                            <div class="border-l border-white/60 pl-2.5">
+                                <span class="block text-base font-black tracking-tight leading-none">AVRASYA</span>
+                                <span class="block text-[10px] font-medium tracking-wide text-emerald-100 mt-0.5">Klinik Psikoloji Enstitüsü</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3 ADIMDA GÜVENLİ MESLEKİ GELİŞİM -->
+        <section class="mt-16 pt-10 border-t border-slate-200">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-secondary">Nasıl Kullanılır?</span>
+                <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-1">3 Adımda Güvenli Mesleki Gelişim</h2>
+                <p class="text-xs text-slate-500 mt-1.5">
+                    Diplomanızın yetkisiz kişilerce taklit edilmesini önleyen, şeffaf ve denetimli başvuru döngüsü.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+                <div class="bg-white p-6 rounded-3xl border border-slate-200/90 shadow-xs relative flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-700 border border-emerald-200/60 font-black flex items-center justify-center text-sm mb-4">
+                            01
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm">YÖK Barkoduyla Ücretsiz Kayıt Olun</h3>
+                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                            E-Devlet üzerinden alacağınız lisans mezuniyet veya öğrenci belgesi barkodunuzu sisteme girin. Diplomanız doğrulanarak profiliniz yetkisiz unvanlara karşı güvenceye alınsın.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-semibold text-emerald-700 flex items-center gap-1.5">
+                        <i class="fa-solid fa-check"></i> Yetkisiz unvan kullanımına engel
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-3xl border border-slate-200/90 shadow-xs relative flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-2xl bg-blue-50 text-blue-700 border border-blue-200/60 font-black flex items-center justify-center text-sm mb-4">
+                            02
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm">Kontenjanları İnceleyin ve Başvurun</h3>
+                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                            Akredite merkezler ve yetkili süpervizörler tarafından açılan klinik eğitim, vaka stajı veya süpervizyon oturumlarını filtreleyin; tek tıkla resmi başvurunuzu yapın.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-semibold text-blue-700 flex items-center gap-1.5">
+                        <i class="fa-solid fa-check"></i> Şeffaf müfredat & saat güvencesi
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-3xl border border-slate-200/90 shadow-xs relative flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-2xl bg-purple-50 text-purple-700 border border-purple-200/60 font-black flex items-center justify-center text-sm mb-4">
+                            03
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm">Profilinizi ve Portföyünüzü Güçlendirin</h3>
+                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                            Tamamladığınız her program ve süpervizyon saati sağlayıcı onayıyla profilinize resmi referans olarak işlensin; sorgulanabilir dijital uzmanlık kartınız oluşsun.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-semibold text-purple-700 flex items-center gap-1.5">
+                        <i class="fa-solid fa-check"></i> Doğrulanabilir mesleki portföy
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEDEN PSİKOHUB? -->
+        <section class="mt-16 pt-10 border-t border-slate-200">
+            <div class="text-center max-w-2xl mx-auto mb-8">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-secondary">Etik ve Mesleki Standartlar</span>
+                <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-1">Neden PsikoHub?</h2>
+                <p class="text-xs text-slate-500 mt-1.5">
+                    Sahte sertifikalara ve denetimsiz eğitimlere karşı; ruh sağlığı alanında şeffaf liyakat protokolü.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs">
+                <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-xs space-y-2">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-lg mb-2">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-sm">YÖK Lisans Doğrulaması</h3>
+                    <p class="text-slate-600 leading-relaxed text-[11px]">
+                        Kontenjanlara yalnızca E-Devlet YÖK barkodu onaylanmış 4 yıllık Psikoloji, PDR lisans mezunları ve son sınıf öğrencileri başvurabilir.
+                    </p>
+                </div>
+
+                <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-xs space-y-2">
+                    <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center text-lg mb-2">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-sm">Akredite Sağlayıcı Denetimi</h3>
+                    <p class="text-slate-600 leading-relaxed text-[11px]">
+                        Tüm danışma merkezleri ve süpervizörler ruhsat ve akademik unvan incelemesinden geçerek ilan açma yetkisi alır.
+                    </p>
+                </div>
+
+                <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-xs space-y-2">
+                    <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center text-lg mb-2">
+                        <i class="fa-solid fa-file-contract"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-sm">Şeffaf Müfredat & Taahhüt</h3>
+                    <p class="text-slate-600 leading-relaxed text-[11px]">
+                        İlan edilen saatler, vaka analizleri ve süpervizyon oturumları platform sözleşmesi güvencesiyle eksiksiz sunulur.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SIKÇA SORULAN SORULAR -->
+        <section class="mt-16 pt-10 border-t border-slate-200">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <div class="lg:col-span-4 space-y-3">
+                    <span class="text-xs font-bold uppercase tracking-wider text-brand-secondary">Merak Edilenler</span>
+                    <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 leading-tight">Sıkça Sorulan Sorular</h2>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        Başvuru koşulları, liyakat teyidi, süpervizyon saatleri ve akreditasyon işleyişi hakkında detaylar.
+                    </p>
+                    <div class="pt-3">
+                        <a href="bireysel-kayit.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-hera hover:text-emerald-700 transition">
+                            <span>Hemen Profilinizi Doğrulayın</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-8 space-y-3">
+                    <div class="bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-2xs transition">
+                        <button onclick="toggleFaq('faq1')" class="w-full p-4 sm:p-5 text-left font-bold text-xs sm:text-sm text-slate-800 flex justify-between items-center gap-3">
+                            <span>4. sınıf öğrencisiyim, hangi kontenjanlara başvurabilirim?</span>
+                            <i id="icon-faq1" class="fa-solid fa-chevron-down text-slate-400 text-xs transition duration-200"></i>
+                        </button>
+                        <div id="faq1" class="hidden px-4 pb-4 sm:px-5 sm:pb-5 text-xs text-slate-600 border-t border-slate-100 pt-3 leading-relaxed">
+                            YÖK tescilli öğrenci belgenizle sisteme kaydolduğunuzda; sağlayıcının <em>"4. Sınıf Kabul Edilir"</em> şartı koyduğu teorik akredite eğitimlere ve klinik vaka gözlem staj protokollerine doğrudan başvurabilirsiniz. Danışan görme zorunluluğu olan kapalı süpervizyon grupları için ise mezuniyet şartı aranmaktadır.
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-2xs transition">
+                        <button onclick="toggleFaq('faq2')" class="w-full p-4 sm:p-5 text-left font-bold text-xs sm:text-sm text-slate-800 flex justify-between items-center gap-3">
+                            <span>Aldığım süpervizyon saatleri resmi olarak belgelendiriliyor mu?</span>
+                            <i id="icon-faq2" class="fa-solid fa-chevron-down text-slate-400 text-xs transition duration-200"></i>
+                        </button>
+                        <div id="faq2" class="hidden px-4 pb-4 sm:px-5 sm:pb-5 text-xs text-slate-600 border-t border-slate-100 pt-3 leading-relaxed">
+                            Evet. Tamamladığınız her süpervizyon saati, ilgili süpervizörün dijital onayıyla sistem kayıtlarına tescil edilir. Bu saatler hem karekodlu resmi katılım belgesi olarak üretilir hem de kamuya açık uzmanlık sicil sayfanıza resmi referans olarak eklenir.
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-2xs transition">
+                        <button onclick="toggleFaq('faq3')" class="w-full p-4 sm:p-5 text-left font-bold text-xs sm:text-sm text-slate-800 flex justify-between items-center gap-3">
+                            <span>Gönüllü staj protokollerinde süreç nasıl işliyor?</span>
+                            <i id="icon-faq3" class="fa-solid fa-chevron-down text-slate-400 text-xs transition duration-200"></i>
+                        </button>
+                        <div id="faq3" class="hidden px-4 pb-4 sm:px-5 sm:pb-5 text-xs text-slate-600 border-t border-slate-100 pt-3 leading-relaxed">
+                            Ücretsiz veya gönüllü staj protokolleri, merkezlerin klinik vaka gözlemi, test uygulamaları ve merkez içi idari psikolojik süreçleri aktarmak için açtığı kontenjanlardır. Bu kontenjanlara başvuran meslektaşlardan hiçbir eğitim veya katılım bedeli talep edilmez; süreç merkez sözleşmesiyle yasal güvenceye alınır.
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-2xs transition">
+                        <button onclick="toggleFaq('faq4')" class="w-full p-4 sm:p-5 text-left font-bold text-xs sm:text-sm text-slate-800 flex justify-between items-center gap-3">
+                            <span>Kurum olarak nasıl kontenjan sağlayıcısı olabiliriz?</span>
+                            <i id="icon-faq4" class="fa-solid fa-chevron-down text-slate-400 text-xs transition duration-200"></i>
+                        </button>
+                        <div id="faq4" class="hidden px-4 pb-4 sm:px-5 sm:pb-5 text-xs text-slate-600 border-t border-slate-100 pt-3 leading-relaxed">
+                            Bakanlık onaylı Aile Danışma Merkezleri, üniversiteler, enstitüler veya tescilli süpervizörler "Kurumsal / Eğitmen" girişinden resmi ruhsat ve liyakat belgelerini ileterek akreditasyon talebi oluşturur. Etik komisyon onayından sonra sağlayıcı paneli üzerinden resmi ilanlar yayınlanabilir.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============================================================== -->
+    <!-- MOBİL İÇİN ALTTAN AÇILAN FİLTRE ÇEKMECESİ (BOTTOM DRAWER) -->
+    <!-- ============================================================== -->
+    <div id="mobileDrawerBackdrop" onclick="toggleMobileDrawer(false)" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden transition-opacity"></div>
+    <div id="mobileFilterDrawer" class="fixed inset-x-0 bottom-0 max-h-[85vh] bg-white rounded-t-3xl shadow-2xl z-50 flex flex-col translate-y-full lg:hidden border-t border-slate-200">
+        
+        <!-- Çekmece Tutamacı ve Üst Başlık -->
+        <div class="p-4 border-b border-slate-100 flex items-center justify-between shrink-0">
+            <div class="flex items-center gap-2">
+                <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+                <h3 class="text-sm font-extrabold text-slate-900">Kontenjanları Filtrele</h3>
+            </div>
+            <div class="flex items-center gap-3">
+                <button onclick="resetMarketFilters()" class="text-xs font-semibold text-slate-400 hover:text-rose-600 transition">
+                    Temizle
+                </button>
+                <button onclick="toggleMobileDrawer(false)" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Çekmece Kaydırılabilir Form Alanı -->
+        <div class="p-5 overflow-y-auto space-y-4 text-xs">
+            <!-- 1. Program Türü -->
+            <div>
+                <label class="block font-bold text-slate-700 mb-1.5">Program Türü</label>
+                <div class="grid grid-cols-2 gap-2">
+                    <label class="flex items-center space-x-2 p-2 rounded-xl bg-slate-50 border border-slate-200">
+                        <input type="radio" name="mobileMarketType" value="all" checked onchange="syncAndSearch('marketType', 'all')" class="text-brand-secondary focus:ring-0">
+                        <span class="font-medium text-slate-700">Tümü</span>
+                    </label>
+                    <label class="flex items-center space-x-2 p-2 rounded-xl bg-slate-50 border border-slate-200">
+                        <input type="radio" name="mobileMarketType" value="egitim" onchange="syncAndSearch('marketType', 'egitim')" class="text-brand-secondary focus:ring-0">
+                        <span class="font-medium text-slate-700">Eğitim</span>
+                    </label>
+                    <label class="flex items-center space-x-2 p-2 rounded-xl bg-slate-50 border border-slate-200">
+                        <input type="radio" name="mobileMarketType" value="supervizyon" onchange="syncAndSearch('marketType', 'supervizyon')" class="text-brand-secondary focus:ring-0">
+                        <span class="font-medium text-slate-700">Süpervizyon</span>
+                    </label>
+                    <label class="flex items-center space-x-2 p-2 rounded-xl bg-slate-50 border border-slate-200">
+                        <input type="radio" name="mobileMarketType" value="staj" onchange="syncAndSearch('marketType', 'staj')" class="text-brand-secondary focus:ring-0">
+                        <span class="font-medium text-slate-700">Klinik Staj</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- 2. Çalışma Alanı -->
+            <div>
+                <label class="block font-bold text-slate-700 mb-1">Çalışma Alanı</label>
+                <select id="mobileTargetAudience" onchange="syncAndSearch('targetAudience', this.value)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-xs focus:bg-white focus:outline-none">
+                    <option value="all">Tüm Çalışma Alanları</option>
+                    <option value="cocuk">Çocuk</option>
+                    <option value="ergen">Ergen</option>
+                    <option value="yetiskin">Yetişkin</option>
+                    <option value="cift_aile">Çift ve Aile</option>
+                </select>
+            </div>
+
+            <!-- 3. Terapi Ekolü -->
+            <div>
+                <label class="block font-bold text-slate-700 mb-1">Terapi Ekolü</label>
+                <select id="mobileEcol" onchange="syncAndSearch('ecol', this.value)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-xs focus:bg-white focus:outline-none">
+                    <option value="all">Tüm Ekoller</option>
+                    <option value="cbt">Bilişsel Davranışçı (BDT)</option>
+                    <option value="psychoanalytic">Psikanalitik & Dinamik</option>
+                    <option value="humanistic">Hümanistik & Varoluşçu</option>
+                    <option value="systemic">Sistemik, Çift & Aile</option>
+                    <option value="postmodern">Postmodern & Çözüm Odaklı</option>
+                    <option value="trauma_somatic">Travma & EMDR / Somatik</option>
+                    <option value="child_dev">Çocuk & Oyun Terapisi</option>
+                    <option value="expressive">Sanat & Psikodrama</option>
+                    <option value="integrative">Bütüncül Terapi</option>
+                </select>
+            </div>
+
+            <!-- 4. Dinamik Şehir & İlçe -->
+            <div class="grid grid-cols-2 gap-2">
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">Şehir (İl)</label>
+                    <select id="mobileCity" onchange="onCityChange(this.value, true)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2.5 text-xs focus:bg-white focus:outline-none">
+                        <option value="all">Tüm Şehirler</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">İlçe</label>
+                    <select id="mobileDistrict" onchange="syncAndSearch('district', this.value)" disabled class="w-full bg-slate-100 border border-slate-200 rounded-xl px-2.5 py-2.5 text-xs text-slate-400 focus:bg-white focus:outline-none">
+                        <option value="all">Önce İl Seçin</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- 5. Ücretsiz Staj -->
+            <div>
+                <label class="flex items-center space-x-2 p-3 rounded-xl bg-emerald-50 border border-emerald-200 cursor-pointer">
+                    <input type="checkbox" id="mobileFreeOnly" onchange="syncAndSearch('freeOnly', this.checked)" class="rounded text-emerald-600 focus:ring-0">
+                    <span class="text-xs font-bold text-emerald-900">Yalnızca Ücretsiz / Gönüllü Stajlar</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Çekmece Alt Eylem Butonu -->
+        <div class="p-4 border-t border-slate-100 bg-slate-50 shrink-0">
+            <button onclick="toggleMobileDrawer(false)" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs py-3.5 rounded-xl transition shadow-xs flex items-center justify-center gap-1.5">
+                <i class="fa-solid fa-check"></i>
+                <span id="mobileApplyDrawerBtn">Sonuçları Göster</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- ÜYE OLMAYANLAR / GİRİŞ YAPMAMIŞLAR İÇİN GİRİŞ & KAYIT DUVARI MODALI -->
+    <div id="applyGateModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full overflow-hidden shadow-2xl border border-slate-100 p-6 sm:p-8 text-center space-y-4">
+            <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-2xl mx-auto shadow-xs">
+                <i class="fa-solid fa-user-lock"></i>
+            </div>
+
+            <div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-brand-secondary bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                    YÖK Doğrulaması Gereklidir
+                </span>
+                <h3 class="text-lg font-extrabold text-slate-900 mt-2">Bu İlana Başvurmak İçin Giriş Yapın veya Kaydolun</h3>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                    Seçtiğiniz <strong id="gateProgramTitle" class="text-slate-800">...</strong> programına başvuru yapabilmek için doğrulanmış ruh sağlığı hesabınıza erişmeniz gerekir.
+                </p>
+            </div>
+
+            <div class="pt-2 space-y-2.5">
+                <button onclick="switchToLoginModal()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs py-3 rounded-xl transition shadow-xs flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-arrow-right-to-bracket text-emerald-400"></i>
+                    <span>Zaten Üyeyim, Giriş Yaparak Başvur</span>
+                </button>
+
+                <a id="gateRegisterLink" href="bireysel-kayit.html" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-3 rounded-xl transition shadow-xs flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>Hesabım Yok, YÖK Tescili ile Kayıt Ol</span>
+                </a>
+
+                <button onclick="closeModal('applyGateModal')" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold text-xs py-2.5 rounded-xl transition">
+                    İlanı İncelemeye Devam Et
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HIZLI GİRİŞ YAP MODALI -->
+    <div id="quickLoginModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-sm w-full overflow-hidden shadow-2xl border border-slate-100 p-6 sm:p-7 space-y-4">
+            <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-xl bg-slate-900 text-white flex items-center justify-center text-xs">
+                        <i class="fa-solid fa-user-check"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-extrabold text-slate-900">Bireysel Giriş Yap</h4>
+                        <span class="text-[10px] text-slate-400 block" id="loginSubText">Hesabınıza giriş yapın</span>
+                    </div>
+                </div>
+                <button onclick="closeModal('quickLoginModal')" class="text-slate-400 hover:text-slate-700">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+
+            <form onsubmit="handleLoginSubmit(event)" class="space-y-3 text-xs">
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">Kullanıcı Adı veya E-Posta</label>
+                    <input type="text" id="loginUser" value="ahmetyilmaz" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-secondary/30">
+                </div>
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">Şifre</label>
+                    <input type="password" id="loginPass" value="12345678" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-secondary/30">
+                </div>
+                
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-3 rounded-xl transition shadow-xs flex items-center justify-center gap-1.5 pt-2">
+                    <i class="fa-solid fa-check"></i>
+                    <span id="loginBtnText">Giriş Yap ve Başvuruyu Tamamla</span>
+                </button>
+            </form>
+
+            <div class="text-center pt-1 border-t border-slate-100 text-[11px] text-slate-500">
+                Hesabınız yok mu? 
+                <a href="bireysel-kayit.html" class="font-bold text-brand-secondary hover:underline">Hemen Kayıt Olun</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-8 text-center text-xs text-slate-400 space-y-2">
+        <p>PsikoHub © 2026 | Ruh Sağlığı Mesleki Standartlar ve Kontenjan Ağı</p>
+        <p class="text-[11px] text-slate-400 font-medium">"Mesleki liyakatin dijital güvencesi."</p>
+        <div class="flex justify-center space-x-4 text-[11px] text-slate-500 pt-1">
+            <a href="uzman-dogrulama.html" class="hover:underline">Uzman Doğrulama</a>
+            <span>•</span>
+            <a href="saglayici-giris.html" class="hover:underline">Sağlayıcı Girişi</a>
+            <span>•</span>
+            <a href="bireysel-kayit.html" class="hover:underline">Bireysel Üyelik</a>
+        </div>
+    </footer>
+
+    <!-- TÜM VERİ VE KODLAR -->
+    <script>
+        const TURKEY_LOCATIONS = {
+            "Adana": ["Aladağ", "Ceyhan", "Çukurova", "Feke", "İmamoğlu", "Karaisalı", "Karataş", "Kozan", "Pozantı", "Saimbeyli", "Sarıçam", "Seyhan", "Tufanbeyli", "Yumurtalık", "Yüreğir"],
+            "Adıyaman": ["Besni", "Çelikhan", "Gerger", "Gölbaşı", "Kahta", "Merkez", "Samsat", "Sincik", "Tut"],
+            "Afyonkarahisar": ["Başmakçı", "Bayat", "Bolvadin", "Çay", "Çobanlar", "Dazkırı", "Dinar", "Emirdağ", "Evciler", "Hocalar", "İhsaniye", "İscehisar", "Kızılören", "Merkez", "Sandıklı", "Sinanpaşa", "Sultandağı", "Şuhut"],
+            "Ağrı": ["Diyadin", "Doğubayazıt", "Eleşkirt", "Hamur", "Merkez", "Patnos", "Taşlıçay", "Tutak"],
+            "Aksaray": ["Ağaçören", "Eskil", "Gülağaç", "Güzelyurt", "Merkez", "Ortaköy", "Sarıyahşi", "Sultanhanı"],
+            "Amasya": ["Göynücek", "Gümüşhacıköy", "Hamamözü", "Merkez", "Merzifon", "Suluova", "Taşova"],
+            "Ankara": ["Akyurt", "Altındağ", "Ayaş", "Bala", "Beypazarı", "Çamlıdere", "Çankaya", "Çubuk", "Elmadağ", "Etimesgut", "Evren", "Gölbaşı", "Güdül", "Haymana", "Kahramankazan", "Kalecik", "Keçiören", "Kızılcahamam", "Mamak", "Nallıhan", "Polatlı", "Pursaklar", "Sincan", "Şereflikoçhisar", "Yenimahalle"],
+            "Antalya": ["Akseki", "Aksu", "Alanya", "Demre", "Döşemealtı", "Elmalı", "Finike", "Gazipaşa", "Gündoğmuş", "İbradı", "Kaş", "Kemer", "Kepez", "Konyaaltı", "Korkuteli", "Kumluca", "Manavgat", "Muratpaşa", "Serik"],
+            "Ardahan": ["Çıldır", "Damal", "Göle", "Hanak", "Merkez", "Posof"],
+            "Artvin": ["Ardanuç", "Arhavi", "Borçka", "Hopa", "Kemalpaşa", "Merkez", "Murgul", "Şavşat", "Yusufeli"],
+            "Aydın": ["Bozdoğan", "Buharkent", "Çine", "Didim", "Efeler", "Germencik", "İncirliova", "Karacasu", "Karpuzlu", "Koçarlı", "Köşk", "Kuşadası", "Kuyucak", "Nazilli", "Söke", "Sultanhisar", "Yenipazar"],
+            "Balıkesir": ["Altıeylül", "Ayvalık", "Balya", "Bandırma", "Bigadiç", "Burhaniye", "Dursunbey", "Edremit", "Erdek", "Gömeç", "Gönen", "Havran", "İvrindi", "Karesi", "Kepsut", "Manyas", "Marmara", "Savaştepe", "Sındırgı", "Susurluk"],
+            "Bartın": ["Amasra", "Kurucaşile", "Merkez", "Ulus"],
+            "Batman": ["Beşiri", "Gercüş", "Hasankeyf", "Kozluk", "Merkez", "Sason"],
+            "Bayburt": ["Aydıntepe", "Demirözü", "Merkez"],
+            "Bilecik": ["Bozüyük", "Gölpazarı", "İnhisar", "Merkez", "Osmaneli", "Pazaryeri", "Söğüt", "Yenipazar"],
+            "Bingöl": ["Adaklı", "Genç", "Karlıova", "Kiğı", "Merkez", "Solhan", "Yayladere", "Yedisu"],
+            "Bitlis": ["Adilcevaz", "Ahlat", "Güroymak", "Hizan", "Merkez", "Mutki", "Tatvan"],
+            "Bolu": ["Dörtdivan", "Gerede", "Göynük", "Kıbrıscık", "Mengen", "Merkez", "Mudurnu", "Seben", "Yeniçağa"],
+            "Burdur": ["Ağlasun", "Altınyayla", "Bucak", "Çavdır", "Çeltikçi", "Gölhisar", "Karamanlı", "Kemer", "Merkez", "Tefenni", "Yeşilova"],
+            "Bursa": ["Büyükorhan", "Gemlik", "Gürsu", "Harmancık", "İnegöl", "İznik", "Karacabey", "Keles", "Kestel", "Mudanya", "Mustafakemalpaşa", "Nilüfer", "Orhaneli", "Orhangazi", "Osmangazi", "Yenişehir", "Yıldırım"],
+            "Çanakkale": ["Ayvacık", "Bayramiç", "Biga", "Bozcaada", "Çan", "Eceabat", "Ezine", "Gelibolu", "Gökçeada", "Lapseki", "Merkez", "Yenice"],
+            "Çankırı": ["Atkaracalar", "Bayramören", "Çerkeş", "Eldivan", "Ilgaz", "Kızılırmak", "Korgun", "Kurşunlu", "Merkez", "Orta", "Şabanözü", "Yapraklı"],
+            "Çorum": ["Alaca", "Bayat", "Boğazkale", "Dodurga", "İskilip", "Kargı", "Laçin", "Mecitözü", "Merkez", "Oğuzlar", "Ortaköy", "Osmancık", "Sungurlu", "Uğurludağ"],
+            "Denizli": ["Acıpayam", "Babadağ", "Baklan", "Bekilli", "Beyağaç", "Bozkurt", "Buldan", "Çal", "Çameli", "Çardak", "Çivril", "Güney", "Honaz", "Kale", "Merkezefendi", "Pamukkale", "Sarayköy", "Serinhisar", "Tavas"],
+            "Diyarbakır": ["Bağlar", "Bismil", "Çermik", "Çınar", "Çüngüş", "Dicle", "Eğil", "Ergani", "Hani", "Hazro", "Kayapınar", "Kocaköy", "Kulp", "Lice", "Silvan", "Sur", "Yenişehir"],
+            "Düzce": ["Akçakoca", "Cumayeri", "Çilimli", "Gölyaka", "Gümüşova", "Kaynaşlı", "Merkez", "Yığılca"],
+            "Edirne": ["Enez", "Havsa", "İpsala", "Keşan", "Lalapaşa", "Meriç", "Merkez", "Süloğlu", "Uzunköprü"],
+            "Elazığ": ["Ağın", "Alacakaya", "Arıcak", "Baskil", "Karakoçan", "Keban", "Kovancılar", "Maden", "Merkez", "Palu", "Sivrice"],
+            "Erzincan": ["Çayırlı", "İliç", "Kemah", "Kemaliye", "Merkez", "Otlukbeli", "Refahiye", "Tercan", "Üzümlü"],
+            "Erzurum": ["Aşkale", "Aziziye", "Çat", "Hınıs", "Horasan", "İspir", "Karaçoban", "Karayazı", "Köprüköy", "Narman", "Oltu", "Olur", "Palandöken", "Pasinler", "Pazaryolu", "Şenkaya", "Tekman", "Tortum", "Uzundere", "Yakutiye"],
+            "Eskişehir": ["Alpu", "Beylikova", "Çifteler", "Günyüzü", "Han", "İnönü", "Mahmudiye", "Mihalgazi", "Mihalıççık", "Odunpazarı", "Sarıcakaya", "Seyitgazi", "Sivrihisar", "Tepebaşı"],
+            "Gaziantep": ["Araban", "İslahiye", "Karkamış", "Nizip", "Nurdağı", "Oğuzeli", "Şahinbey", "Şehitkamil", "Yavuzeli"],
+            "Giresun": ["Alucra", "Bulancak", "Çamoluk", "Çanakçı", "Dereli", "Doğankent", "Espiye", "Eynesil", "Görele", "Güce", "Keşap", "Merkez", "Piraziz", "Şebinkarahisar", "Tirebolu", "Yağlıdere"],
+            "Gümüşhane": ["Kelkit", "Köse", "Kürtün", "Merkez", "Şiran", "Torul"],
+            "Hakkari": ["Çukurca", "Derecik", "Merkez", "Şemdinli", "Yüksekova"],
+            "Hatay": ["Altınözü", "Antakya", "Arsuz", "Belen", "Defne", "Dörtyol", "Erzin", "Hassa", "İskenderun", "Kırıkhan", "Kumlu", "Payas", "Reyhanlı", "Samandağ", "Yayladağı"],
+            "Iğdır": ["Aralık", "Karakoyunlu", "Merkez", "Tuzluca"],
+            "Isparta": ["Aksu", "Atabey", "Eğirdir", "Gelendost", "Gönen", "Keçiborlu", "Merkez", "Senirkent", "Sütçüler", "Şarkikaraağaç", "Uluborlu", "Yalvaç", "Yenişarbademli"],
+            "İstanbul": ["Adalar", "Arnavutköy", "Ataşehir", "Avcılar", "Bağcılar", "Bahçelievler", "Bakırköy", "Başakşehir", "Bayrampaşa", "Beşiktaş", "Beykoz", "Beylikdüzü", "Beyoğlu", "Büyükçekmece", "Çatalca", "Çekmeköy", "Esenler", "Esenyurt", "Eyüpsultan", "Fatih", "Gaziosmanpaşa", "Güngören", "Kadıköy", "Kağıthane", "Kartal", "Küçükçekmece", "Maltepe", "Pendik", "Sancaktepe", "Sarıyer", "Silivri", "Sultanbeyli", "Sultangazi", "Şile", "Şişli", "Tuzla", "Ümraniye", "Üsküdar", "Zeytinburnu"],
+            "İzmir": ["Aliağa", "Balçova", "Bayındır", "Bayraklı", "Bergama", "Beydağ", "Bornova", "Buca", "Çeşme", "Çiğli", "Dikili", "Foça", "Gaziemir", "Güzelbahçe", "Karabağlar", "Karaburun", "Karşıyaka", "Kemalpaşa", "Kınık", "Kiraz", "Konak", "Menderes", "Menemen", "Narlıdere", "Ödemiş", "Seferihisar", "Selçuk", "Tire", "Torbalı", "Urla"],
+            "Kahramanmaraş": ["Afşin", "Andırın", "Çağlayancerit", "Dulkadiroğlu", "Ekinözü", "Elbistan", "Göksun", "Nurhak", "Onikişubat", "Pazarcık", "Türkoğlu"],
+            "Karabük": ["Eflani", "Eskipazar", "Merkez", "Ovacık", "Safranbolu", "Yenice"],
+            "Karaman": ["Ayrancı", "Başyayla", "Ermenek", "Kazımkarabekir", "Merkez", "Sarıveliler"],
+            "Kars": ["Akyaka", "Arpaçay", "Digor", "Kağızman", "Merkez", "Saraykent", "Selim", "Susuz"],
+            "Kastamonu": ["Abana", "Ağlı", "Araç", "Azdavay", "Bozkurt", "Cide", "Çatalzeytin", "Daday", "Devrekani", "Doğanyurt", "Hanönü", "İhsangazi", "İnebolu", "Küre", "Merkez", "Pınarbaşı", "Seydiler", "Şenpazar", "Taşköprü", "Tosya"],
+            "Kayseri": ["Akkışla", "Bünyan", "Develi", "Felahiye", "Hacılar", "İncesu", "Kocasinan", "Melikgazi", "Özvatan", "Pınarbaşı", "Sarıoğlan", "Sarız", "Talas", "Tomarza", "Yahyalı", "Yeşilhisar"],
+            "Kırıkkale": ["Bahşılı", "Balışeyh", "Çelebi", "Delice", "Karakeçili", "Keskin", "Merkez", "Sulakyurt", "Yahşihan"],
+            "Kırklareli": ["Babaeski", "Demirköy", "Kofçaz", "Lüleburgaz", "Merkez", "Pehlivanköy", "Pınarhisar", "Vize"],
+            "Kırşehir": ["Akçakent", "Akpınar", "Boztepe", "Çiçekdağı", "Kaman", "Merkez", "Mucur"],
+            "Kilis": ["Elbeyli", "Merkez", "Musabeyli", "Polateli"],
+            "Kocaeli": ["Başiskele", "Çayırova", "Darıca", "Derince", "Dilovası", "Gebze", "Gölcük", "İzmit", "Kandıra", "Karamürsel", "Kartepe", "Körfez"],
+            "Konya": ["Ahırlı", "Akören", "Akşehir", "Altınekin", "Beyşehir", "Bozkır", "Cihanbeyli", "Çeltik", "Çumra", "Derbent", "Derebucak", "Doğanhisar", "Emirgazi", "Ereğli", "Güneysınır", "Hadim", "Halkapınar", "Hüyük", "Ilgın", "Kadınhanı", "Karapınar", "Karatay", "Kulu", "Meram", "Sarayönü", "Selçuklu", "Seydişehir", "Taşkent", "Tuzlukçu", "Yalıhüyük", "Yunak"],
+            "Kütahya": ["Altıntaş", "Aslanapa", "Çavdarhisar", "Domaniç", "Dumlupınar", "Emet", "Gediz", "Hisarcık", "Merkez", "Pazarlar", "Şaphane", "Simav", "Tavşanlı"],
+            "Malatya": ["Akçadağ", "Arapgir", "Arguvan", "Battalgazi", "Darende", "Doğanşehir", "Doğanyol", "Hekimhan", "Kale", "Kuluncak", "Pütürge", "Yazıhan", "Yeşilyurt"],
+            "Manisa": ["Ahmetli", "Akhisar", "Alaşehir", "Demirci", "Gölmarmara", "Gördes", "Kırkağaç", "Köprübaşı", "Kula", "Salihli", "Sarıgöl", "Saruhanlı", "Selendi", "Soma", "Şehzadeler", "Turgutlu", "Yunusemre"],
+            "Mardin": ["Artuklu", "Dargeçit", "Derik", "Kızıltepe", "Mazıdağı", "Midyat", "Nusaybin", "Ömerli", "Savur", "Yeşilli"],
+            "Mersin": ["Akdeniz", "Anamur", "Aydıncık", "Bozyazı", "Çamlıyayla", "Erdemli", "Gülnar", "Mezitli", "Mut", "Silifke", "Tarsus", "Toroslar", "Yenişehir"],
+            "Muğla": ["Bodrum", "Dalaman", "Datça", "Fethiye", "Kavaklıdere", "Köyceğiz", "Marmaris", "Menteşe", "Milas", "Ortaca", "Seydikemer", "Ula", "Yatağan"],
+            "Muş": ["Bulanık", "Hasköy", "Korkut", "Malazgirt", "Merkez", "Varto"],
+            "Nevşehir": ["Acıgöl", "Avanos", "Derinkuyu", "Gülşehir", "Hacıbektaş", "Kozaklı", "Merkez", "Ürgüp"],
+            "Niğde": ["Altunhisar", "Bor", "Çamardı", "Çiftlik", "Merkez", "Ulukışla"],
+            "Ordu": ["Akkuş", "Altınordu", "Aybastı", "Çamaş", "Çatalpınar", "Çaybaşı", "Fatsa", "Gölköy", "Gülyalı", "Gürgentepe", "İkizce", "Kabadüz", "Kabataş", "Korgan", "Kumru", "Mesudiye", "Ünye"],
+            "Osmaniye": ["Bahçe", "Düziçi", "Hasanbeyli", "Kadirli", "Merkez", "Sumbas", "Toprakkale"],
+            "Rize": ["Ardeşen", "Çamlıhemşin", "Çayeli", "Derepazarı", "Fındıklı", "Güneysu", "Hemşin", "İkizdere", "İyidere", "Kalkandere", "Merkez", "Pazar"],
+            "Sakarya": ["Adapazarı", "Akyazı", "Arifiye", "Erenler", "Ferizli", "Geyve", "Hendek", "Karapürçek", "Karasu", "Kaynarca", "Kocaali", "Pamukova", "Sapanca", "Serdivan", "Söğütlü", "Taraklı"],
+            "Samsun": ["19 Mayıs", "Alaçam", "Asarcık", "Atakum", "Ayvacık", "Bafra", "Canik", "Çarşamba", "Havza", "İlkadım", "Kavak", "Ladik", "Salıpazarı", "Tekkeköy", "Terme", "Vezirköprü", "Yakakent"],
+            "Siirt": ["Baykan", "Eruh", "Kurtalan", "Merkez", "Pervari", "Şirvan", "Tillo"],
+            "Sinop": ["Ayancık", "Boyabat", "Dikmen", "Durağan", "Erfelek", "Gerze", "Merkez", "Saraydüzü", "Türkeli"],
+            "Sivas": ["Akıncılar", "Altınyayla", "Divriği", "Doğanşar", "Gemerek", "Gölova", "Gürün", "Hafik", "İmranlı", "Kangal", "Koyulhisar", "Merkez", "Suşehri", "Şarkışla", "Ulaş", "Yıldızeli", "Zara"],
+            "Şanlıurfa": ["Akçakale", "Birecik", "Bozova", "Ceylanpınar", "Eyyübiye", "Halfeti", "Haliliye", "Harran", "Hilvan", "Karaköprü", "Siverek", "Suruç", "Viranşehir"],
+            "Şırnak": ["Beytüşşebap", "Cizre", "Güçlükonak", "İdil", "Merkez", "Silopi", "Uludere"],
+            "Tekirdağ": ["Çerkezköy", "Çorlu", "Ergene", "Hayrabolu", "Kapaklı", "Malkara", "Marmaraereğlisi", "Muratlı", "Saray", "Süleymanpaşa", "Şarköy"],
+            "Tokat": ["Almus", "Artova", "Başçiftlik", "Erbaa", "Merkez", "Niksar", "Pazar", "Reşadiye", "Sulusaray", "Turhal", "Yeşilyurt", "Zile"],
+            "Trabzon": ["Akçaabat", "Araklı", "Arsin", "Beşikdüzü", "Çarşıbaşı", "Çaykara", "Dernekpazarı", "Düzköy", "Hayrat", "Köprübaşı", "Maçka", "Of", "Ortahisar", "Sürmene", "Şalpazarı", "Tonya", "Vakfıkebir", "Yomra"],
+            "Tunceli": ["Çemişgezek", "Hozat", "Mazgirt", "Merkez", "Nazımiye", "Ovacık", "Pertek", "Pülümür"],
+            "Uşak": ["Banaz", "Eşme", "Karahallı", "Merkez", "Sivaslı", "Ulubey"],
+            "Van": ["Bahçesaray", "Başkale", "Çaldıran", "Çatak", "Edremit", "Erciş", "Gevaş", "Gürpınar", "İpekyolu", "Muradiye", "Özalp", "Saray", "Tuşba"],
+            "Yalova": ["Altınova", "Armutlu", "Çınarcık", "Çiftlikköy", "Merkez", "Termal"],
+            "Yozgat": ["Akdağmadeni", "Aydıncık", "Boğazlıyan", "Çandır", "Çayıralan", "Çekerek", "Kadışehri", "Saraykent", "Sarıkaya", "Sorgun", "Şefaatli", "Yenifakılı", "Yerköy"],
+            "Zonguldak": ["Alaplı", "Çaycuma", "Devrek", "Gökçebey", "Karadeniz Ereğli", "Kilimli", "Kozlu", "Merkez"]
+        };
+
+        const SORTED_CITIES = Object.keys(TURKEY_LOCATIONS).sort((a, b) => a.localeCompare(b, 'tr'));
+
+        const MARKET_LISTINGS = [
+            {
+                id: 'm1',
+                type: 'staj',
+                typeName: 'Klinik Staj',
+                typeBadgeColor: 'bg-emerald-100 text-emerald-800',
+                bannerGradient: 'from-emerald-900 to-teal-800',
+                icon: 'fa-hospital-user',
+                targetAudience: 'cift_aile',
+                targetAudienceName: 'Çift ve Aile',
+                ecol: 'systemic',
+                ecolName: 'Sistemik & Çift',
+                title: 'Klinik Gözlem ve Uygulamalı Vaka Staj Protokolü',
+                provider: 'Özel Pendik Hera Aile Danışma Merkezi',
+                format: 'Yuzyuze',
+                formatDisplay: 'Yüz Yüze',
+                city: 'İstanbul',
+                district: 'Pendik',
+                hours: '120 Saat',
+                quotaTotal: 6,
+                quotaOccupied: 4,
+                isFree: true,
+                priceDisplay: 'Ücretsiz (Gönüllü)',
+                reqSummary: 'Psikoloji / PDR 4. Sınıf & Yeni Mezun'
+            },
+            {
+                id: 'm2',
+                type: 'egitim',
+                typeName: 'Akredite Eğitim',
+                typeBadgeColor: 'bg-blue-100 text-blue-800',
+                bannerGradient: 'from-blue-900 to-indigo-800',
+                icon: 'fa-graduation-cap',
+                targetAudience: 'yetiskin',
+                targetAudienceName: 'Yetişkin',
+                ecol: 'cbt',
+                ecolName: 'BDT Ekolü',
+                title: 'Bilişsel Davranışçı Terapi Temel Kuramsal Eğitimi (Modül 1)',
+                provider: 'Özel Pendik Hera Aile Danışma Merkezi',
+                format: 'Online',
+                formatDisplay: 'Çevrim İçi',
+                city: 'Tümü',
+                district: '',
+                hours: '40 Saat',
+                quotaTotal: 25,
+                quotaOccupied: 18,
+                isFree: false,
+                priceDisplay: '20.000 ₺ + KDV',
+                reqSummary: 'Ruh Sağlığı Lisans Mezunu'
+            },
+            {
+                id: 'm3',
+                type: 'supervizyon',
+                typeName: 'Süpervizyon',
+                typeBadgeColor: 'bg-purple-100 text-purple-800',
+                bannerGradient: 'from-purple-900 to-fuchsia-900',
+                icon: 'fa-user-doctor',
+                targetAudience: 'cift_aile',
+                targetAudienceName: 'Çift ve Aile',
+                ecol: 'systemic',
+                ecolName: 'Sistemik Çift',
+                title: 'Sistemik Çift ve Aile Terapisi Kapalı Vaka Süpervizyon Grubu',
+                provider: 'Dr. Ayşe Yılmaz (Klinik Psk.)',
+                format: 'Online',
+                formatDisplay: 'Çevrim İçi',
+                city: 'Tümü',
+                district: '',
+                hours: '10 Oturum',
+                quotaTotal: 10,
+                quotaOccupied: 8,
+                isFree: false,
+                priceDisplay: '15.000 ₺ + KDV',
+                reqSummary: 'Klinik Psikoloji YL & Çift Terapisi'
+            },
+            {
+                id: 'm4',
+                type: 'egitim',
+                typeName: 'Akredite Eğitim',
+                typeBadgeColor: 'bg-blue-100 text-blue-800',
+                bannerGradient: 'from-slate-900 to-slate-800',
+                icon: 'fa-book-open',
+                targetAudience: 'yetiskin',
+                targetAudienceName: 'Yetişkin',
+                ecol: 'psychoanalytic',
+                ecolName: 'Psikanalitik & Dinamik',
+                title: 'Dinamik Yönelimli Vaka Formülasyonu ve Aktarım Atölyesi',
+                provider: 'Dr. Ayşe Yılmaz (Klinik Psk.)',
+                format: 'Online',
+                formatDisplay: 'Çevrim İçi',
+                city: 'Tümü',
+                district: '',
+                hours: '20 Saat',
+                quotaTotal: 20,
+                quotaOccupied: 14,
+                isFree: false,
+                priceDisplay: '12.500 ₺ + KDV',
+                reqSummary: '4 Yıllık Ruh Sağlığı Lisansı'
+            },
+            {
+                id: 'm5',
+                type: 'egitim',
+                typeName: 'Akredite Eğitim',
+                typeBadgeColor: 'bg-amber-100 text-amber-800',
+                bannerGradient: 'from-amber-900 to-orange-950',
+                icon: 'fa-child-reaching',
+                targetAudience: 'cocuk',
+                targetAudienceName: 'Çocuk',
+                ecol: 'child_dev',
+                ecolName: 'Çocuk & Oyun',
+                title: 'Çocuk Odaklı Projektif Çizim Testleri Uygulayıcı Eğitimi',
+                provider: 'Özel Pendik Hera Aile Danışma Merkezi',
+                format: 'Hibrid',
+                formatDisplay: 'Hibrit',
+                city: 'İstanbul',
+                district: 'Pendik',
+                hours: '24 Saat',
+                quotaTotal: 15,
+                quotaOccupied: 12,
+                isFree: false,
+                priceDisplay: '14.000 ₺ + KDV',
+                reqSummary: 'Psikoloji & PDR Lisans Mezun/Son Sınıf'
+            },
+            {
+                id: 'm6',
+                type: 'supervizyon',
+                typeName: 'Süpervizyon',
+                typeBadgeColor: 'bg-purple-100 text-purple-800',
+                bannerGradient: 'from-indigo-950 to-blue-900',
+                icon: 'fa-users-between-lines',
+                targetAudience: 'ergen',
+                targetAudienceName: 'Ergen',
+                ecol: 'cbt',
+                ecolName: 'Ergen BDT',
+                title: 'Ergenlerde Kimlik Arayışı ve Davranış Problemleri Vaka Süpervizyonu',
+                provider: 'Dr. Ayşe Yılmaz (Klinik Psk.)',
+                format: 'Online',
+                formatDisplay: 'Çevrim İçi',
+                city: 'Tümü',
+                district: '',
+                hours: '8 Oturum',
+                quotaTotal: 8,
+                quotaOccupied: 5,
+                isFree: false,
+                priceDisplay: '12.000 ₺ + KDV',
+                reqSummary: 'Klinik Psikoloji / PDR Lisansüstü'
+            }
+        ];
+
+        let activeTargetApplyId = null;
+
+        window.addEventListener('DOMContentLoaded', () => {
+            initCityDropdowns();
+            triggerMarketSearch();
+        });
+
+        function initCityDropdowns() {
+            const citySelectDesktop = document.getElementById('marketCity');
+            const citySelectMobile = document.getElementById('mobileCity');
+            
+            citySelectDesktop.innerHTML = '<option value="all">Tüm Şehirler</option>';
+            citySelectMobile.innerHTML = '<option value="all">Tüm Şehirler</option>';
+
+            SORTED_CITIES.forEach(city => {
+                const opt1 = document.createElement('option');
+                opt1.value = city;
+                opt1.textContent = city;
+                citySelectDesktop.appendChild(opt1);
+
+                const opt2 = document.createElement('option');
+                opt2.value = city;
+                opt2.textContent = city;
+                citySelectMobile.appendChild(opt2);
+            });
+        }
+
+        // Şehir Değiştiğinde İlçe Listesini Senkronize Doldurur
+        function onCityChange(city, isMobileTrigger) {
+            const districtDesktop = document.getElementById('marketDistrict');
+            const districtMobile = document.getElementById('mobileDistrict');
+            const cityDesktop = document.getElementById('marketCity');
+            const cityMobile = document.getElementById('mobileCity');
+
+            // İki seçiciyi birbirine senkronla
+            cityDesktop.value = city;
+            cityMobile.value = city;
+
+            const handleDistrict = (distSelect) => {
+                if (city === 'all') {
+                    distSelect.innerHTML = '<option value="all">Önce İl Seçin</option>';
+                    distSelect.disabled = true;
+                    distSelect.className = "w-full bg-slate-100 border border-slate-200 rounded-xl px-2.5 py-2 text-xs text-slate-400 focus:outline-none transition";
+                } else {
+                    distSelect.disabled = false;
+                    distSelect.className = "w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 text-xs text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-secondary/30 transition";
+                    distSelect.innerHTML = '<option value="all">Tüm İlçeler</option>';
+
+                    if (TURKEY_LOCATIONS[city]) {
+                        const sorted = [...TURKEY_LOCATIONS[city]].sort((a, b) => a.localeCompare(b, 'tr'));
+                        sorted.forEach(d => {
+                            const opt = document.createElement('option');
+                            opt.value = d;
+                            opt.textContent = d;
+                            distSelect.appendChild(opt);
+                        });
+                    }
+                }
+            };
+
+            handleDistrict(districtDesktop);
+            handleDistrict(districtMobile);
+
+            triggerMarketSearch();
+        }
+
+        // Masaüstü ve Mobil Filtre Değerlerini Senkron Tutma Fonksiyonu
+        function syncAndSearch(field, value) {
+            if (field === 'marketType') {
+                document.querySelector(`input[name="marketType"][value="${value}"]`).checked = true;
+                document.querySelector(`input[name="mobileMarketType"][value="${value}"]`).checked = true;
+            } else if (field === 'targetAudience') {
+                document.getElementById('marketTargetAudience').value = value;
+                document.getElementById('mobileTargetAudience').value = value;
+            } else if (field === 'ecol') {
+                document.getElementById('marketEcol').value = value;
+                document.getElementById('mobileEcol').value = value;
+            } else if (field === 'format') {
+                document.getElementById('marketFormat').value = value;
+            } else if (field === 'district') {
+                document.getElementById('marketDistrict').value = value;
+                document.getElementById('mobileDistrict').value = value;
+            } else if (field === 'freeOnly') {
+                document.getElementById('marketFreeOnly').checked = value;
+                document.getElementById('mobileFreeOnly').checked = value;
+            }
+            triggerMarketSearch();
+        }
+
+        function triggerMarketSearch() {
+            const query = (document.getElementById('heroSearch').value || '').toLowerCase().trim();
+            const selectedType = document.querySelector('input[name="marketType"]:checked').value;
+            const selectedAudience = document.getElementById('marketTargetAudience').value;
+            const selectedEcol = document.getElementById('marketEcol').value;
+            const selectedFormat = document.getElementById('marketFormat').value;
+            const selectedCity = document.getElementById('marketCity').value;
+            const selectedDistrict = document.getElementById('marketDistrict').value;
+            const freeOnly = document.getElementById('marketFreeOnly').checked;
+
+            let filtered = MARKET_LISTINGS.filter(item => {
+                const matchesQuery = !query || 
+                    item.title.toLowerCase().includes(query) || 
+                    item.provider.toLowerCase().includes(query) || 
+                    item.ecolName.toLowerCase().includes(query) ||
+                    item.targetAudienceName.toLowerCase().includes(query);
+
+                const matchesType = selectedType === 'all' || item.type === selectedType;
+                const matchesAudience = selectedAudience === 'all' || item.targetAudience === selectedAudience;
+                const matchesEcol = selectedEcol === 'all' || item.ecol === selectedEcol;
+                const matchesFormat = selectedFormat === 'all' || item.format === selectedFormat;
+                
+                const matchesCity = selectedCity === 'all' || item.city === selectedCity || item.city === 'Tümü';
+                const matchesDistrict = selectedDistrict === 'all' || !selectedDistrict || item.district === selectedDistrict || item.city === 'Tümü';
+
+                const matchesFree = !freeOnly || item.isFree;
+
+                return matchesQuery && matchesType && matchesAudience && matchesEcol && matchesFormat && matchesCity && matchesDistrict && matchesFree;
+            });
+
+            renderMarketplace(filtered);
+        }
+
+        function resetMarketFilters() {
+            document.getElementById('heroSearch').value = '';
+            syncAndSearch('marketType', 'all');
+            syncAndSearch('targetAudience', 'all');
+            syncAndSearch('ecol', 'all');
+            syncAndSearch('freeOnly', false);
+            onCityChange('all', false);
+            triggerMarketSearch();
+        }
+
+        function renderMarketplace(items) {
+            const container = document.getElementById('marketCardsGrid');
+            const countText = `Yayındaki Güncel İlanlar: ${items.length}`;
+            document.getElementById('marketResultCount').textContent = countText;
+            document.getElementById('marketResultCountMobile').textContent = `Toplam ${items.length} İlan Listeleniyor`;
+            document.getElementById('mobileApplyDrawerBtn').textContent = `${items.length} İlanı Göster`;
+
+            if (items.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full py-12 text-center text-slate-400 bg-white rounded-3xl border border-slate-200 p-8 shadow-xs">
+                        <i class="fa-solid fa-filter-circle-xmark text-3xl mb-2 text-slate-300 block"></i>
+                        <h4 class="font-bold text-slate-700 text-sm">Filtre kriterlerinize uygun kontenjan bulunamadı.</h4>
+                        <p class="text-xs text-slate-400 mt-1">Lütfen filtreleri temizleyerek tüm ilanları listeleyiniz.</p>
+                        <button onclick="resetMarketFilters()" class="mt-4 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl transition">
+                            Tüm İlanları Göster
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = items.map(item => {
+                const remaining = item.quotaTotal - item.quotaOccupied;
+                const percent = Math.round((item.quotaOccupied / item.quotaTotal) * 100);
+                const locationText = item.city !== 'Tümü' 
+                    ? `(${item.city}${item.district ? ' - ' + item.district : ''})` 
+                    : '';
+
+                return `
+                    <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-lg hover:border-brand-secondary/40 transition duration-200 flex flex-col justify-between group">
+                        
+                        <div>
+                            <a href="ilan-detay.html?id=${item.id}" class="block h-28 bg-gradient-to-tr ${item.bannerGradient} p-3.5 flex flex-col justify-between relative overflow-hidden">
+                                <div class="flex items-center justify-between z-10">
+                                    <span class="px-2 py-0.5 rounded-md text-[10px] font-bold ${item.typeBadgeColor} shadow-2xs">
+                                        ${item.typeName}
+                                    </span>
+                                    ${item.isFree ? '<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-emerald-500 text-white shadow-2xs">Ücretsiz</span>' : ''}
+                                </div>
+
+                                <div class="z-10 flex items-center justify-between">
+                                    <span class="text-[10px] font-semibold text-slate-200 bg-slate-900/60 backdrop-blur-xs px-2 py-0.5 rounded">
+                                        ${item.ecolName}
+                                    </span>
+                                    <span class="text-[10px] text-emerald-300 font-mono font-bold">
+                                        Son ${remaining} Kontenjan
+                                    </span>
+                                </div>
+
+                                <i class="fa-solid ${item.icon} text-6xl text-white/10 absolute -right-3 -bottom-3 pointer-events-none group-hover:scale-110 transition duration-300"></i>
+                            </a>
+
+                            <div class="p-4 space-y-2.5">
+                                <div class="flex items-center gap-1.5 text-[11px] text-slate-500">
+                                    <i class="fa-solid fa-circle-check text-emerald-600 text-[10px]"></i>
+                                    <span class="font-bold text-slate-700 truncate">${item.provider}</span>
+                                </div>
+
+                                <a href="ilan-detay.html?id=${item.id}" class="block text-xs font-extrabold text-slate-900 leading-snug line-clamp-2 h-8 group-hover:text-brand-secondary transition">
+                                    ${item.title}
+                                </a>
+
+                                <div class="flex flex-wrap gap-1 text-[10px] text-slate-500 pt-1">
+                                    <span class="bg-emerald-50 text-emerald-800 border border-emerald-200/60 px-2 py-0.5 rounded font-semibold">
+                                        ${item.targetAudienceName}
+                                    </span>
+                                    <span class="bg-slate-100 px-2 py-0.5 rounded font-medium">
+                                        <i class="fa-solid fa-location-dot text-slate-400 mr-0.5"></i>
+                                        ${item.formatDisplay} ${locationText}
+                                    </span>
+                                    <span class="bg-slate-100 px-2 py-0.5 rounded font-medium">
+                                        <i class="fa-regular fa-clock text-slate-400 mr-0.5"></i>
+                                        ${item.hours}
+                                    </span>
+                                </div>
+
+                                <p class="text-[10px] text-slate-500 bg-slate-50 p-2 rounded-lg border border-slate-100 truncate">
+                                    <strong>Önkoşul:</strong> ${item.reqSummary}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 pt-2 border-t border-slate-100 bg-slate-50/50 space-y-2">
+                            <div>
+                                <div class="flex justify-between text-[9px] font-bold text-slate-400 mb-0.5">
+                                    <span>Doluluk</span>
+                                    <span>%${percent}</span>
+                                </div>
+                                <div class="w-full bg-slate-200 h-1 rounded-full overflow-hidden">
+                                    <div class="bg-brand-secondary h-1 rounded-full transition-all duration-300" style="width: ${percent}%;"></div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between gap-2 pt-1">
+                                <div>
+                                    <span class="text-[9px] text-slate-400 block font-semibold">Katılım Tutarı</span>
+                                    <span class="text-xs font-black ${item.isFree ? 'text-emerald-700' : 'text-slate-900'} block">
+                                        ${item.priceDisplay}
+                                    </span>
+                                </div>
+
+                                <div class="flex items-center gap-1.5 shrink-0">
+                                    <a href="ilan-detay.html?id=${item.id}" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[11px] px-2.5 py-2 rounded-xl transition shadow-2xs">
+                                        İncele
+                                    </a>
+                                    <button onclick="openApplyGate('${item.id}', '${item.title}')" class="bg-slate-900 hover:bg-emerald-700 text-white font-bold text-[11px] px-3.5 py-2 rounded-xl transition shadow-xs flex items-center gap-1">
+                                        <span>Başvur</span>
+                                        <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // MOBİL FİLTRE ÇEKMECESİNİ AÇMA / KAPATMA
+        function toggleMobileDrawer(isOpen) {
+            const drawer = document.getElementById('mobileFilterDrawer');
+            const backdrop = document.getElementById('mobileDrawerBackdrop');
+
+            if (isOpen) {
+                backdrop.classList.remove('hidden');
+                drawer.classList.remove('translate-y-full');
+                document.body.classList.add('overflow-hidden');
+            } else {
+                drawer.classList.add('translate-y-full');
+                backdrop.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }
+        }
+
+        function openApplyGate(programId, programTitle) {
+            activeTargetApplyId = programId;
+            document.getElementById('gateProgramTitle').textContent = programTitle;
+            document.getElementById('gateRegisterLink').href = `bireysel-kayit.html?apply=${programId}`;
+            document.getElementById('applyGateModal').classList.remove('hidden');
+        }
+
+        function switchToLoginModal() {
+            closeModal('applyGateModal');
+            document.getElementById('loginSubText').textContent = "Başvurunuz giriş sonrası işlenecektir";
+            document.getElementById('loginBtnText').textContent = "Giriş Yap ve Başvuruyu Tamamla";
+            document.getElementById('quickLoginModal').classList.remove('hidden');
+        }
+
+        function openDirectLoginModal() {
+            activeTargetApplyId = null;
+            document.getElementById('loginSubText').textContent = "Çalışma alanınıza erişin";
+            document.getElementById('loginBtnText').textContent = "Giriş Yap";
+            document.getElementById('quickLoginModal').classList.remove('hidden');
+        }
+
+        function handleLoginSubmit(event) {
+            event.preventDefault();
+            if (activeTargetApplyId) {
+                localStorage.setItem('psikohub_pending_apply', activeTargetApplyId);
+            }
+            alert("Giriş başarılı! Çalışma alanınıza yönlendiriliyorsunuz.");
+            window.location.href = "bireysel-panel.html";
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        function toggleFaq(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            const isHidden = content.classList.contains('hidden');
+            
+            ['faq1', 'faq2', 'faq3', 'faq4'].forEach(item => {
+                const el = document.getElementById(item);
+                const ic = document.getElementById('icon-' + item);
+                if (el) el.classList.add('hidden');
+                if (ic) ic.classList.remove('rotate-180');
+            });
+
+            if (isHidden) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            }
+        }
+
+        function handleQuickVerify(event) {
+            event.preventDefault();
+            const val = document.getElementById('verifyInput').value.trim();
+            if (!val) {
+                alert('Lütfen doğrulamak istediğiniz uzmanın adını ve soyadını giriniz.');
+                return;
+            }
+            window.location.href = `uzman-dogrulama.html?q=${encodeURIComponent(val)}`;
+        }
+    </script>
+</body>
+</html>

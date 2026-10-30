@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İlan Detayı | PsikoHub</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            primary: '#1e3a5f',
+                            secondary: '#0f766e',
+                            accent: '#d97706',
+                            hera: '#256839',
+                            heradark: '#12612d'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Üst Bar / Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            
+            <!-- Logo & Geri Dönüş -->
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-primary to-brand-secondary flex items-center justify-center text-white shadow-md shadow-brand-primary/20">
+                        <i class="fa-solid fa-brain text-base"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-bold tracking-tight text-slate-900">Psiko<span class="text-brand-secondary">Hub</span></span>
+                        <span class="hidden sm:inline-block text-[10px] tracking-wider uppercase font-semibold text-slate-500 ml-2">| Mesleki Liyakatin Dijital Güvencesi</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Sağ Navigasyon ve Giriş Butonları -->
+            <div class="flex items-center space-x-3 sm:space-x-4 text-xs">
+                <a href="index.html" class="font-semibold text-slate-600 hover:text-brand-secondary flex items-center gap-1.5 transition">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>Tüm İlanlara Dön</span>
+                </a>
+                <div class="flex items-center space-x-2 border-l border-slate-200 pl-3">
+                    <button onclick="openDirectLoginModal()" class="font-bold text-slate-700 hover:text-brand-secondary px-2.5 py-2 transition">
+                        Giriş Yap
+                    </button>
+                    <a href="bireysel-kayit.html" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-3.5 py-2 rounded-xl transition shadow-xs flex items-center gap-1.5">
+                        <i class="fa-solid fa-user-check"></i>
+                        <span>Bireysel Giriş / Kayıt</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Ana Gövde -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-1">
+        
+        <!-- Üst Ekmek Kırıntısı (Breadcrumb) -->
+        <nav class="flex items-center gap-2 text-xs text-slate-400 mb-6 font-medium">
+            <a href="index.html" class="hover:text-slate-700 transition">Ana Sayfa</a>
+            <span>/</span>
+            <span id="bcType" class="text-slate-500">Program</span>
+            <span>/</span>
+            <span id="bcTitle" class="text-slate-800 font-bold truncate max-w-xs sm:max-w-md">Yükleniyor...</span>
+        </nav>
+
+        <!-- İLAN BAŞLIK & ÜST BANNER PANELİ -->
+        <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-xs mb-8 relative overflow-hidden">
+            <div class="max-w-4xl relative z-10 space-y-3">
+                
+                <div class="flex flex-wrap items-center gap-2">
+                    <span id="pageBadge" class="px-3 py-1 rounded-lg text-xs font-bold shadow-2xs">...</span>
+                    <span id="pageAudienceBadge" class="bg-emerald-50 text-emerald-800 border border-emerald-200/60 px-2.5 py-1 rounded-lg text-xs font-semibold">...</span>
+                    <span class="bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg text-xs font-semibold flex items-center gap-1">
+                        <i class="fa-solid fa-shield-check text-emerald-600"></i> Akredite Protokol
+                    </span>
+                </div>
+
+                <h1 id="pageTitle" class="text-xl sm:text-3xl font-extrabold text-slate-900 leading-tight">
+                    ...
+                </h1>
+
+                <!-- Sağlayıcı Kurum Kartı Satırı -->
+                <div class="flex flex-wrap items-center gap-4 text-xs text-slate-600 pt-2 border-t border-slate-100">
+                    <div class="flex items-center gap-2">
+                        <div class="w-7 h-7 rounded-lg bg-brand-hera text-white flex items-center justify-center font-bold text-xs">
+                            <i class="fa-solid fa-building-circle-check"></i>
+                        </div>
+                        <div>
+                            <span class="text-[10px] text-slate-400 block font-semibold">Sağlayıcı Kurum / Süpervizör</span>
+                            <span id="pageProvider" class="font-bold text-slate-800">...</span>
+                        </div>
+                    </div>
+
+                    <div class="hidden sm:block h-6 w-px bg-slate-200"></div>
+
+                    <div>
+                        <span class="text-[10px] text-slate-400 block font-semibold">Uygulama Modeli</span>
+                        <span id="pageFormat" class="font-bold text-slate-800">...</span>
+                    </div>
+
+                    <div class="hidden sm:block h-6 w-px bg-slate-200"></div>
+
+                    <div>
+                        <span class="text-[10px] text-slate-400 block font-semibold">Toplam Süre</span>
+                        <span id="pageHours" class="font-bold text-slate-800">...</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Arka Plan Süsü -->
+            <div class="absolute -right-6 -bottom-6 opacity-5 text-slate-900 text-9xl pointer-events-none hidden lg:block">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+        </div>
+
+        <!-- 2 KOLONLU DETAY VE BAŞVURU GÖVDESİ -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- SOL KOLON: AYRINTILI İÇERİK (8 KOLON) -->
+            <div class="lg:col-span-8 space-y-8">
+                
+                <!-- 1. Programın Amacı & Kapsamı -->
+                <section class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-7 shadow-xs space-y-3">
+                    <h3 class="text-sm font-bold uppercase tracking-wider text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-info text-brand-secondary"></i> Programın Amacı ve Klinik Kapsamı
+                    </h3>
+                    <p id="pageDescription" class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        ...
+                    </p>
+                </section>
+
+                <!-- 2. Modüler Müfredat ve Haftalık Plan -->
+                <section class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-7 shadow-xs space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-sm font-bold uppercase tracking-wider text-slate-900 flex items-center gap-2">
+                            <i class="fa-solid fa-list-check text-brand-secondary"></i> Modüler Müfredat & Ders Planı
+                        </h3>
+                        <span class="text-[11px] font-semibold text-slate-400">Resmi Müfredat Onaylıdır</span>
+                    </div>
+                    
+                    <div id="pageCurriculum" class="space-y-3">
+                        <!-- JS tarafından dinamik doldurulur -->
+                    </div>
+                </section>
+
+                <!-- 3. Eğitmen & Süpervizör Profili -->
+                <section class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-7 shadow-xs space-y-3">
+                    <h3 class="text-sm font-bold uppercase tracking-wider text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-user-doctor text-brand-secondary"></i> Eğitmen ve Süpervizör Bilgisi
+                    </h3>
+                    <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100 flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-brand-primary text-white flex items-center justify-center font-bold text-lg shrink-0">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <div class="space-y-1">
+                            <h4 class="text-xs font-bold text-slate-900">Yetkili Süpervizör Heyeti</h4>
+                            <p id="pageInstructor" class="text-xs text-slate-600 leading-relaxed">
+                                ...
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. Resmi Kazanımlar & Sicil Tescili -->
+                <section class="bg-emerald-50/60 rounded-3xl border border-emerald-200/80 p-6 sm:p-7 shadow-xs space-y-3">
+                    <h3 class="text-sm font-bold uppercase tracking-wider text-emerald-950 flex items-center gap-2">
+                        <i class="fa-solid fa-stamp text-emerald-700"></i> Resmi Liyakat ve Sicil Tescili
+                    </h3>
+                    <p id="pageAccreditation" class="text-xs text-emerald-900 leading-relaxed">
+                        ...
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-[11px] font-semibold text-emerald-800">
+                        <div class="flex items-center gap-2 bg-white/80 p-2.5 rounded-xl border border-emerald-200/50">
+                            <i class="fa-solid fa-check text-emerald-600"></i>
+                            <span>PsikoHub Profiline Resmi Barkodlu İşlenir</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-white/80 p-2.5 rounded-xl border border-emerald-200/50">
+                            <i class="fa-solid fa-check text-emerald-600"></i>
+                            <span>Kamu ve Kurum Doğrulamasına Açıktır</span>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- SAĞ KOLON: SABİT (STICKY) ÖZET & BAŞVURU KARTI (4 KOLON) -->
+            <aside class="lg:col-span-4 sticky top-24 space-y-5">
+                
+                <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm space-y-5">
+                    
+                    <!-- Fiyat / Ücretsiz Bilgisi -->
+                    <div class="pb-4 border-b border-slate-100">
+                        <span class="text-[11px] text-slate-400 block font-semibold uppercase tracking-wider">Katılım Bedeli</span>
+                        <span id="pagePrice" class="text-2xl font-black text-slate-900 block mt-0.5">...</span>
+                        <span class="text-[10px] text-slate-400 block mt-0.5">Resmi fatura ve tescil bedeli dahildir.</span>
+                    </div>
+
+                    <!-- Canlı Kontenjan Göstergesi -->
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-xs font-bold text-slate-600">
+                            <span>Kontenjan Doluluk</span>
+                            <span id="pageQuotaPercent">%0</span>
+                        </div>
+                        <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                            <div id="pageQuotaBar" class="bg-brand-secondary h-2 rounded-full transition-all duration-300" style="width: 0%;"></div>
+                        </div>
+                        <span id="pageQuotaRemaining" class="text-[11px] font-bold text-emerald-700 block text-right">Son ... Kontenjan</span>
+                    </div>
+
+                    <!-- Takvim ve Koşullar -->
+                    <div class="space-y-3 text-xs bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                        <div>
+                            <span class="text-[10px] text-slate-400 block font-semibold uppercase tracking-wider">Başlangıç Tarihi</span>
+                            <span id="pageStartDate" class="font-bold text-slate-800">...</span>
+                        </div>
+                        <div>
+                            <span class="text-[10px] text-slate-400 block font-semibold uppercase tracking-wider">Ders / Seans Saatleri</span>
+                            <span id="pageSchedule" class="font-bold text-slate-800">...</span>
+                        </div>
+                        <div>
+                            <span class="text-[10px] text-slate-400 block font-semibold uppercase tracking-wider">Başvuru Önkoşulu</span>
+                            <span id="pageReq" class="font-bold text-slate-800">...</span>
+                        </div>
+                    </div>
+
+                    <!-- Başvuru Eylemi (CTA) -->
+                    <div class="pt-2 space-y-2">
+                        <button onclick="triggerApplyGate()" class="w-full bg-slate-900 hover:bg-emerald-700 text-white font-bold text-xs py-3.5 rounded-xl transition shadow-xs flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span>Liyakat Doğrulamasıyla Başvur</span>
+                        </button>
+                        <p class="text-[10px] text-slate-400 text-center leading-tight">
+                            Başvurabilmek için 4 yıllık ruh sağlığı lisansınızın E-Devlet YÖK barkoduyla teyit edilmesi gerekir.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- Kurum Güvence Notu -->
+                <div class="p-4 rounded-2xl bg-slate-100 border border-slate-200/80 text-xs text-slate-600 space-y-1">
+                    <div class="flex items-center gap-1.5 font-bold text-slate-800">
+                        <i class="fa-solid fa-lock text-brand-secondary"></i>
+                        <span>PsikoHub Standart Güvencesi</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 leading-relaxed">
+                        İlanda belirtilen tüm saatler, süpervizyon oturumları ve müfredat taahhüdü platform denetimi altındadır.
+                    </p>
+                </div>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+    <!-- ========================================== -->
+    <!-- ÜYE OLMAYANLAR / GİRİŞ YAPMAMIŞLAR İÇİN GİRİŞ & KAYIT DUVARI MODALI -->
+    <!-- ========================================== -->
+    <div id="applyGateModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full overflow-hidden shadow-2xl border border-slate-100 p-6 sm:p-8 text-center space-y-4">
+            
+            <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-2xl mx-auto shadow-xs">
+                <i class="fa-solid fa-user-lock"></i>
+            </div>
+
+            <div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-brand-secondary bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                    YÖK Doğrulaması Gereklidir
+                </span>
+                <h3 class="text-lg font-extrabold text-slate-900 mt-2">Bu İlana Başvurmak İçin Giriş Yapın veya Kaydolun</h3>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                    Seçtiğiniz <strong id="gateProgramTitle" class="text-slate-800">...</strong> programına başvuru yapabilmek için doğrulanmış ruh sağlığı hesabınıza erişmeniz gerekir.
+                </p>
+            </div>
+
+            <!-- Giriş & Kayıt Butonları -->
+            <div class="pt-2 space-y-2.5">
+                <!-- 1. Zaten Üyeyim, Giriş Yaparak Başvur -->
+                <button onclick="switchToLoginModal()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs py-3 rounded-xl transition shadow-xs flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-arrow-right-to-bracket text-emerald-400"></i>
+                    <span>Zaten Üyeyim, Giriş Yaparak Başvur</span>
+                </button>
+
+                <!-- 2. Hesabım Yok, YÖK Tescili İle Kayıt Ol -->
+                <a id="gateRegisterLink" href="bireysel-kayit.html" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-3 rounded-xl transition shadow-xs flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>Hesabım Yok, YÖK Tescili ile Kayıt Ol</span>
+                </a>
+
+                <button onclick="closeModal('applyGateModal')" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold text-xs py-2.5 rounded-xl transition">
+                    İlanı İncelemeye Devam Et
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- HIZLI GİRİŞ YAP MODALI -->
+    <!-- ========================================== -->
+    <div id="quickLoginModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-sm w-full overflow-hidden shadow-2xl border border-slate-100 p-6 sm:p-7 space-y-4">
+            <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-xl bg-slate-900 text-white flex items-center justify-center text-xs">
+                        <i class="fa-solid fa-user-check"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-extrabold text-slate-900">Bireysel Giriş Yap</h4>
+                        <span class="text-[10px] text-slate-400 block" id="loginSubText">Hesabınıza giriş yapın</span>
+                    </div>
+                </div>
+                <button onclick="closeModal('quickLoginModal')" class="text-slate-400 hover:text-slate-700">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+
+            <form onsubmit="handleLoginSubmit(event)" class="space-y-3 text-xs">
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">Kullanıcı Adı veya E-Posta</label>
+                    <input type="text" id="loginUser" value="ahmetyilmaz" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-secondary/30">
+                </div>
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">Şifre</label>
+                    <input type="password" id="loginPass" value="12345678" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-secondary/30">
+                </div>
+                
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-3 rounded-xl transition shadow-xs flex items-center justify-center gap-1.5 pt-2">
+                    <i class="fa-solid fa-check"></i>
+                    <span id="loginBtnText">Giriş Yap ve Başvuruyu Tamamla</span>
+                </button>
+            </form>
+
+            <div class="text-center pt-1 border-t border-slate-100 text-[11px] text-slate-500">
+                Hesabınız yok mu? 
+                <a id="modalRegisterLink" href="bireysel-kayit.html" class="font-bold text-brand-secondary hover:underline">Hemen Kayıt Olun</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-8 text-center text-xs text-slate-400 space-y-2">
+        <p>PsikoHub © 2026 | Ruh Sağlığı Mesleki Standartlar ve Kontenjan Ağı</p>
+        <p class="text-[11px] text-slate-400 font-medium">"Mesleki liyakatin dijital güvencesi."</p>
+        <div class="flex justify-center space-x-4 text-[11px] text-slate-500 pt-1">
+            <a href="uzman-dogrulama.html" class="hover:underline">Uzman Doğrulama</a>
+            <span>•</span>
+            <a href="saglayici-giris.html" class="hover:underline">Sağlayıcı Girişi</a>
+            <span>•</span>
+            <a href="bireysel-kayit.html" class="hover:underline">Bireysel Üyelik</a>
+        </div>
+    </footer>
+
+    <!-- TÜM DETAY VERİTABANI VE İŞLEYİŞ SCRIPTİ -->
+    <script>
+        const MARKET_LISTINGS = [
+            {
+                id: 'm1',
+                type: 'staj',
+                typeName: 'Klinik Staj',
+                typeBadgeColor: 'bg-emerald-100 text-emerald-800',
+                targetAudienceName: 'Çift ve Aile',
+                title: 'Klinik Gözlem ve Uygulamalı Vaka Staj Protokolü',
+                provider: 'Özel Pendik Hera Aile Danışma Merkezi',
+                formatDisplay: 'Yüz Yüze (İstanbul - Pendik)',
+                hours: '120 Saat',
+                quotaTotal: 6,
+                quotaOccupied: 4,
+                isFree: true,
+                priceDisplay: 'Ücretsiz (Gönüllü)',
+                reqSummary: 'Psikoloji / PDR 4. Sınıf & Yeni Mezun',
+                startDate: '16 Kasım 2026',
+                schedule: 'Haftada 2 Gün (10:00 - 16:00)',
+                description: 'Bakanlık ruhsatlı merkezimiz bünyesinde; ilk görüşme yapılandırması, anamnez alma, test uygulamaları ve çift-aile danışmanlığı seanslarının klinik gözlem protokolünü kapsayan kapsamlı saha deneyimi.',
+                curriculum: [
+                    'Merkez İşleyişi, Etik Standartlar ve KVKK Protokolleri (10 Saat)',
+                    'İlk Görüşme Becerileri, Anamnez ve Klinik Formülasyon (30 Saat)',
+                    'Ayna Oda Arkasından Seans Gözlemleri & Dosya Analizi (50 Saat)',
+                    'Haftalık Vaka Değerlendirme & Akran Süpervizyonu (30 Saat)'
+                ],
+                instructorBio: 'Özel Pendik Hera Aile Danışma Merkezi uzman klinik kadrosu ve alanında 10+ yıl deneyimli uzman aile danışmanları rehberliğinde yürütülmektedir.',
+                accreditationNote: 'Staj protokolü tamamlandığında kurum onaylı 120 saatlik resmi staj belgesi tanzim edilir ve PsikoHub uzmanlık profilinize tescil edilir.'
+            },
+            {
+                id: 'm2',
+                type: 'egitim',
+                typeName: 'Akredite Eğitim',
+                typeBadgeColor: 'bg-blue-100 text-blue-800',
+                targetAudienceName: 'Yetişkin',
+                title: 'Bilişsel Davranışçı Terapi Temel Kuramsal Eğitimi (Modül 1)',
+                provider: 'Özel Pendik Hera Aile Danışma Merkezi',
+                formatDisplay: 'Çevrim İçi',
+                hours: '40 Saat',
+                quotaTotal: 25,
+                quotaOccupied: 18,
+                isFree: false,
+                priceDisplay: '20.000 ₺ + KDV',
+                reqSummary: 'Ruh Sağlığı Lisans Mezunu',
+                startDate: '21 Kasım 2026',
+                schedule: 'Cumartesi - Pazar (10:00 - 15:00)',
+                description: 'Beck yönelimli bilişsel modelin kuramsal temelleri, otomatik düşünceler, ara inançlar ve şemaların tespiti ile sokratik sorgulama tekniklerinin vaka örnekleriyle aktarıldığı akredite temel modül.',
+                curriculum: [
+                    'Bilişsel Davranışçı Modelin Temelleri ve Klinik Değerlendirme (10 Saat)',
+                    'Otomatik Düşüncelerin Tespiti ve Bilişsel Çarpıtmalar (10 Saat)',
+                    'Davranışsal Müdahaleler ve Sokratik Sorgulama Becerileri (10 Saat)',
+                    'Vaka Formülasyonu Hazırlama ve Klinik Rol Oynama (10 Saat)'
+                ],
+                instructorBio: 'Akredite BDT süpervizörü ve klinik psikolog eğitmenler tarafından yürütülmektedir.',
+                accreditationNote: 'Başarıyla tamamlanan 40 saatlik kuramsal modül, ulusal BDT akreditasyon basamaklarına uygun olarak dijital sicil kartınıza işlenir.'
+            },
+            {
+                id: 'm3',
+                type: 'supervizyon',
+                typeName: 'Süpervizyon',
+                typeBadgeColor: 'bg-purple-100 text-purple-800',
+                targetAudienceName: 'Çift ve Aile',
+                title: 'Sistemik Çift ve Aile Terapisi Kapalı Vaka Süpervizyon Grubu',
+                provider: 'Dr. Ayşe Yılmaz (Klinik Psk.)',
+                formatDisplay: 'Çevrim İçi',
+                hours: '10 Oturum',
+                quotaTotal: 10,
+                quotaOccupied: 8,
+                isFree: false,
+                priceDisplay: '15.000 ₺ + KDV',
+                reqSummary: 'Klinik Psikoloji YL & Çift Terapisi',
+                startDate: '25 Kasım 2026',
+                schedule: 'Çarşamba Akşamları (20:00 - 22:30)',
+                description: 'Danışan kabul eden meslektaşlarımızın sistemik ekol çerçevesinde yürüttükleri çift ve aile vakalarını döngüsel nedensellik, genogram ve hipotez oluşturma ilkeleriyle derinlemesine ele alan kapalı grup süpervizyonu.',
+                curriculum: [
+                    'Sistemik Vaka Kavramsallaştırması ve Çok Kuşaklı Aile İncelemesi',
+                    'Döngüsel Sorular ve Terapötik Müdahale Stratejileri',
+                    'Terapistin Kendi Ailesi ve Karşı Aktarım Süreçleri',
+                    'Canlı Vaka Tartışması ve Birebir Süpervizyon Dönütleri'
+                ],
+                instructorBio: 'Dr. Öğr. Üyesi Ayşe Yılmaz; Sistemik Aile Terapisi ve Çift Danışmanlığı alanında doktoralı, uluslararası akredite süpervizördür.',
+                accreditationNote: '10 oturum boyunca sunulan ve dinlenilen tüm süpervizyon saatleri resmi dökümle onaylanarak PsikoHub sicil profilinize eklenir.'
+            },
+            {
+                id: 'm4',
+                type: 'egitim',
+                typeName: 'Akredite Eğitim',
+                typeBadgeColor: 'bg-blue-100 text-blue-800',
+                targetAudienceName: 'Yetişkin',
+                title: 'Dinamik Yönelimli Vaka Formülasyonu ve Aktarım Atölyesi',
+                provider: 'Dr. Ayşe Yılmaz (Klinik Psk.)',
+                formatDisplay: 'Çevrim İçi',
+                hours: '20 Saat',
+                quotaTotal: 20,
+                quotaOccupied: 14,
+                isFree: false,
+                priceDisplay: '12.500 ₺ + KDV',
+                reqSummary: '4 Yıllık Ruh Sağlığı Lisansı',
+                startDate: '02 Aralık 2026',
+                schedule: 'Salı Akşamları (19:30 - 22:00)',
+                description: 'Klinik pratikte danışan-terapist ilişkisini belirleyen aktarım, karşı aktarım ve direnç örüntülerinin psikanalitik kavramlar ışığında vaka analizleriyle incelendiği ileri düzey atölye.',
+                curriculum: [
+                    'Bilinçdışı Süreçler, Savunma Mekanizmaları ve Nesne İlişkileri',
+                    'Aktarım ve Karşı Aktarımın Klinik Ortamda Tespiti',
+                    'Terapötik Çerçeve, Nötrlük ve Yorumlama Zamanlaması',
+                    'Detaylı Vaka Formülasyonu ve Pratik Uygulamalar'
+                ],
+                instructorBio: 'Psikanalitik yönelimli psikoterapi alanında akademik yayınları ve uzun süreli klinik vaka tecrübesi bulunan akademisyen kadro tarafından verilmektedir.',
+                accreditationNote: '20 saatlik atölye katılımı PsikoHub dijital liyakat kartınıza resmi eğitim saati olarak kaydedilir.'
+            },
+            {
+                id: 'm5',
+                type: 'egitim',
+                typeName: 'Akredite Eğitim',
+                typeBadgeColor: 'bg-amber-100 text-amber-800',
+                targetAudienceName: 'Çocuk',
+                title: 'Çocuk Odaklı Projektif Çizim Testleri Uygulayıcı Eğitimi',
+                provider: 'Özel Pendik Hera Aile Danışma Merkezi',
+                formatDisplay: 'Hibrit (İstanbul - Pendik)',
+                hours: '24 Saat',
+                quotaTotal: 15,
+                quotaOccupied: 12,
+                isFree: false,
+                priceDisplay: '14.000 ₺ + KDV',
+                reqSummary: 'Psikoloji & PDR Lisans Mezun/Son Sınıf',
+                startDate: '05 Aralık 2026',
+                schedule: 'Hafta Sonu (Pendik Şube + Çevrim İçi)',
+                description: 'Bir İnsan Çiz, Aile Çiz, Kinetik Aile ve Ağaç Çizim testlerinin klinik değerlendirme kriterleri, yaş gelişim basamakları ve vaka raporlama protokolü ile öğretildiği uygulayıcı eğitimi.',
+                curriculum: [
+                    'Projektif Testlerin Kuramsal Temeli ve Çocuk Çizimlerinin Evreleri',
+                    'Bir İnsan Çiz (Goodenough-Harris) Testi Yönerge ve Puanlama',
+                    'Kinetik Aile ve Ağaç Testlerinde Dinamik Belirteçler',
+                    'Klinik Rapor Hazırlama ve Vaka Örnekleri Üzerinden Uygulama'
+                ],
+                instructorBio: 'Çocuk-ergen psikolojisi ve projektif değerlendirme araçları alanında uzman klinisyenler tarafından aktarılmaktadır.',
+                accreditationNote: 'Eğitim ve süpervizyon raporu onaylanan katılımcılara PsikoHub uygulayıcı yetkinlik tescili sağlanır.'
+            },
+            {
+                id: 'm6',
+                type: 'supervizyon',
+                typeName: 'Süpervizyon',
+                typeBadgeColor: 'bg-purple-100 text-purple-800',
+                targetAudienceName: 'Ergen',
+                title: 'Ergenlerde Kimlik Arayışı ve Davranış Problemleri Vaka Süpervizyonu',
+                provider: 'Dr. Ayşe Yılmaz (Klinik Psk.)',
+                formatDisplay: 'Çevrim İçi',
+                hours: '8 Oturum',
+                quotaTotal: 8,
+                quotaOccupied: 5,
+                isFree: false,
+                priceDisplay: '12.000 ₺ + KDV',
+                reqSummary: 'Klinik Psikoloji / PDR Lisansüstü',
+                startDate: '10 Aralık 2026',
+                schedule: 'Perşembe (20:00 - 22:30)',
+                description: 'Ergenlik dönemindeki öfke kontrolü, kimlik bocalaması, okul reddi ve aile içi çatışmaların bilişsel davranışçı çerçevede ele alındığı vaka süpervizyon modülü.',
+                curriculum: [
+                    'Ergenlerle Terapötik İttifak Kurma ve Aileyle Sınırları Belirleme',
+                    'Duygu Düzenleme Güçlüklerinde Bilişsel ve Davranışsal Müdahaleler',
+                    'Riskli Davranışlar ve Kriz Yönetimi Protokolü',
+                    'Katılımcı Vaka Sunumları ve Süpervizyonel Dönütler'
+                ],
+                instructorBio: 'Ergen psikopatolojisi ve BDT süpervizyonunda uzman klinik psikoloji akademisyeni eşliğinde yürütülmektedir.',
+                accreditationNote: 'Tamamlanan 8 oturumluk süpervizyon süreci dijital sicil dosyanıza resmi vaka saati olarak kaydedilir.'
+            }
+        ];
+
+        let currentItem = null;
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get('id') || 'm1';
+            
+            currentItem = MARKET_LISTINGS.find(x => x.id === id) || MARKET_LISTINGS[0];
+            renderPageDetails(currentItem);
+        });
+
+        function renderPageDetails(item) {
+            document.title = `${item.title} | PsikoHub`;
+
+            // Breadcrumb
+            document.getElementById('bcType').textContent = item.typeName;
+            document.getElementById('bcTitle').textContent = item.title;
+
+            // Üst Başlık & Rozetler
+            document.getElementById('pageBadge').className = `px-3 py-1 rounded-lg text-xs font-bold shadow-2xs ${item.typeBadgeColor}`;
+            document.getElementById('pageBadge').textContent = item.typeName;
+            document.getElementById('pageAudienceBadge').textContent = item.targetAudienceName;
+            document.getElementById('pageTitle').textContent = item.title;
+            document.getElementById('pageProvider').textContent = item.provider;
+            document.getElementById('pageFormat').textContent = item.formatDisplay;
+            document.getElementById('pageHours').textContent = item.hours;
+
+            // Sol Panel
+            document.getElementById('pageDescription').textContent = item.description;
+            
+            const currContainer = document.getElementById('pageCurriculum');
+            currContainer.innerHTML = item.curriculum.map((c, i) => `
+                <div class="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
+                    <span class="w-6 h-6 rounded-lg bg-brand-primary/10 text-brand-primary font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">${i + 1}</span>
+                    <span class="text-xs sm:text-sm font-medium text-slate-700">${c}</span>
+                </div>
+            `).join('');
+
+            document.getElementById('pageInstructor').textContent = item.instructorBio;
+            document.getElementById('pageAccreditation').textContent = item.accreditationNote;
+
+            // Sağ Panel
+            document.getElementById('pagePrice').textContent = item.priceDisplay;
+
+            const remaining = item.quotaTotal - item.quotaOccupied;
+            const percent = Math.round((item.quotaOccupied / item.quotaTotal) * 100);
+
+            document.getElementById('pageQuotaPercent').textContent = `%${percent}`;
+            document.getElementById('pageQuotaBar').style.width = `${percent}%`;
+            document.getElementById('pageQuotaRemaining').textContent = `Son ${remaining} Kontenjan (Toplam ${item.quotaTotal})`;
+
+            document.getElementById('pageStartDate').textContent = item.startDate;
+            document.getElementById('pageSchedule').textContent = item.schedule;
+            document.getElementById('pageReq').textContent = item.reqSummary;
+
+            // Kayıt Linkine İlan ID Parametresi Ekle
+            const gateRegisterLink = document.getElementById('gateRegisterLink');
+            if (gateRegisterLink) {
+                gateRegisterLink.href = `bireysel-kayit.html?apply=${item.id}`;
+            }
+            const modalRegisterLink = document.getElementById('modalRegisterLink');
+            if (modalRegisterLink) {
+                modalRegisterLink.href = `bireysel-kayit.html?apply=${item.id}`;
+            }
+        }
+
+        function triggerApplyGate() {
+            if (!currentItem) return;
+            document.getElementById('gateProgramTitle').textContent = currentItem.title;
+            document.getElementById('applyGateModal').classList.remove('hidden');
+        }
+
+        function switchToLoginModal() {
+            closeModal('applyGateModal');
+            document.getElementById('loginSubText').textContent = "Başvurunuz giriş sonrası tamamlanacaktır";
+            document.getElementById('loginBtnText').textContent = "Giriş Yap ve Başvuruyu Tamamla";
+            document.getElementById('quickLoginModal').classList.remove('hidden');
+        }
+
+        function openDirectLoginModal() {
+            document.getElementById('loginSubText').textContent = "Çalışma alanınıza erişin";
+            document.getElementById('loginBtnText').textContent = "Giriş Yap";
+            document.getElementById('quickLoginModal').classList.remove('hidden');
+        }
+
+        function handleLoginSubmit(event) {
+            event.preventDefault();
+            if (currentItem) {
+                localStorage.setItem('psikohub_pending_apply', currentItem.id);
+            }
+            alert("Giriş başarılı! Çalışma alanınıza yönlendiriliyorsunuz.");
+            window.location.href = "bireysel-panel.html";
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+    </script>
+</body>
+</html>

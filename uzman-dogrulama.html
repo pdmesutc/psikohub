@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uzman Sicil & Liyakat Doğrulama | PsikoHub</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            primary: '#1e3a5f',
+                            secondary: '#0f766e',
+                            accent: '#d97706',
+                            hera: '#256839',
+                            heradark: '#12612d'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Üst Bilgi Barı -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-primary to-brand-secondary flex items-center justify-center text-white shadow-md shadow-brand-primary/20">
+                        <i class="fa-solid fa-brain text-base"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-bold tracking-tight text-slate-900">Psiko<span class="text-brand-secondary">Hub</span></span>
+                        <span class="hidden sm:inline-block text-[10px] tracking-wider uppercase font-semibold text-slate-500 ml-2">| Kamu Sicil & Teyit Portalı</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="flex items-center space-x-3 text-xs">
+                <span class="hidden md:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 font-semibold">
+                    <i class="fa-solid fa-shield-check text-emerald-600"></i> YÖK Tescil Standartlarına Tam Uyum
+                </span>
+                <a href="index.html" class="font-bold text-slate-600 hover:text-brand-secondary flex items-center gap-1.5 transition">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>Ana Sayfaya Dön</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Ana Gövde -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-8 w-full flex-1 space-y-6">
+        
+        <!-- ÜST ARAMA / SORGULAMA KARTI -->
+        <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-brand-primary rounded-3xl p-6 sm:p-8 text-white shadow-xs">
+            <div class="max-w-2xl mx-auto text-center space-y-2 mb-6">
+                <span class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 uppercase tracking-wider">
+                    <i class="fa-solid fa-lock"></i> 6698 KVKK Korumalı Doğrulama
+                </span>
+                <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight">Ruh Sağlığı Uzmanı Sicil ve Lisans Sorgulama</h1>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    Hizmet aldığınız uzmanın 4 yıllık ruh sağlığı lisansını, yüksek lisans unvanını ve tamamladığı süpervizyon saatlerini resmi YÖK tesciliyle sorgulayabilirsiniz.
+                </p>
+            </div>
+
+            <!-- Sorgu Formu -->
+            <form onsubmit="handleSearch(event)" class="max-w-lg mx-auto flex gap-2">
+                <div class="relative flex-1">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-xs"></i>
+                    <input type="text" id="queryInput" placeholder="Uzmanın Adı ve Soyadı..." class="w-full bg-white text-slate-800 text-xs rounded-xl pl-9 pr-3.5 py-2.5 font-medium border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-secondary/40 transition">
+                </div>
+                <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-6 py-2.5 rounded-xl transition shadow-xs flex items-center gap-1.5 shrink-0">
+                    <span>Sorgula</span>
+                </button>
+            </form>
+        </div>
+
+        <!-- UZMANIN DOĞRULANMIŞ KAMU PROFİLİ (CV / DİJİTAL SİCİL KARTI) -->
+        <div id="profileCard" class="bg-white rounded-3xl border border-slate-200 shadow-xs overflow-hidden">
+            
+            <!-- Profil Üst Şeridi (Rozet & Doğrulama Damgası) -->
+            <div class="bg-slate-50/70 border-b border-slate-100 px-6 py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div class="flex items-center space-x-3.5">
+                    <div id="profAvatar" class="w-12 h-12 rounded-2xl bg-slate-900 text-white flex items-center justify-center font-black text-sm shadow-xs shrink-0">
+                        AY
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h2 class="text-base font-extrabold text-slate-900" id="profName">Ahmet Yılmaz</h2>
+                            <span class="px-2.5 py-0.5 rounded-md text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300 flex items-center gap-1">
+                                <i class="fa-solid fa-circle-check text-emerald-600"></i> Doğrulanmış Uzman
+                            </span>
+                        </div>
+                        <p class="text-xs text-slate-500 font-mono mt-0.5" id="profUsername">@ahmetyilmaz</p>
+                    </div>
+                </div>
+
+                <div class="text-left sm:text-right">
+                    <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">PsikoHub Sicil No</span>
+                    <span id="profRegCode" class="text-xs font-mono font-bold text-slate-800 bg-white px-2.5 py-1 rounded-lg border border-slate-200 inline-block mt-0.5 shadow-2xs">
+                        REG-2026-TR-84912
+                    </span>
+                </div>
+            </div>
+
+            <!-- Profil Gövdesi -->
+            <div class="p-6 sm:p-7 space-y-6">
+                
+                <!-- 1. YÖK ONAYLI LİSANS EĞİTİMİ -->
+                <div>
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-600 mb-3 flex items-center gap-1.5">
+                        <i class="fa-solid fa-graduation-cap text-brand-secondary"></i> YÖK Kayıtlı Temel Lisans Eğitimi
+                    </h3>
+                    <div class="p-4 rounded-2xl border border-emerald-200 bg-emerald-50/40 space-y-2 text-xs">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                            <span class="text-sm font-bold text-slate-900" id="profLisansDegree">Rehberlik ve Psikolojik Danışmanlık (Lisans)</span>
+                            <span class="text-[11px] font-semibold text-emerald-800 bg-emerald-100/70 px-2.5 py-0.5 rounded-full border border-emerald-300 w-fit">
+                                4 Yıllık Ruh Sağlığı Lisansı Tescilli
+                            </span>
+                        </div>
+                        <div class="text-slate-600 flex flex-wrap gap-x-6 gap-y-1 text-[11px] pt-1">
+                            <span><strong class="text-slate-700">Üniversite:</strong> <span id="profUni">Marmara Üniversitesi</span></span>
+                            <span><strong class="text-slate-700">Mezuniyet Durumu:</strong> Mezun (Tescilli)</span>
+                            <span><strong class="text-slate-700">E-Devlet Barkod Teyidi:</strong> <span class="font-mono text-slate-800 font-semibold" id="profBarcode">YOK-2026-***-4120</span> <i class="fa-solid fa-shield-check text-emerald-600 ml-1"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. LİSANSÜSTÜ UZMANLIK ALANI -->
+                <div>
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-600 mb-3 flex items-center gap-1.5">
+                        <i class="fa-solid fa-award text-purple-600"></i> Lisansüstü Uzmanlık Alanı
+                    </h3>
+                    <div class="p-4 rounded-2xl border border-purple-200 bg-purple-50/40 space-y-2 text-xs">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                            <span class="text-sm font-bold text-slate-900">Klinik Psikoloji Yüksek Lisans Programı</span>
+                            <span class="text-[11px] font-semibold text-purple-900 bg-purple-100/70 px-2.5 py-0.5 rounded-full border border-purple-300 w-fit">
+                                Tezli Yüksek Lisans
+                            </span>
+                        </div>
+                        <div class="text-slate-600 flex flex-wrap gap-x-6 gap-y-1 text-[11px] pt-1">
+                            <span><strong class="text-slate-700">Üniversite:</strong> İstanbul Üniversitesi</span>
+                            <span><strong class="text-slate-700">Aşama:</strong> Tez / Proje Aşaması (2. Yıl)</span>
+                            <span><strong class="text-slate-700">Barkod Tescili:</strong> <span class="font-mono text-slate-800 font-semibold">YOK-2026-***-1099</span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. TAMAMLANAN TERAPİ EKOLLERİ VE RESMİ SÜPERVİZYONLAR -->
+                <div>
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-600 mb-3 flex items-center gap-1.5">
+                        <i class="fa-solid fa-certificate text-brand-secondary"></i> Tamamlanan Akredite Eğitimler & Süpervizyon Saatleri
+                    </h3>
+                    
+                    <div class="space-y-2.5 text-xs">
+                        
+                        <!-- 1. Eğitim -->
+                        <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                            <div>
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-800">Akredite Eğitim</span>
+                                <h4 class="font-bold text-slate-900 mt-1">Bilişsel Davranışçı Terapi Temel Kuramsal Eğitimi</h4>
+                                <p class="text-[11px] text-slate-500">Sağlayıcı: Özel Pendik Hera Aile Danışma Merkezi • 40 Saat</p>
+                            </div>
+                            <div class="text-left sm:text-right shrink-0">
+                                <span class="text-[10px] text-emerald-700 font-bold block">✓ Başarı Belgesi Onaylı</span>
+                                <span class="text-[10px] font-mono text-slate-400">CERT-2026-BDT-102</span>
+                            </div>
+                        </div>
+
+                        <!-- 2. Süpervizyon -->
+                        <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                            <div>
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-100 text-purple-800">Klinik Süpervizyon</span>
+                                <h4 class="font-bold text-slate-900 mt-1">Sistemik Çift ve Aile Terapisi Süpervizyon Grubu</h4>
+                                <p class="text-[11px] text-slate-500">Süpervizör: Dr. Ayşe Yılmaz • 30 Saat (18 Saat Tamamlandı)</p>
+                            </div>
+                            <div class="text-left sm:text-right shrink-0">
+                                <span class="text-[10px] text-amber-700 font-bold block">● Aktif Vaka Oturumu</span>
+                                <span class="text-[10px] font-mono text-slate-400">SUP-2026-SYS-041</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- 4. GÜVENLİK, KVKK VE ETİK BİLGİLENDİRME -->
+                <div class="p-4 bg-slate-100/70 rounded-2xl border border-slate-200 text-slate-600 text-[11px] leading-relaxed space-y-1">
+                    <div class="flex items-center gap-1.5 text-slate-800 font-bold">
+                        <i class="fa-solid fa-circle-info text-brand-secondary"></i>
+                        <span>Vatandaş Teyit ve Güvenlik Bildirimi:</span>
+                    </div>
+                    <p>
+                        Bu sicil dökümü, 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) uyarınca yalnızca uzmanın <strong>akademik liyakatini ve mesleki eğitimlerini kamuya doğrulamak</strong> amacıyla sunulmaktadır. T.C. kimlik numarası ve iletişim verileri veri minimizasyonu gereği gizli tutulmaktadır.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Profil Alt Aksiyon Barı -->
+            <div class="bg-slate-50/70 border-t border-slate-100 px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+                <span class="text-[11px] text-slate-400">
+                    Son Tescil Tarihi: 29 Ekim 2026 • Durum: <strong class="text-emerald-700">Aktif & Doğrulanmış</strong>
+                </span>
+                <button onclick="window.print()" class="text-brand-primary hover:text-brand-secondary font-bold flex items-center gap-1.5 self-start sm:self-auto transition">
+                    <i class="fa-solid fa-print"></i> Sicil Dökümünü Yazdır / PDF
+                </button>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400">
+        <p>PsikoHub © 2026 | Ruh Sağlığı Mesleki Standartlar ve Kamu Doğrulama Sistemi</p>
+    </footer>
+
+    <!-- URL Parametresi ve Arama Scripti -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get('q');
+            if (query) {
+                document.getElementById('queryInput').value = query;
+                executeSearch(query);
+            }
+        });
+
+        function handleSearch(event) {
+            event.preventDefault();
+            const query = document.getElementById('queryInput').value.trim();
+            if (!query) {
+                alert("Lütfen doğrulamak istediğiniz uzmanın adını ve soyadını giriniz.");
+                return;
+            }
+            executeSearch(query);
+        }
+
+        function executeSearch(query) {
+            const card = document.getElementById('profileCard');
+            card.classList.add('opacity-50');
+
+            setTimeout(() => {
+                card.classList.remove('opacity-50');
+                
+                // İsim güncellemesi
+                document.getElementById('profName').textContent = query;
+                
+                // Kullanıcı adı simülasyonu
+                const cleanUser = query.toLowerCase()
+                    .replace(/ğ/g, 'g').replace(/ü/g, 'u').replace(/ş/g, 's')
+                    .replace(/ı/g, 'i').replace(/ö/g, 'o').replace(/ç/g, 'c')
+                    .replace(/[^a-z0-9]/g, '');
+                document.getElementById('profUsername').textContent = '@' + cleanUser;
+                
+                // Baş harflerden oluşan avatar
+                const initials = query.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
+                document.getElementById('profAvatar').textContent = initials || 'UZ';
+
+                document.getElementById('profRegCode').textContent = "REG-2026-TR-" + Math.floor(10000 + Math.random() * 90000);
+            }, 250);
+        }
+    </script>
+</body>
+</html>

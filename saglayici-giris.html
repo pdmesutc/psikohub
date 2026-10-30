@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurumsal & Eğitmen Portalı | PsikoHub</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            primary: '#1e3a5f',
+                            secondary: '#0f766e',
+                            accent: '#d97706',
+                            hera: '#256839',
+                            heradark: '#12612d'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Üst Bar -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-primary to-brand-secondary flex items-center justify-center text-white shadow-md shadow-brand-primary/20">
+                        <i class="fa-solid fa-brain text-base"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-bold tracking-tight text-slate-900">Psiko<span class="text-brand-secondary">Hub</span></span>
+                        <span class="hidden sm:inline-block text-[10px] tracking-wider uppercase font-semibold text-slate-500 ml-2">| Kurumsal & Eğitmen Portalı</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Sağ Menü -->
+            <div class="flex items-center space-x-4 text-xs">
+                <span class="text-slate-400 hidden sm:inline">Eğitim veya staj mı alacaksınız?</span>
+                <a href="bireysel-kayit.html" class="font-bold text-brand-primary hover:text-brand-secondary flex items-center gap-1.5 transition">
+                    <i class="fa-solid fa-user-shield"></i>
+                    <span>Bireysel Giriş & Kayıt</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Ana Gövde -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 w-full flex-1">
+        
+        <div class="text-center max-w-2xl mx-auto mb-8">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-900 mb-2">
+                <i class="fa-solid fa-chalkboard-user text-emerald-700"></i> Kontenjan Sağlayıcı Girişi
+            </span>
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+                Kurumsal veya Eğitmen Hesabınızı Başlatın
+            </h1>
+            <p class="mt-1.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Ruh sağlığı merkezleri, enstitüler ve akredite süpervizörler için kapalı kontenjan yönetim sistemi.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Sol Sütun: Başvuru & Hızlı Giriş (7 Kolon) -->
+            <div class="lg:col-span-7 bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-xs">
+                
+                <!-- Hızlı Giriş / Yeni Başvuru Sekmesi -->
+                <div class="flex items-center justify-between pb-4 mb-6 border-b border-slate-100">
+                    <div class="flex items-center gap-2">
+                        <button type="button" onclick="toggleFormMode('login')" id="btnTabLogin" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-white transition shadow-2xs">
+                            Kayıtlı Sağlayıcı Girişi
+                        </button>
+                        <button type="button" onclick="toggleFormMode('register')" id="btnTabRegister" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-600 hover:text-slate-900 transition">
+                            Yeni Akreditasyon Başvurusu
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 1. HIZLI GİRİŞ FORMU -->
+                <div id="formLoginContainer" class="space-y-4">
+                    <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 text-xs text-slate-600 space-y-1">
+                        <span class="font-bold text-slate-800 block">Test Girişi:</span>
+                        <p>Doğrudan paneli denemek için aşağıdaki örnek hesaplardan birini seçebilirsiniz:</p>
+                        <div class="flex flex-wrap gap-2 pt-1">
+                            <button type="button" onclick="fillTestAccount('kurum')" class="px-2.5 py-1 bg-white hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 rounded-lg font-semibold text-emerald-800 text-[11px] transition">
+                                Kurum: Hera Aile Danışma
+                            </button>
+                            <button type="button" onclick="fillTestAccount('uzman')" class="px-2.5 py-1 bg-white hover:bg-blue-50 border border-slate-200 hover:border-blue-300 rounded-lg font-semibold text-blue-800 text-[11px] transition">
+                                Süpervizör: Doç. Dr. Mesut Çakır
+                            </button>
+                        </div>
+                    </div>
+
+                    <form onsubmit="handleProviderLogin(event)" class="space-y-4 text-xs">
+                        <div>
+                            <label class="block font-bold text-slate-700 mb-1">Kurumsal Kullanıcı Adı / E-Posta *</label>
+                            <input type="text" id="provLoginUser" value="heradanismanlik" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-secondary/30 transition">
+                        </div>
+                        <div>
+                            <label class="block font-bold text-slate-700 mb-1">Şifre *</label>
+                            <input type="password" id="provLoginPass" value="12345678" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-secondary/30 transition">
+                        </div>
+                        <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs py-3.5 rounded-xl transition shadow-xs flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-arrow-right-to-bracket text-emerald-400"></i>
+                            <span>Sağlayıcı Yönetim Paneline Giriş Yap</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- 2. YENİ AKREDİTASYON BAŞVURUSU FORMU -->
+                <div id="formRegisterContainer" class="space-y-5 hidden">
+                    <div class="mb-4">
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                            Sağlayıcı Statünüzü Seçiniz *
+                        </label>
+                        <div class="grid grid-cols-2 gap-2 p-1 bg-slate-100 rounded-xl">
+                            <button type="button" onclick="setProviderRole('kurum')" id="btnRoleKurum" class="py-2.5 rounded-lg font-bold text-xs bg-white text-slate-900 shadow-sm transition flex items-center justify-center gap-1.5">
+                                <i class="fa-solid fa-building-columns text-brand-primary"></i> Kurum / Danışma Merkezi
+                            </button>
+                            <button type="button" onclick="setProviderRole('egitmen')" id="btnRoleEgitmen" class="py-2.5 rounded-lg font-semibold text-xs text-slate-600 hover:text-slate-900 transition flex items-center justify-center gap-1.5">
+                                <i class="fa-solid fa-user-tie text-brand-secondary"></i> Eğitmen & Süpervizör
+                            </button>
+                        </div>
+                    </div>
+
+                    <form onsubmit="submitProviderApplication(event)" class="space-y-4 text-xs">
+                        <div>
+                            <label class="block font-bold text-slate-700 mb-1">Kurum veya Uzman Tam Adı *</label>
+                            <input type="text" id="corpName" placeholder="Örn: Özel Pendik Hera Aile Danışma Merkezi" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs focus:bg-white focus:outline-none">
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div>
+                                <label class="block font-bold text-slate-700 mb-1">Kullanıcı Adı *</label>
+                                <input type="text" id="corpUsername" placeholder="kullaniciadi" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-xs focus:bg-white focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block font-bold text-slate-700 mb-1">İletişim E-Postası *</label>
+                                <input type="email" id="corpEmail" placeholder="iletisim@alanadi.com" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-xs focus:bg-white focus:outline-none">
+                            </div>
+                        </div>
+
+                        <div class="p-3.5 rounded-xl border border-emerald-200 bg-emerald-50/60 text-xs text-emerald-900 space-y-1">
+                            <span class="font-bold flex items-center gap-1.5">
+                                <i class="fa-solid fa-shield-check text-emerald-600"></i> Akreditasyon Güvencesi:
+                            </span>
+                            <p class="text-[11px] text-emerald-800 leading-relaxed">
+                                Kurumunuz adına açılan staj ve eğitim kontenjanlarına yalnızca E-Devlet YÖK barkodu onaylanmış adaylar başvurabilir.
+                            </p>
+                        </div>
+
+                        <button type="submit" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs py-3.5 rounded-xl transition shadow-xs flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>Başvuruyu Tamamla & İncelemeye Gönder</span>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+
+            <!-- Sağ Sütun: Standartlar ve Bilgi (5 Kolon) -->
+            <div class="lg:col-span-5 space-y-5">
+                <div class="bg-gradient-to-br from-slate-900 to-slate-800 text-white p-6 sm:p-7 rounded-3xl shadow-xs">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg mb-3">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <h3 class="text-sm font-bold">Kapalı ve Nitelikli Havuz</h3>
+                    <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                        PsikoHub'da açtığınız klinik staj, eğitim ve süpervizyon kontenjanları sadece <strong>4 yıllık ruh sağlığı lisansı YÖK teyidiyle doğrulanmış</strong> meslektaşlara açılır.
+                    </p>
+                    <div class="mt-4 pt-4 border-t border-slate-700/60 space-y-2 text-xs text-emerald-300">
+                        <div>✓ Sahte sertifikalı katılım riski sıfırlanır</div>
+                        <div>✓ Tamamlanan saatler resmi sicile işlenir</div>
+                        <div>✓ Katılımcıların YÖK belgeleri önceden taranır</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400">
+        <p>PsikoHub © 2026 | Ruh Sağlığı Mesleki Standartlar ve Kurumsal Akreditasyon Portalı</p>
+    </footer>
+
+    <script>
+        let currentRole = 'kurum';
+
+        function toggleFormMode(mode) {
+            const loginBtn = document.getElementById('btnTabLogin');
+            const regBtn = document.getElementById('btnTabRegister');
+            const loginBox = document.getElementById('formLoginContainer');
+            const regBox = document.getElementById('formRegisterContainer');
+
+            if (mode === 'login') {
+                loginBtn.className = "px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-white transition shadow-2xs";
+                regBtn.className = "px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-600 hover:text-slate-900 transition";
+                loginBox.classList.remove('hidden');
+                regBox.classList.add('hidden');
+            } else {
+                regBtn.className = "px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-white transition shadow-2xs";
+                loginBtn.className = "px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-600 hover:text-slate-900 transition";
+                regBox.classList.remove('hidden');
+                loginBox.classList.add('hidden');
+            }
+        }
+
+        function fillTestAccount(role) {
+            currentRole = role;
+            if (role === 'kurum') {
+                document.getElementById('provLoginUser').value = "heradanismanlik";
+            } else {
+                document.getElementById('provLoginUser').value = "mesutcakir";
+            }
+            document.getElementById('provLoginPass').value = "12345678";
+        }
+
+        function handleProviderLogin(event) {
+            event.preventDefault();
+            const user = document.getElementById('provLoginUser').value.trim();
+            
+            // Eğer mesut cakir girildiyse uzman modu, yoksa kurum modu
+            if (user.toLowerCase().includes('mesut') || user.toLowerCase().includes('uzman')) {
+                localStorage.setItem('psikohub_provider_role', 'uzman');
+                localStorage.setItem('psikohub_provider_name', 'Doç. Dr. Mesut Çakır');
+            } else {
+                localStorage.setItem('psikohub_provider_role', 'kurum');
+                localStorage.setItem('psikohub_provider_name', 'Özel Pendik Hera Aile Danışma Merkezi');
+            }
+
+            alert("Giriş başarılı! Sağlayıcı Yönetim Paneline yönlendiriliyorsunuz.");
+            window.location.href = "saglayici-panel.html";
+        }
+
+        function submitProviderApplication(event) {
+            event.preventDefault();
+            alert("Akreditasyon başvurunuz idari heyete iletildi. Onay sonrası paneliniz aktifleşecektir.");
+            window.location.href = "saglayici-panel.html";
+        }
+
+        function setProviderRole(role) {
+            currentRole = role;
+            const btnK = document.getElementById('btnRoleKurum');
+            const btnE = document.getElementById('btnRoleEgitmen');
+            if (role === 'kurum') {
+                btnK.className = "py-2.5 rounded-lg font-bold text-xs bg-white text-slate-900 shadow-sm transition flex items-center justify-center gap-1.5";
+                btnE.className = "py-2.5 rounded-lg font-semibold text-xs text-slate-600 hover:text-slate-900 transition flex items-center justify-center gap-1.5";
+            } else {
+                btnE.className = "py-2.5 rounded-lg font-bold text-xs bg-white text-slate-900 shadow-sm transition flex items-center justify-center gap-1.5";
+                btnK.className = "py-2.5 rounded-lg font-semibold text-xs text-slate-600 hover:text-slate-900 transition flex items-center justify-center gap-1.5";
+            }
+        }
+    </script>
+</body>
+</html>

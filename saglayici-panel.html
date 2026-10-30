@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurumsal & Eğitmen Yönetim Paneli | PsikoHub</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            primary: '#1e3a5f',
+                            secondary: '#0f766e',
+                            accent: '#d97706',
+                            hera: '#256839',
+                            heradark: '#12612d'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Üst Bar -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-primary to-brand-secondary flex items-center justify-center text-white shadow-md shadow-brand-primary/20">
+                        <i class="fa-solid fa-brain text-base"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-bold tracking-tight text-slate-900">Psiko<span class="text-brand-secondary">Hub</span></span>
+                        <span class="hidden sm:inline-block text-[10px] tracking-wider uppercase font-semibold text-slate-500 ml-2" id="headerRoleBadge">| Sağlayıcı Portalı</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Mod Değiştirici -->
+            <div class="flex items-center space-x-4">
+                <div class="bg-slate-100 p-1 rounded-xl flex items-center text-xs font-semibold">
+                    <button onclick="setDashboardView('kurum')" id="btnViewKurum" class="px-2.5 py-1 rounded-lg bg-white text-slate-900 shadow-2xs transition">
+                        <i class="fa-solid fa-building-columns mr-1 text-brand-primary"></i> Kurum Modu
+                    </button>
+                    <button onclick="setDashboardView('uzman')" id="btnViewUzman" class="px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition">
+                        <i class="fa-solid fa-user-tie mr-1 text-brand-secondary"></i> Süpervizör Modu
+                    </button>
+                </div>
+
+                <div class="flex items-center space-x-3 border-l border-slate-200 pl-4">
+                    <div class="text-right hidden sm:block">
+                        <span class="block text-xs font-bold text-slate-900" id="topProfileTitle">Özel Pendik Hera Aile Danışma Merkezi</span>
+                        <span class="block text-[10px] text-emerald-600 font-semibold flex items-center justify-end gap-1">
+                            <i class="fa-solid fa-shield-check text-[9px]"></i> Akredite Sağlayıcı
+                        </span>
+                    </div>
+                    <div class="w-9 h-9 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-xs shadow-xs" id="topAvatar">
+                        H
+                    </div>
+                    <a href="index.html" title="Çıkış Yap" class="text-slate-400 hover:text-rose-600 text-sm transition ml-1">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Ana Gövde -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-1">
+        
+        <!-- ÜST PANEL SAYAÇ KARTI -->
+        <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-brand-primary rounded-3xl p-6 sm:p-7 text-white mb-8 shadow-xs">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                
+                <div class="lg:w-1/3 space-y-1">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 flex items-center gap-1" id="dashRoleLabel">
+                            <i class="fa-solid fa-building"></i> Kurumsal Sağlayıcı Statüsü
+                        </span>
+                    </div>
+                    <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight text-white" id="dashGreeting">Özel Pendik Hera Aile Danışma Merkezi</h1>
+                    <p class="text-xs text-slate-300 leading-relaxed" id="dashSubtitle">
+                        Eğitim ve Klinik Staj kontenjanlarınızı buradan yönetebilir; YÖK onaylı başvuru havuzunu inceleyebilirsiniz.
+                    </p>
+                </div>
+
+                <div class="flex items-center justify-center gap-3">
+                    <div class="w-28 sm:w-32 bg-white/10 backdrop-blur rounded-2xl p-3 text-center border border-white/10">
+                        <span class="block text-2xl font-black text-white" id="statActive">4</span>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-300 mt-1 block">Aktif İlan</span>
+                    </div>
+                    <div class="w-28 sm:w-32 bg-white/10 backdrop-blur rounded-2xl p-3 text-center border border-white/10">
+                        <span class="block text-2xl font-black text-amber-400" id="statPending">14</span>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-300 mt-1 block">Bekleyen Başvuru</span>
+                    </div>
+                    <div class="w-28 sm:w-32 bg-white/10 backdrop-blur rounded-2xl p-3 text-center border border-white/10">
+                        <span class="block text-2xl font-black text-emerald-400" id="statApproved">38</span>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-300 mt-1 block">Kayıtlı Katılımcı</span>
+                    </div>
+                </div>
+
+                <div class="lg:w-auto flex justify-end">
+                    <button onclick="openModal('newProgramModal')" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-5 py-3.5 rounded-xl transition shadow-xs flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-circle-plus text-base"></i>
+                        <span>Yeni Kontenjan Aç</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 2 Sütunlu Panel İçeriği -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Sol Kolon: Bilgiler (4 Kolon) -->
+            <div class="lg:col-span-4 space-y-6">
+                <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-xs">
+                    <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-4">
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+                            <i class="fa-solid fa-id-card-clip text-brand-secondary"></i> Akredite Sağlayıcı Profili
+                        </h3>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                            Aktif Tescil
+                        </span>
+                    </div>
+
+                    <div id="sideProfileContent" class="space-y-3 text-xs">
+                        <!-- JS doldurur -->
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-xs">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700 mb-2 flex items-center gap-1.5">
+                        <i class="fa-solid fa-handshake-angle text-brand-secondary"></i> Taahhüt Protokolü
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Açılan tüm kontenjanlar; katılımcı meslektaşlara ilan edilen saat, vaka analizi ve süpervizyon oturumlarını eksiksiz tamamlama taahhüdü altındadır.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Sağ Kolon: İlan ve Başvuru Yönetimi (8 Kolon) -->
+            <div class="lg:col-span-8 space-y-4">
+                
+                <div class="bg-white rounded-2xl border border-slate-200 p-1.5 shadow-xs flex items-center space-x-1">
+                    <button onclick="switchMainTab('tabListings')" id="btnTabListings" class="tab-btn flex-1 py-2 text-xs font-bold rounded-xl bg-slate-900 text-white transition text-center">
+                        Kontenjan Yönetimi
+                    </button>
+                    <button onclick="switchMainTab('tabApplicants')" id="btnTabApplicants" class="tab-btn flex-1 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 rounded-xl transition text-center flex items-center justify-center gap-1.5">
+                        <i class="fa-solid fa-users-viewfinder text-brand-secondary"></i>
+                        <span>Başvuru Havuzu & YÖK Teyidi</span>
+                        <span class="bg-amber-100 text-amber-800 text-[10px] px-1.5 py-0.2 rounded-full font-bold ml-0.5">3</span>
+                    </button>
+                </div>
+
+                <!-- Sekme 1: İlanlar -->
+                <div id="tabListings" class="space-y-4">
+                    <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-xs">
+                        <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-100">
+                            <span class="text-xs font-bold text-slate-800">Yayındaki Kontenjanlarınız</span>
+                            <span class="text-[11px] text-slate-400">Doğrudan ana sayfadaki vitrinde listelenmektedir.</span>
+                        </div>
+                        <div id="quotaCardsList" class="space-y-3">
+                            <!-- JS doldurur -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sekme 2: Başvuru Havuzu -->
+                <div id="tabApplicants" class="space-y-4 hidden">
+                    <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-xs">
+                        <div class="mb-4 pb-3 border-b border-slate-100">
+                            <h3 class="text-sm font-bold text-slate-900">Aday Başvuru Listesi</h3>
+                            <p class="text-[11px] text-slate-500 mt-0.5">YÖK lisans barkodu onaylanmış adayların başvuru dökümü.</p>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-xs">
+                                <thead>
+                                    <tr class="border-b border-slate-100 text-slate-400 uppercase text-[10px]">
+                                        <th class="py-2.5 font-bold">Aday</th>
+                                        <th class="py-2.5 font-bold">Lisans Durumu</th>
+                                        <th class="py-2.5 font-bold">Başvurulan Program</th>
+                                        <th class="py-2.5 text-right font-bold">İşlem</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="applicantTableBody" class="divide-y divide-slate-100 text-slate-700">
+                                    <!-- JS doldurur -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- ========================================== -->
+    <!-- YENİ KONTENJAN AÇMA MODALI -->
+    <!-- ========================================== -->
+    <div id="newProgramModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-xl w-full overflow-hidden shadow-2xl border border-slate-100 p-6 sm:p-7 space-y-4">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-xl bg-slate-900 text-white flex items-center justify-center text-xs">
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <h3 class="text-sm font-extrabold text-slate-900">Yeni Kontenjan ve İlan Aç</h3>
+                </div>
+                <button onclick="closeModal('newProgramModal')" class="text-slate-400 hover:text-slate-700">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+
+            <form onsubmit="handleNewQuotaSubmit(event)" class="space-y-3.5 text-xs">
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">İlan Türü *</label>
+                    <select id="modalQuotaType" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:outline-none">
+                        <option value="staj">Klinik Staj Protokolü</option>
+                        <option value="egitim">Akredite Eğitim</option>
+                        <option value="supervizyon">Süpervizyon Grubu</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">İlan / Program Başlığı *</label>
+                    <input type="text" id="modalQuotaTitle" placeholder="Örn: BDT Yönelimli Vaka Analizi Stajı" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:outline-none">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">Toplam Kontenjan *</label>
+                        <input type="number" id="modalQuotaCount" value="6" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">Katılım Bedeli *</label>
+                        <input type="text" id="modalQuotaPrice" value="Ücretsiz (Gönüllü)" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:outline-none">
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-3 rounded-xl transition shadow-xs flex items-center justify-center gap-2 pt-2">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>Kontenjanı Yayına Al (Ana Sayfada Göster)</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400">
+        <p>PsikoHub © 2026 | Ruh Sağlığı Mesleki Standartlar ve Kontenjan Yönetim Portalı</p>
+    </footer>
+
+    <script>
+        let currentRole = 'kurum'; // 'kurum' veya 'uzman'
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedRole = localStorage.getItem('psikohub_provider_role');
+            if (savedRole) {
+                currentRole = savedRole;
+            }
+            renderDashboard();
+        });
+
+        function setDashboardView(role) {
+            currentRole = role;
+            localStorage.setItem('psikohub_provider_role', role);
+            renderDashboard();
+        }
+
+        function renderDashboard() {
+            const btnK = document.getElementById('btnViewKurum');
+            const btnU = document.getElementById('btnViewUzman');
+            const greeting = document.getElementById('dashGreeting');
+            const subtitle = document.getElementById('dashSubtitle');
+            const topTitle = document.getElementById('topProfileTitle');
+            const avatar = document.getElementById('topAvatar');
+
+            if (currentRole === 'kurum') {
+                btnK.className = "px-2.5 py-1 rounded-lg bg-white text-slate-900 shadow-2xs transition";
+                btnU.className = "px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition";
+                greeting.textContent = "Özel Pendik Hera Aile Danışma Merkezi";
+                topTitle.textContent = "Özel Pendik Hera Aile Danışma Merkezi";
+                subtitle.textContent = "Klinik Staj ve Akredite Eğitim kontenjanlarınızı buradan yönetebilirsiniz.";
+                avatar.textContent = "H";
+                renderSideProfileKurum();
+                renderListingsKurum();
+            } else {
+                btnU.className = "px-2.5 py-1 rounded-lg bg-white text-slate-900 shadow-2xs transition";
+                btnK.className = "px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition";
+                greeting.textContent = "Doç. Dr. Mesut Çakır";
+                topTitle.textContent = "Doç. Dr. Mesut Çakır";
+                subtitle.textContent = "Süpervizyon ve ileri düzey vaka gruplarınızı şahsi akademik unvanınızla yönetebilirsiniz.";
+                avatar.textContent = "MÇ";
+                renderSideProfileUzman();
+                renderListingsUzman();
+            }
+
+            renderApplicants();
+        }
+
+        function renderSideProfileKurum() {
+            document.getElementById('sideProfileContent').innerHTML = `
+                <div class="flex justify-between"><span class="text-slate-500">Kurum Türü:</span><span class="font-bold text-slate-800">Aile Danışma Merkezi</span></div>
+                <div class="flex justify-between"><span class="text-slate-500">Ruhsat:</span><span class="font-bold text-emerald-700">T.C. Bakanlık Onaylı</span></div>
+                <div class="flex justify-between"><span class="text-slate-500">Şubeler:</span><span class="font-medium text-slate-800">Pendik, Kartal, Tuzla</span></div>
+            `;
+        }
+
+        function renderSideProfileUzman() {
+            document.getElementById('sideProfileContent').innerHTML = `
+                <div class="flex justify-between"><span class="text-slate-500">Unvan:</span><span class="font-bold text-slate-800">Klinik Psikolog & Süpervizör</span></div>
+                <div class="flex justify-between"><span class="text-slate-500">Akademik:</span><span class="font-bold text-emerald-700">Doç. Dr. Tescilli</span></div>
+                <div class="flex justify-between"><span class="text-slate-500">Yetkili Ekol:</span><span class="font-medium text-slate-800">Sistemik & Çift, BDT</span></div>
+            `;
+        }
+
+        function renderListingsKurum() {
+            document.getElementById('quotaCardsList').innerHTML = `
+                <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex justify-between items-center">
+                    <div>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800">Klinik Staj</span>
+                        <h4 class="font-bold text-slate-900 mt-1">Klinik Gözlem ve Uygulamalı Vaka Staj Protokolü</h4>
+                        <p class="text-[11px] text-slate-500">Pendik & Kartal Şube • 4 / 6 Dolu • Ücretsiz (Gönüllü)</p>
+                    </div>
+                    <span class="text-xs font-bold text-emerald-700 bg-white px-2.5 py-1 rounded-lg border border-slate-200">Yayında</span>
+                </div>
+                <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex justify-between items-center">
+                    <div>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-800">Eğitim</span>
+                        <h4 class="font-bold text-slate-900 mt-1">Bilişsel Davranışçı Terapi Temel Kuramsal Eğitimi</h4>
+                        <p class="text-[11px] text-slate-500">Online Canlı • 18 / 25 Dolu • 20.000 ₺ + KDV</p>
+                    </div>
+                    <span class="text-xs font-bold text-emerald-700 bg-white px-2.5 py-1 rounded-lg border border-slate-200">Yayında</span>
+                </div>
+            `;
+        }
+
+        function renderListingsUzman() {
+            document.getElementById('quotaCardsList').innerHTML = `
+                <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex justify-between items-center">
+                    <div>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-100 text-purple-800">Süpervizyon</span>
+                        <h4 class="font-bold text-slate-900 mt-1">Sistemik Çift ve Aile Terapisi Süpervizyon Grubu</h4>
+                        <p class="text-[11px] text-slate-500">Kapalı Grup • 8 / 10 Dolu • 15.000 ₺ + KDV</p>
+                    </div>
+                    <span class="text-xs font-bold text-emerald-700 bg-white px-2.5 py-1 rounded-lg border border-slate-200">Yayında</span>
+                </div>
+            `;
+        }
+
+        function renderApplicants() {
+            document.getElementById('applicantTableBody').innerHTML = `
+                <tr class="hover:bg-slate-50">
+                    <td class="py-3 font-bold text-slate-900">Psk. Dan. Ahmet Yılmaz</td>
+                    <td class="py-3 text-slate-600">PDR (Lisans) • Marmara Üni.</td>
+                    <td class="py-3 text-emerald-700 font-medium">Klinik Gözlem Stajı</td>
+                    <td class="py-3 text-right">
+                        <button onclick="alert('Adayın YÖK barkodu başarıyla doğrulandı ve kabul edildi.')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-3 py-1 rounded-lg text-[11px]">Kabul Et</button>
+                    </td>
+                </tr>
+            `;
+        }
+
+        function switchMainTab(tab) {
+            document.getElementById('tabListings').classList.toggle('hidden', tab !== 'tabListings');
+            document.getElementById('tabApplicants').classList.toggle('hidden', tab !== 'tabApplicants');
+
+            document.getElementById('btnTabListings').className = tab === 'tabListings' 
+                ? "tab-btn flex-1 py-2 text-xs font-bold rounded-xl bg-slate-900 text-white transition text-center"
+                : "tab-btn flex-1 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 rounded-xl transition text-center";
+
+            document.getElementById('btnTabApplicants').className = tab === 'tabApplicants'
+                ? "tab-btn flex-1 py-2 text-xs font-bold rounded-xl bg-slate-900 text-white transition text-center flex items-center justify-center gap-1.5"
+                : "tab-btn flex-1 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 rounded-xl transition text-center flex items-center justify-center gap-1.5";
+        }
+
+        function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+        function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+
+        function handleNewQuotaSubmit(event) {
+            event.preventDefault();
+            const title = document.getElementById('modalQuotaTitle').value;
+            alert(`"${title}" kontenjanı başarıyla açıldı ve ana vitrinde yayına alındı!`);
+            closeModal('newProgramModal');
+        }
+    </script>
+</body>
+</html>
