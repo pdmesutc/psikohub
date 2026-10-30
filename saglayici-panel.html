@@ -308,46 +308,59 @@
             const avatar = document.getElementById('topAvatar');
 
             if (currentRole === 'kurum') {
-                btnK.className = "px-2.5 py-1 rounded-lg bg-white text-slate-900 shadow-2xs transition";
-                btnU.className = "px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition";
-                greeting.textContent = "Özel Pendik Hera Aile Danışma Merkezi";
-                topTitle.textContent = "Özel Pendik Hera Aile Danışma Merkezi";
-                subtitle.textContent = "Klinik Staj ve Akredite Eğitim kontenjanlarınızı buradan yönetebilirsiniz.";
-                avatar.textContent = "H";
+                if (btnK) btnK.className = "px-2.5 py-1 rounded-lg bg-white text-slate-900 shadow-2xs transition";
+                if (btnU) btnU.className = "px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition";
+                if (greeting) greeting.textContent = "Özel Pendik Hera Aile Danışma Merkezi";
+                if (topTitle) topTitle.textContent = "Özel Pendik Hera Aile Danışma Merkezi";
+                if (subtitle) subtitle.textContent = "Klinik Staj ve Akredite Eğitim kontenjanlarınızı buradan yönetebilirsiniz.";
+                if (avatar) avatar.textContent = "H";
                 renderSideProfileKurum();
-                renderListingsKurum();
             } else {
-                btnU.className = "px-2.5 py-1 rounded-lg bg-white text-slate-900 shadow-2xs transition";
-                btnK.className = "px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition";
-                greeting.textContent = "Doç. Dr. Mesut Çakır";
-                topTitle.textContent = "Doç. Dr. Mesut Çakır";
-                subtitle.textContent = "Süpervizyon ve ileri düzey vaka gruplarınızı şahsi akademik unvanınızla yönetebilirsiniz.";
-                avatar.textContent = "MÇ";
+                if (btnU) btnU.className = "px-2.5 py-1 rounded-lg bg-white text-slate-900 shadow-2xs transition";
+                if (btnK) btnK.className = "px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition";
+                if (greeting) greeting.textContent = "Doç. Dr. Mesut Çakır";
+                if (topTitle) topTitle.textContent = "Doç. Dr. Mesut Çakır";
+                if (subtitle) subtitle.textContent = "Süpervizyon ve ileri düzey vaka gruplarınızı şahsi akademik unvanınızla yönetebilirsiniz.";
+                if (avatar) avatar.textContent = "MÇ";
                 renderSideProfileUzman();
-                renderListingsUzman();
             }
 
+            renderCustomListings();
             renderApplicants();
         }
 
         function renderSideProfileKurum() {
-            document.getElementById('sideProfileContent').innerHTML = `
-                <div class="flex justify-between"><span class="text-slate-500">Kurum Türü:</span><span class="font-bold text-slate-800">Aile Danışma Merkezi</span></div>
-                <div class="flex justify-between"><span class="text-slate-500">Ruhsat:</span><span class="font-bold text-emerald-700">T.C. Bakanlık Onaylı</span></div>
-                <div class="flex justify-between"><span class="text-slate-500">Şubeler:</span><span class="font-medium text-slate-800">Pendik, Kartal, Tuzla</span></div>
-            `;
+            const el = document.getElementById('sideProfileContent');
+            if (el) {
+                el.innerHTML = `
+                    <div class="flex justify-between"><span class="text-slate-500">Kurum Türü:</span><span class="font-bold text-slate-800">Aile Danışma Merkezi</span></div>
+                    <div class="flex justify-between"><span class="text-slate-500">Ruhsat:</span><span class="font-bold text-emerald-700">T.C. Bakanlık Onaylı</span></div>
+                    <div class="flex justify-between"><span class="text-slate-500">Şubeler:</span><span class="font-medium text-slate-800">Pendik, Kartal, Tuzla</span></div>
+                `;
+            }
         }
 
         function renderSideProfileUzman() {
-            document.getElementById('sideProfileContent').innerHTML = `
-                <div class="flex justify-between"><span class="text-slate-500">Unvan:</span><span class="font-bold text-slate-800">Klinik Psikolog & Süpervizör</span></div>
-                <div class="flex justify-between"><span class="text-slate-500">Akademik:</span><span class="font-bold text-emerald-700">Doç. Dr. Tescilli</span></div>
-                <div class="flex justify-between"><span class="text-slate-500">Yetkili Ekol:</span><span class="font-medium text-slate-800">Sistemik & Çift, BDT</span></div>
-            `;
+            const el = document.getElementById('sideProfileContent');
+            if (el) {
+                el.innerHTML = `
+                    <div class="flex justify-between"><span class="text-slate-500">Unvan:</span><span class="font-bold text-slate-800">Klinik Psikolog & Süpervizör</span></div>
+                    <div class="flex justify-between"><span class="text-slate-500">Akademik:</span><span class="font-bold text-emerald-700">Doç. Dr. Tescilli</span></div>
+                    <div class="flex justify-between"><span class="text-slate-500">Yetkili Ekol:</span><span class="font-medium text-slate-800">Sistemik & Çift, BDT</span></div>
+                `;
+            }
         }
 
-        function renderListingsKurum() {
-            document.getElementById('quotaCardsList').innerHTML = `
+        function renderCustomListings() {
+            const container = document.getElementById('quotaCardsList');
+            if (!container) return;
+
+            // localStorage'dan eklenen özel ilanları çekiyoruz
+            let customListings = JSON.parse(localStorage.getItem('psikohub_custom_listings') || '[]');
+
+            let html = '';
+            // Varsayılan sabit örnek ilanlar
+            html += `
                 <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex justify-between items-center">
                     <div>
                         <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800">Klinik Staj</span>
@@ -356,64 +369,147 @@
                     </div>
                     <span class="text-xs font-bold text-emerald-700 bg-white px-2.5 py-1 rounded-lg border border-slate-200">Yayında</span>
                 </div>
-                <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex justify-between items-center">
-                    <div>
-                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-800">Eğitim</span>
-                        <h4 class="font-bold text-slate-900 mt-1">Bilişsel Davranışçı Terapi Temel Kuramsal Eğitimi</h4>
-                        <p class="text-[11px] text-slate-500">Online Canlı • 18 / 25 Dolu • 20.000 ₺ + KDV</p>
-                    </div>
-                    <span class="text-xs font-bold text-emerald-700 bg-white px-2.5 py-1 rounded-lg border border-slate-200">Yayında</span>
-                </div>
             `;
+
+            // Kullanıcının ekledikleri
+            customListings.forEach((item, index) => {
+                html += `
+                    <div class="p-4 bg-emerald-50/50 rounded-2xl border border-emerald-200 flex justify-between items-center">
+                        <div>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-200 text-emerald-900 uppercase">${item.typeName}</span>
+                            <h4 class="font-bold text-slate-900 mt-1">${item.title}</h4>
+                            <p class="text-[11px] text-slate-500">Toplam Kontenjan: ${item.quotaTotal} • Bedel: ${item.priceDisplay}</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs font-bold text-emerald-700 bg-white px-2.5 py-1 rounded-lg border border-emerald-200">Yayında</span>
+                            <button onclick="deleteCustomListing(${index})" class="text-slate-400 hover:text-rose-600 p-1" title="İlanı Kaldır">
+                                <i class="fa-solid fa-trash-can text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
         }
 
-        function renderListingsUzman() {
-            document.getElementById('quotaCardsList').innerHTML = `
-                <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex justify-between items-center">
-                    <div>
-                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-100 text-purple-800">Süpervizyon</span>
-                        <h4 class="font-bold text-slate-900 mt-1">Sistemik Çift ve Aile Terapisi Süpervizyon Grubu</h4>
-                        <p class="text-[11px] text-slate-500">Kapalı Grup • 8 / 10 Dolu • 15.000 ₺ + KDV</p>
-                    </div>
-                    <span class="text-xs font-bold text-emerald-700 bg-white px-2.5 py-1 rounded-lg border border-slate-200">Yayında</span>
-                </div>
-            `;
+        function deleteCustomListing(index) {
+            let customListings = JSON.parse(localStorage.getItem('psikohub_custom_listings') || '[]');
+            customListings.splice(index, 1);
+            localStorage.setItem('psikohub_custom_listings', JSON.stringify(customListings));
+            renderCustomListings();
+            alert("İlan yayından kaldırıldı.");
         }
 
         function renderApplicants() {
-            document.getElementById('applicantTableBody').innerHTML = `
-                <tr class="hover:bg-slate-50">
-                    <td class="py-3 font-bold text-slate-900">Psk. Dan. Ahmet Yılmaz</td>
-                    <td class="py-3 text-slate-600">PDR (Lisans) • Marmara Üni.</td>
-                    <td class="py-3 text-emerald-700 font-medium">Klinik Gözlem Stajı</td>
-                    <td class="py-3 text-right">
-                        <button onclick="alert('Adayın YÖK barkodu başarıyla doğrulandı ve kabul edildi.')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-3 py-1 rounded-lg text-[11px]">Kabul Et</button>
-                    </td>
-                </tr>
-            `;
+            const body = document.getElementById('applicantTableBody');
+            if (body) {
+                body.innerHTML = `
+                    <tr class="hover:bg-slate-50">
+                        <td class="py-3 font-bold text-slate-900">Psk. Dan. Ahmet Yılmaz</td>
+                        <td class="py-3 text-slate-600">PDR (Lisans) • Marmara Üni.</td>
+                        <td class="py-3 text-emerald-700 font-medium">Klinik Gözlem Stajı</td>
+                        <td class="py-3 text-right">
+                            <button onclick="alert('Adayın YÖK barkodu başarıyla doğrulandı ve kabul edildi.')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-3 py-1 rounded-lg text-[11px]">Kabul Et</button>
+                        </td>
+                    </tr>
+                `;
+            }
         }
 
         function switchMainTab(tab) {
-            document.getElementById('tabListings').classList.toggle('hidden', tab !== 'tabListings');
-            document.getElementById('tabApplicants').classList.toggle('hidden', tab !== 'tabApplicants');
+            const t1 = document.getElementById('tabListings');
+            const t2 = document.getElementById('tabApplicants');
+            if (t1) t1.classList.toggle('hidden', tab !== 'tabListings');
+            if (t2) t2.classList.toggle('hidden', tab !== 'tabApplicants');
 
-            document.getElementById('btnTabListings').className = tab === 'tabListings' 
-                ? "tab-btn flex-1 py-2 text-xs font-bold rounded-xl bg-slate-900 text-white transition text-center"
-                : "tab-btn flex-1 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 rounded-xl transition text-center";
+            const btn1 = document.getElementById('btnTabListings');
+            const btn2 = document.getElementById('btnTabApplicants');
 
-            document.getElementById('btnTabApplicants').className = tab === 'tabApplicants'
-                ? "tab-btn flex-1 py-2 text-xs font-bold rounded-xl bg-slate-900 text-white transition text-center flex items-center justify-center gap-1.5"
-                : "tab-btn flex-1 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 rounded-xl transition text-center flex items-center justify-center gap-1.5";
+            if (btn1) {
+                btn1.className = tab === 'tabListings' 
+                    ? "tab-btn flex-1 py-2 text-xs font-bold rounded-xl bg-slate-900 text-white transition text-center"
+                    : "tab-btn flex-1 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 transition text-center";
+            }
+            if (btn2) {
+                btn2.className = tab === 'tabApplicants'
+                    ? "tab-btn flex-1 py-2 text-xs font-bold rounded-xl bg-slate-900 text-white transition text-center flex items-center justify-center gap-1.5"
+                    : "tab-btn flex-1 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 transition text-center flex items-center justify-center gap-1.5";
+            }
         }
 
-        function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
-        function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+        function openModal(id) { 
+            const m = document.getElementById(id);
+            if (m) m.classList.remove('hidden'); 
+        }
+        function closeModal(id) { 
+            const m = document.getElementById(id);
+            if (m) m.classList.add('hidden'); 
+        }
 
         function handleNewQuotaSubmit(event) {
             event.preventDefault();
+            const type = document.getElementById('modalQuotaType').value;
             const title = document.getElementById('modalQuotaTitle').value;
+            const count = document.getElementById('modalQuotaCount').value;
+            const price = document.getElementById('modalQuotaPrice').value;
+
+            let typeName = "Akredite Eğitim";
+            let badgeColor = "bg-blue-100 text-blue-800";
+            let gradient = "from-blue-900 to-indigo-800";
+            let ecolName = "Genel Ekol";
+
+            if (type === 'staj') {
+                typeName = "Klinik Staj";
+                badgeColor = "bg-emerald-100 text-emerald-800";
+                gradient = "from-emerald-900 to-teal-800";
+                ecolName = "Saha Gözlem";
+            } else if (type === 'supervizyon') {
+                typeName = "Süpervizyon";
+                badgeColor = "bg-purple-100 text-purple-800";
+                gradient = "from-purple-900 to-fuchsia-900";
+                ecolName = "Vaka Analizi";
+            }
+
+            const newListing = {
+                id: 'custom_' + Date.now(),
+                type: type,
+                typeName: typeName,
+                typeBadgeColor: badgeColor,
+                bannerGradient: gradient,
+                icon: 'fa-graduation-cap',
+                targetAudience: 'yetiskin',
+                targetAudienceName: 'Yetişkin / Uzman',
+                ecol: 'integrative',
+                ecolName: ecolName,
+                title: title,
+                provider: currentRole === 'kurum' ? 'Özel Pendik Hera Aile Danışma Merkezi' : 'Doç. Dr. Mesut Çakır',
+                format: 'Online',
+                formatDisplay: 'Çevrim İçi / Hibrit',
+                city: 'İstanbul',
+                district: 'Pendik',
+                hours: '30 Saat',
+                quotaTotal: parseInt(count),
+                quotaOccupied: 1,
+                isFree: price.toLowerCase().includes('ücretsiz') || price.includes('0'),
+                priceDisplay: price,
+                reqSummary: '4 Yıllık Ruh Sağlığı Lisansı',
+                startDate: 'Aralık 2026',
+                schedule: 'Hafta İçi / Hafta Sonu',
+                description: 'Sağlayıcı kurum tarafından sisteme tescil edilen akredite program detayları.',
+                curriculum: ['1. Modül: Temel Esaslar', '2. Modül: Uygulama & Formülasyon'],
+                instructorBio: 'Alanında uzman eğitmen ve süpervizör kadrosu.',
+                accreditationNote: 'Başarıyla tamamlandığında PsikoHub dijital sicil kartınıza işlenir.'
+            };
+
+            // Kayıt altına alıyoruz
+            let customListings = JSON.parse(localStorage.getItem('psikohub_custom_listings') || '[]');
+            customListings.push(newListing);
+            localStorage.setItem('psikohub_custom_listings', JSON.stringify(customListings));
+
             alert(`"${title}" kontenjanı başarıyla açıldı ve ana vitrinde yayına alındı!`);
             closeModal('newProgramModal');
+            renderCustomListings();
         }
     </script>
 </body>
