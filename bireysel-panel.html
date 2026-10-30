@@ -36,38 +36,34 @@
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between">
 
-    <!-- Üst Navigasyon -->
+    <!-- Üst Navigasyon (Mobil Sıkışmaz Düzen) -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <a href="index.html" class="flex items-center space-x-3">
-                    <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-primary to-brand-secondary flex items-center justify-center text-white shadow-md shadow-brand-primary/20">
-                        <i class="fa-solid fa-brain text-base"></i>
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-brand-primary to-brand-secondary flex items-center justify-center text-white shadow-md">
+                        <i class="fa-solid fa-brain text-sm"></i>
                     </div>
                     <div>
-                        <span class="text-xl font-bold tracking-tight text-slate-900">Psiko<span class="text-brand-secondary">Hub</span></span>
-                        <span class="hidden sm:inline-block text-[10px] tracking-wider uppercase font-semibold text-slate-500 ml-2">| Bireysel Çalışma Alanı</span>
+                        <span class="text-base sm:text-xl font-bold tracking-tight text-slate-900">Psiko<span class="text-brand-secondary">Hub</span></span>
                     </div>
                 </a>
             </div>
 
-            <!-- Sağ Kullanıcı Bilgisi -->
-            <div class="flex items-center space-x-4">
-                <a href="index.html" class="text-xs font-bold text-brand-primary hover:text-brand-secondary flex items-center gap-1.5 transition hidden sm:flex">
-                    <i class="fa-solid fa-compass"></i>
-                    <span>Tüm Kontenjanları İncele</span>
+            <!-- Sağ Kullanıcı Bilgisi ve Çıkış -->
+            <div class="flex items-center space-x-2.5">
+                <a href="index.html" class="text-[11px] font-bold text-slate-600 hover:text-brand-secondary hidden md:flex items-center gap-1">
+                    <i class="fa-solid fa-compass"></i> Tüm İlanlar
                 </a>
-                <div class="flex items-center space-x-3 border-l border-slate-200 pl-4">
+                <div class="flex items-center space-x-2 border-l border-slate-200 pl-2.5">
                     <div class="text-right hidden sm:block">
-                        <span class="block text-xs font-bold text-slate-900">Psk. Dan. Ahmet Yılmaz</span>
-                        <span class="block text-[10px] text-emerald-600 font-semibold flex items-center justify-end gap-1">
-                            <i class="fa-solid fa-circle-check text-[9px]"></i> YÖK Tescilli Üye
-                        </span>
+                        <span class="block text-xs font-bold text-slate-900">Ahmet Yılmaz</span>
+                        <span class="block text-[10px] text-emerald-600 font-semibold">YÖK Tescilli</span>
                     </div>
-                    <div class="w-9 h-9 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-xs shadow-xs">
+                    <div class="w-8 h-8 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-xs shadow-xs">
                         AY
                     </div>
-                    <a href="index.html" title="Çıkış Yap" class="text-slate-400 hover:text-rose-600 text-sm transition ml-1">
+                    <a href="index.html" title="Çıkış Yap" class="text-slate-400 hover:text-rose-600 text-sm transition p-1">
                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
                     </a>
                 </div>
@@ -76,59 +72,59 @@
     </header>
 
     <!-- Ana Panel İçeriği -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-1">
+    <main class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 w-full flex-1 space-y-6">
         
         <!-- Üst Karşılama Kartı -->
-        <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-brand-primary rounded-3xl p-6 sm:p-8 text-white mb-8 shadow-xs relative overflow-hidden">
+        <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-brand-primary rounded-3xl p-5 sm:p-8 text-white shadow-xs relative overflow-hidden">
             <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
                 <div>
-                    <div class="flex items-center gap-2 mb-2">
+                    <div class="flex flex-wrap items-center gap-2 mb-2">
                         <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 flex items-center gap-1">
-                            <i class="fa-solid fa-user-check"></i> Doğrulanmış Bireysel Portföy
+                            <i class="fa-solid fa-user-check"></i> Doğrulanmış Portföy
                         </span>
-                        <span class="text-slate-400 text-xs font-mono">Barkod No: YOK-2026-AY88-4120</span>
+                        <span class="text-slate-400 text-[11px] font-mono">YOK-2026-AY88</span>
                     </div>
-                    <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Hoş Geldiniz, Ahmet Yılmaz</h1>
+                    <h1 class="text-xl sm:text-3xl font-extrabold tracking-tight">Hoş Geldiniz, Ahmet Yılmaz</h1>
                     <p class="text-xs sm:text-sm text-slate-300 mt-1 max-w-xl">
-                        Kayıtlı olduğunuz eğitimleri, süpervizyon oturumlarınızı ve hak kazandığınız mesleki belgelerinizi buradan takip edebilirsiniz.
+                        Kayıtlı olduğunuz eğitimleri, süpervizyonları ve belgelerinizi buradan takip edin.
                     </p>
                 </div>
 
                 <!-- 3 Önemli Sayaç -->
-                <div class="flex items-center gap-3">
-                    <div class="bg-white/10 backdrop-blur border border-white/10 px-4 py-3 rounded-2xl text-center min-w-[90px]">
-                        <span class="block text-xl font-black text-white">70</span>
-                        <span class="text-[10px] text-slate-300 uppercase font-bold tracking-wider">Toplam Saat</span>
+                <div class="grid grid-cols-3 gap-2 sm:flex sm:items-center">
+                    <div class="bg-white/10 backdrop-blur border border-white/10 p-2.5 sm:px-4 sm:py-3 rounded-2xl text-center">
+                        <span class="block text-base sm:text-xl font-black text-white">70</span>
+                        <span class="text-[9px] sm:text-[10px] text-slate-300 uppercase font-bold tracking-wider">Saat</span>
                     </div>
-                    <div class="bg-white/10 backdrop-blur border border-white/10 px-4 py-3 rounded-2xl text-center min-w-[90px]">
-                        <span class="block text-xl font-black text-emerald-400" id="statActiveProg">2</span>
-                        <span class="text-[10px] text-slate-300 uppercase font-bold tracking-wider">Aktif Program</span>
+                    <div class="bg-white/10 backdrop-blur border border-white/10 p-2.5 sm:px-4 sm:py-3 rounded-2xl text-center">
+                        <span class="block text-base sm:text-xl font-black text-emerald-400" id="statActiveProg">2</span>
+                        <span class="text-[9px] sm:text-[10px] text-slate-300 uppercase font-bold tracking-wider">Aktif</span>
                     </div>
-                    <div class="bg-white/10 backdrop-blur border border-white/10 px-4 py-3 rounded-2xl text-center min-w-[90px]">
-                        <span class="block text-xl font-black text-amber-400">1</span>
-                        <span class="text-[10px] text-slate-300 uppercase font-bold tracking-wider">Tamamlanan Belge</span>
+                    <div class="bg-white/10 backdrop-blur border border-white/10 p-2.5 sm:px-4 sm:py-3 rounded-2xl text-center">
+                        <span class="block text-base sm:text-xl font-black text-amber-400">1</span>
+                        <span class="text-[9px] sm:text-[10px] text-slate-300 uppercase font-bold tracking-wider">Belge</span>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- 2 Sütunlu Yerleşim -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             
             <!-- Sol Sütun: Doğrulanmış Profil Detayları (5 Kolon) -->
-            <div class="lg:col-span-5 space-y-6">
+            <div class="lg:col-span-5 space-y-5">
                 
-                <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-xs">
-                    <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-4">
+                <div class="bg-white rounded-3xl border border-slate-200 p-5 sm:p-6 shadow-xs">
+                    <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
                         <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
-                            <i class="fa-solid fa-graduation-cap text-brand-secondary"></i> Doğrulanmış Eğitim Bilgileri
+                            <i class="fa-solid fa-graduation-cap text-brand-secondary"></i> Eğitim Bilgileri
                         </h3>
                         <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
                             YÖK Teyitli
                         </span>
                     </div>
 
-                    <div class="space-y-3 text-xs">
+                    <div class="space-y-2.5 text-xs">
                         <div class="flex justify-between items-center">
                             <span class="text-slate-500">Ad Soyad:</span>
                             <span class="font-bold text-slate-900">Ahmet Yılmaz</span>
@@ -138,8 +134,8 @@
                             <span class="font-mono text-slate-800">@ahmetyilmaz</span>
                         </div>
                         <div class="flex justify-between items-center">
-                            <span class="text-slate-500">Kayıtlı E-Posta:</span>
-                            <span class="font-medium text-slate-800">ahmet@alanadi.com</span>
+                            <span class="text-slate-500">E-Posta:</span>
+                            <span class="font-medium text-slate-800 truncate max-w-[180px]">ahmet@alanadi.com</span>
                         </div>
 
                         <!-- Lisans Detayı -->
@@ -148,32 +144,32 @@
                             <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200 space-y-1">
                                 <div class="flex justify-between">
                                     <span class="text-slate-500">Bölüm:</span>
-                                    <span class="font-bold text-brand-secondary">Rehberlik ve Psikolojik Danışmanlık</span>
+                                    <span class="font-bold text-brand-secondary text-right">PDR (Lisans)</span>
                                 </div>
                                 <div class="flex justify-between">
                                     <span class="text-slate-500">Üniversite:</span>
-                                    <span class="font-semibold text-slate-800">Marmara Üniversitesi</span>
+                                    <span class="font-semibold text-slate-800 text-right">Marmara Üni.</span>
                                 </div>
                                 <div class="flex justify-between">
                                     <span class="text-slate-500">Durum:</span>
                                     <span class="font-semibold text-emerald-700">Mezun</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span class="text-slate-500">Barkod No:</span>
-                                    <span class="font-mono text-[11px] text-slate-600">YOK-2026-AY88-4120</span>
+                                    <span class="text-slate-500">Barkod:</span>
+                                    <span class="font-mono text-[10px] text-slate-600">YOK-2026-AY88</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-xs">
+                <div class="bg-white rounded-3xl border border-slate-200 p-5 sm:p-6 shadow-xs">
                     <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3 flex items-center gap-1.5">
                         <i class="fa-solid fa-shapes text-brand-secondary"></i> Beyan Edilen Ekoller
                     </h3>
                     <div class="flex flex-wrap gap-1.5">
                         <span class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
-                            Bilişsel ve Davranışçı Terapi (BDT)
+                            Bilişsel Davranışçı Terapi (BDT)
                         </span>
                         <span class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
                             Sistemik Çift ve Aile Terapisi
@@ -184,49 +180,46 @@
             </div>
 
             <!-- Sağ Sütun: Sekmeli İçerik (7 Kolon) -->
-            <div class="lg:col-span-7 space-y-6">
+            <div class="lg:col-span-7 space-y-5">
                 
-                <div class="bg-white rounded-2xl border border-slate-200 p-1.5 shadow-xs flex items-center space-x-1">
-                    <button onclick="switchTab('tabPrograms')" id="btnTabPrograms" class="tab-btn flex-1 py-2.5 text-xs font-bold rounded-xl bg-slate-900 text-white transition text-center flex items-center justify-center gap-2">
+                <!-- SEKME BUTONLARI (Mobilde Sıkışmayı Önleyen Düzeneğe Getirildi) -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-1.5 shadow-xs grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                    <button onclick="switchTab('tabPrograms')" id="btnTabPrograms" class="tab-btn py-2.5 px-3 text-xs font-bold rounded-xl bg-slate-900 text-white transition text-center flex items-center justify-center gap-2">
                         <i class="fa-solid fa-layer-group text-brand-secondary"></i>
-                        <span>Kayıtlı ve Bekleyen Programlarım</span>
+                        <span>Kayıtlı Programlarım</span>
                     </button>
-                    <button onclick="switchTab('tabCertificates')" id="btnTabCertificates" class="tab-btn flex-1 py-2.5 text-xs font-semibold text-slate-600 hover:text-slate-900 rounded-xl transition text-center flex items-center justify-center gap-2">
+                    <button onclick="switchTab('tabCertificates')" id="btnTabCertificates" class="tab-btn py-2.5 px-3 text-xs font-semibold text-slate-600 hover:text-slate-900 rounded-xl transition text-center flex items-center justify-center gap-2">
                         <i class="fa-solid fa-award text-purple-600"></i>
-                        <span>Belgelerim & Sertifikalarım (1)</span>
+                        <span>Belgelerim (1)</span>
                     </button>
                 </div>
 
                 <!-- SEKME 1: KAYITLI PROGRAMLARIM -->
                 <div id="tabPrograms" class="space-y-4">
                     
-                    <!-- DİNAMİK: YENİ BAŞVURULAN PROGRAM (MOBİL OPTİMİZE EDİLDİ) -->
+                    <!-- DİNAMİK: YENİ BAŞVURULAN PROGRAM (ROZET VE YAZI ÇAKIŞMASI KESİN OLARAK ÇÖZÜLDÜ) -->
                     <div id="pendingApplicationCard" class="hidden bg-emerald-50/70 border-2 border-emerald-300 p-4 sm:p-5 rounded-3xl shadow-xs space-y-3">
-                        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
-                            <div>
-                                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-200 text-emerald-900 inline-block mb-1">Yeni Başvuru</span>
-                                <h4 id="pendingAppTitle" class="text-sm font-extrabold text-slate-900">...</h4>
-                                <p class="text-xs text-slate-600 mt-0.5" id="pendingAppProvider">Sağlayıcı İncelemesinde</p>
-                            </div>
-                            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-100 text-amber-900 border border-amber-300 w-fit shrink-0">
+                        <div class="flex flex-col items-start gap-2">
+                            <span class="px-2.5 py-0.5 rounded text-[10px] font-bold bg-emerald-200 text-emerald-900">Yeni Başvuru</span>
+                            <h4 id="pendingAppTitle" class="text-sm font-extrabold text-slate-900 leading-snug">...</h4>
+                            <p class="text-xs text-slate-600" id="pendingAppProvider">Sağlayıcı İncelemesinde</p>
+                            <span class="px-3 py-1 rounded-full text-[10px] font-bold bg-amber-100 text-amber-900 border border-amber-300">
                                 ● Onay Bekliyor (YÖK Barkod Taramasında)
                             </span>
                         </div>
-                        <div class="p-3 bg-white rounded-xl border border-emerald-200/80 text-xs text-slate-600 flex items-center gap-2">
-                            <i class="fa-solid fa-clock-rotate-left text-brand-secondary shrink-0"></i>
-                            <span>Başvurunuz sağlayıcı kurumun paneline iletildi. YÖK liyakat eşleşmeniz tamamlandığında seans takviminiz açılacaktır.</span>
+                        <div class="p-3 bg-white rounded-xl border border-emerald-200/80 text-xs text-slate-600 flex items-start gap-2">
+                            <i class="fa-solid fa-clock-rotate-left text-brand-secondary mt-0.5 shrink-0"></i>
+                            <span class="leading-relaxed">Başvurunuz sağlayıcı kurumun paneline iletildi. YÖK liyakat eşleşmeniz tamamlandığında seans takviminiz açılacaktır.</span>
                         </div>
                     </div>
 
                     <!-- Program 1: Süpervizyon -->
                     <div class="bg-white rounded-3xl border border-slate-200 p-5 shadow-xs hover:border-brand-secondary/40 transition">
-                        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
-                            <div>
-                                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-700 inline-block mb-1">Süpervizyon</span>
-                                <h4 class="text-sm font-bold text-slate-900">Sistemik Çift ve Aile Terapisi Süpervizyon Grubu</h4>
-                                <p class="text-xs text-slate-500 mt-0.5">Eğitmen: Dr. Ayşe Yılmaz • Zoom Kapalı Grup</p>
-                            </div>
-                            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-50 text-amber-800 border border-amber-200 w-fit shrink-0">
+                        <div class="flex flex-col items-start gap-2">
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-700">Süpervizyon</span>
+                            <h4 class="text-sm font-bold text-slate-900 leading-snug">Sistemik Çift ve Aile Terapisi Süpervizyon Grubu</h4>
+                            <p class="text-xs text-slate-500">Eğitmen: Dr. Ayşe Yılmaz • Zoom Kapalı Grup</p>
+                            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
                                 Devam Ediyor (%60)
                             </span>
                         </div>
@@ -244,7 +237,7 @@
                         <div class="mt-4 p-3 bg-blue-50/60 rounded-xl border border-blue-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
                             <div class="flex items-center gap-2 text-blue-900">
                                 <i class="fa-solid fa-video text-blue-600"></i>
-                                <span><strong>Sıradaki Oturum:</strong> 4 Kasım 2026 Çarşamba, 20:00</span>
+                                <span><strong>Sıradaki Oturum:</strong> 4 Kasım Çarşamba, 20:00</span>
                             </div>
                             <button onclick="alert('Canlı süpervizyon odası oturum saatinden 15 dakika önce aktif olacaktır.')" class="bg-brand-primary hover:bg-slate-800 text-white font-bold px-3 py-1.5 rounded-lg text-xs transition shadow-xs self-start sm:self-auto">
                                 Oturuma Katıl
@@ -254,13 +247,11 @@
 
                     <!-- Program 2: Eğitim -->
                     <div class="bg-white rounded-3xl border border-slate-200 p-5 shadow-xs hover:border-brand-secondary/40 transition">
-                        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
-                            <div>
-                                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-50 text-purple-700 inline-block mb-1">Akredite Eğitim</span>
-                                <h4 class="text-sm font-bold text-slate-900">Bilişsel Davranışçı Terapi Temel Kuramsal Eğitimi</h4>
-                                <p class="text-xs text-slate-500 mt-0.5">Sağlayıcı: Özel Pendik Hera Aile Danışma Merkezi • 40 Saat</p>
-                            </div>
-                            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 w-fit shrink-0">
+                        <div class="flex flex-col items-start gap-2">
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-50 text-purple-700">Akredite Eğitim</span>
+                            <h4 class="text-sm font-bold text-slate-900 leading-snug">Bilişsel Davranışçı Terapi Temel Kuramsal Eğitimi</h4>
+                            <p class="text-xs text-slate-500">Sağlayıcı: Özel Pendik Hera Aile Danışma Merkezi • 40 Saat</p>
+                            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
                                 Tamamlandı
                             </span>
                         </div>
@@ -275,10 +266,10 @@
                             </div>
                         </div>
 
-                        <div class="mt-4 p-3 bg-emerald-50/60 rounded-xl border border-emerald-100 flex items-center justify-between text-xs">
+                        <div class="mt-4 p-3 bg-emerald-50/60 rounded-xl border border-emerald-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
                             <span class="text-emerald-900 font-semibold flex items-center gap-1.5">
                                 <i class="fa-solid fa-circle-check text-emerald-600"></i>
-                                Başarı Belgeniz Sistem Tarafından Üretildi
+                                Başarı Belgeniz Hazır
                             </span>
                             <button onclick="switchTab('tabCertificates')" class="font-bold text-brand-secondary hover:underline">
                                 Belgeyi Aç →
@@ -290,32 +281,32 @@
 
                 <!-- SEKME 2: BELGELERİM -->
                 <div id="tabCertificates" class="space-y-4 hidden">
-                    <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-xs">
-                        <div class="flex justify-between items-center mb-4 pb-3 border-b border-slate-100">
+                    <div class="bg-white rounded-3xl border border-slate-200 p-5 sm:p-6 shadow-xs">
+                        <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-4 pb-3 border-b border-slate-100 gap-2">
                             <div>
                                 <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider">
-                                    Resmi Sertifikalar ve Başarı Belgeleri
+                                    Resmi Sertifikalar ve Belgeler
                                 </h4>
                                 <p class="text-[11px] text-slate-400 mt-0.5">Tamamladığınız programlara ait dijital barkodlu tescilli belgeler.</p>
                             </div>
-                            <span class="text-xs font-bold text-brand-secondary bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200">
+                            <span class="text-xs font-bold text-brand-secondary bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200 w-fit">
                                 1 Aktif Belge
                             </span>
                         </div>
 
                         <div class="space-y-3">
-                            <div class="flex items-center justify-between p-4 rounded-2xl border border-slate-200 hover:bg-slate-50 transition">
-                                <div class="flex items-center space-x-3.5">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl border border-slate-200 hover:bg-slate-50 transition gap-3">
+                                <div class="flex items-center space-x-3">
                                     <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-700 flex items-center justify-center text-lg shrink-0">
                                         <i class="fa-solid fa-file-pdf"></i>
                                     </div>
                                     <div>
-                                        <h5 class="text-xs font-bold text-slate-900">BDT Temel Kuramsal Eğitimi Başarı Belgesi</h5>
+                                        <h5 class="text-xs font-bold text-slate-900">BDT Temel Eğitimi Başarı Belgesi</h5>
                                         <p class="text-[11px] text-slate-500">Özel Pendik Hera Aile Danışma Merkezi • 40 Saat</p>
-                                        <span class="text-[10px] font-mono text-slate-400">Doğrulama Kodu: CERT-2026-BDT-102</span>
+                                        <span class="text-[10px] font-mono text-slate-400">Kod: CERT-2026-BDT-102</span>
                                     </div>
                                 </div>
-                                <button onclick="alert('Resmi sertifika PDF formatında indiriliyor...')" class="text-xs font-bold text-brand-secondary hover:underline flex items-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 transition">
+                                <button onclick="alert('Resmi sertifika PDF formatında indiriliyor...')" class="text-xs font-bold text-brand-secondary hover:underline flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 transition w-full sm:w-auto">
                                     <i class="fa-solid fa-download"></i> PDF İndir
                                 </button>
                             </div>
@@ -380,13 +371,13 @@
             document.getElementById(tabId).classList.remove('hidden');
 
             document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.className = "tab-btn flex-1 py-2.5 text-xs font-semibold text-slate-600 hover:text-slate-900 rounded-xl transition text-center flex items-center justify-center gap-2";
+                btn.className = "tab-btn py-2.5 px-3 text-xs font-semibold text-slate-600 hover:text-slate-900 rounded-xl transition text-center flex items-center justify-center gap-2";
             });
 
             if (tabId === 'tabPrograms') {
-                document.getElementById('btnTabPrograms').className = "tab-btn flex-1 py-2.5 text-xs font-bold rounded-xl bg-slate-900 text-white transition text-center flex items-center justify-center gap-2";
+                document.getElementById('btnTabPrograms').className = "tab-btn py-2.5 px-3 text-xs font-bold rounded-xl bg-slate-900 text-white transition text-center flex items-center justify-center gap-2";
             } else if (tabId === 'tabCertificates') {
-                document.getElementById('btnTabCertificates').className = "tab-btn flex-1 py-2.5 text-xs font-bold rounded-xl bg-slate-900 text-white transition text-center flex items-center justify-center gap-2";
+                document.getElementById('btnTabCertificates').className = "tab-btn py-2.5 text-xs font-bold rounded-xl bg-slate-900 text-white transition text-center flex items-center justify-center gap-2";
             }
         }
     </script>
