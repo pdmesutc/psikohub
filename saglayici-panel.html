@@ -40,7 +40,6 @@
     <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
         <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2">
             
-            <!-- Logo -->
             <div class="flex items-center space-x-2">
                 <a href="index.html" class="flex items-center space-x-2">
                     <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-brand-primary to-brand-secondary flex items-center justify-center text-white shadow-md">
@@ -52,7 +51,7 @@
                 </a>
             </div>
 
-            <!-- Kompakt Mod Değiştirici (Dengeli ve Küçük Boyut) -->
+            <!-- Kompakt Mod Değiştirici -->
             <div class="bg-slate-100 p-0.5 rounded-xl flex items-center text-[11px] font-semibold shrink-0">
                 <button onclick="setDashboardView('kurum')" id="btnViewKurum" class="px-2 py-1 rounded-lg bg-white text-slate-900 shadow-2xs transition flex items-center gap-1">
                     <i class="fa-solid fa-building text-brand-primary text-[10px]"></i> Kurum
@@ -62,7 +61,6 @@
                 </button>
             </div>
 
-            <!-- Sağ Profil ve Çıkış -->
             <div class="flex items-center space-x-2 border-l border-slate-200 pl-2.5">
                 <div class="text-right hidden sm:block">
                     <span class="block text-xs font-bold text-slate-900" id="topProfileTitle">Özel Pendik Hera Aile Danışma Merkezi</span>
@@ -137,17 +135,14 @@
                             Aktif Tescil
                         </span>
                     </div>
-
-                    <div id="sideProfileContent" class="space-y-3 text-xs">
-                        <!-- JS doldurur -->
-                    </div>
+                    <div id="sideProfileContent" class="space-y-3 text-xs"></div>
                 </div>
             </div>
 
             <!-- Sağ Kolon: İlan ve Başvuru Yönetimi (8 Kolon) -->
             <div class="lg:col-span-8 space-y-4">
                 
-                <!-- SEKME BUTONLARI (Dengeli ve Tek Satır Yan Yana) -->
+                <!-- SEKME BUTONLARI -->
                 <div class="bg-white rounded-2xl border border-slate-200 p-1.5 shadow-xs grid grid-cols-2 gap-1">
                     <button onclick="switchMainTab('tabListings')" id="btnTabListings" class="tab-btn py-2.5 px-3 text-xs font-bold rounded-xl bg-slate-900 text-white transition text-center flex items-center justify-center gap-1.5">
                         <i class="fa-solid fa-layer-group text-brand-secondary"></i>
@@ -160,12 +155,12 @@
                     </button>
                 </div>
 
-                <!-- Sekme 1: İlanlar (Mevcut İlanlarla Aynı Stilde) -->
+                <!-- Sekme 1: İlanlar -->
                 <div id="tabListings" class="space-y-4">
                     <div class="bg-white rounded-3xl border border-slate-200 p-5 sm:p-6 shadow-xs space-y-4">
                         <div class="flex items-center justify-between pb-3 border-b border-slate-100">
                             <span class="text-xs font-bold text-slate-800 uppercase tracking-wider">Yayındaki Kontenjanlarınız</span>
-                            <span class="text-[11px] text-slate-400">Ana sayfada listelenmektedir[cite: 6].</span>
+                            <span class="text-[11px] text-slate-400">Ana sayfada listelenmektedir.</span>
                         </div>
                         <div id="quotaCardsList" class="space-y-3">
                             <!-- JS doldurur -->
@@ -190,9 +185,7 @@
                                         <th class="py-2.5 text-right font-bold">İşlem</th>
                                     </tr>
                                 </thead>
-                                <tbody id="applicantTableBody" class="divide-y divide-slate-100 text-slate-700">
-                                    <!-- JS doldurur -->
-                                </tbody>
+                                <tbody id="applicantTableBody" class="divide-y divide-slate-100 text-slate-700"></tbody>
                             </table>
                         </div>
                     </div>
@@ -252,11 +245,41 @@
         </div>
     </div>
 
-    <!-- Footer (Sıkışmasız Yapı) -->
+    <!-- ========================================== -->
+    <!-- DÜZENLEME MODALI -->
+    <!-- ========================================== -->
+    <div id="editProgramModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-xl w-full overflow-hidden shadow-2xl border border-slate-100 p-6 sm:p-7 space-y-4">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                <h3 class="text-sm font-extrabold text-slate-900">İlanı Düzenle</h3>
+                <button onclick="closeModal('editProgramModal')" class="text-slate-400 hover:text-slate-700"><i class="fa-solid fa-xmark text-sm"></i></button>
+            </div>
+            <form onsubmit="handleEditQuotaSubmit(event)" class="space-y-3.5 text-xs">
+                <input type="hidden" id="editIndex">
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">İlan Başlığı *</label>
+                    <input type="text" id="editQuotaTitle" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">Toplam Kontenjan *</label>
+                        <input type="number" id="editQuotaCount" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">Katılım Bedeli *</label>
+                        <input type="text" id="editQuotaPrice" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs">
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-slate-900 text-white font-bold text-xs py-3 rounded-xl">Değişiklikleri Kaydet</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
     <footer class="bg-white border-t border-slate-200 py-8 px-4 text-center text-xs text-slate-500 space-y-3">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="space-y-1 text-center sm:text-left">
-                <p class="font-bold text-slate-700">PsikoHub © 2026 | Ruh Sağlığı Mesleki Standartlar ve Sağlayıcı Yönetim Portalı</p>
+                <p class="font-bold text-slate-700">PsikoHub © 2026 | Sağlayıcı Yönetim Portalı</p>
                 <p class="text-[11px] text-slate-400 italic">"Mesleki liyakatin dijital güvencesi."</p>
             </div>
             <div class="flex flex-wrap justify-center sm:justify-end gap-x-4 gap-y-2 text-[11px] text-slate-600 font-medium">
@@ -276,9 +299,7 @@
 
         window.addEventListener('DOMContentLoaded', () => {
             const savedRole = localStorage.getItem('psikohub_provider_role');
-            if (savedRole) {
-                currentRole = savedRole;
-            }
+            if (savedRole) currentRole = savedRole;
             renderDashboard();
         });
 
@@ -346,6 +367,7 @@
 
             let customListings = JSON.parse(localStorage.getItem('psikohub_custom_listings') || '[]');
 
+            // Varsayılan sabit örnek ilan (stili diğerleriyle birebir eşitlendi)
             let html = `
                 <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                     <div>
@@ -353,21 +375,34 @@
                         <h4 class="font-bold text-slate-900 mt-1 text-xs sm:text-sm">Klinik Gözlem ve Uygulamalı Vaka Staj Protokolü</h4>
                         <p class="text-[11px] text-slate-500 mt-0.5">Pendik & Kartal Şube • 4 / 6 Dolu • Ücretsiz (Gönüllü)</p>
                     </div>
-                    <span class="text-[11px] font-bold text-emerald-700 bg-white px-3 py-1 rounded-xl border border-emerald-200 w-fit">Yayında</span>
+                    <div class="flex items-center gap-2">
+                        <button onclick="togglePublishStateDefault()" id="defaultPublishBtn" class="text-[11px] font-bold text-emerald-700 bg-white px-3 py-1.5 rounded-xl border border-emerald-200 transition">
+                            Yayında
+                        </button>
+                    </div>
                 </div>
             `;
 
             customListings.forEach((item, index) => {
+                const isPublished = item.published !== false; // Varsayılan yayında
+                const pubText = isPublished ? "Yayında" : "Yayında Değil";
+                const pubClass = isPublished ? "text-emerald-700 border-emerald-200 bg-white" : "text-amber-700 border-amber-200 bg-amber-50";
+
                 html += `
                     <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                         <div>
-                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 uppercase">${item.typeName}</span>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold ${item.typeBadgeColor} uppercase">${item.typeName}</span>
                             <h4 class="font-bold text-slate-900 mt-1 text-xs sm:text-sm">${item.title}</h4>
                             <p class="text-[11px] text-slate-500 mt-0.5">Toplam Kontenjan: ${item.quotaTotal} • Bedel: ${item.priceDisplay}</p>
                         </div>
                         <div class="flex items-center gap-2">
-                            <span class="text-[11px] font-bold text-emerald-700 bg-white px-3 py-1 rounded-xl border border-emerald-200">Yayında</span>
-                            <button onclick="deleteCustomListing(${index})" class="text-slate-400 hover:text-rose-600 p-2 bg-white rounded-xl border border-slate-200" title="İlanı Kaldır">
+                            <button onclick="togglePublishState(${index})" class="text-[11px] font-bold ${pubClass} px-3 py-1.5 rounded-xl border transition shadow-2xs">
+                                ${pubText}
+                            </button>
+                            <button onclick="openEditModal(${index})" class="text-slate-600 hover:text-brand-secondary p-2 bg-white rounded-xl border border-slate-200 transition" title="Düzenle">
+                                <i class="fa-solid fa-pen text-xs"></i>
+                            </button>
+                            <button onclick="deleteCustomListing(${index})" class="text-slate-400 hover:text-rose-600 p-2 bg-white rounded-xl border border-slate-200 transition" title="Sil">
                                 <i class="fa-solid fa-trash-can text-xs"></i>
                             </button>
                         </div>
@@ -378,12 +413,64 @@
             container.innerHTML = html;
         }
 
-        function deleteCustomListing(index) {
+        let defaultPublished = true;
+        function togglePublishStateDefault() {
+            defaultPublished = !defaultPublished;
+            const btn = document.getElementById('defaultPublishBtn');
+            if (btn) {
+                btn.textContent = defaultPublished ? "Yayında" : "Yayında Değil";
+                btn.className = defaultPublished 
+                    ? "text-[11px] font-bold text-emerald-700 bg-white px-3 py-1.5 rounded-xl border border-emerald-200 transition"
+                    : "text-[11px] font-bold text-amber-700 bg-amber-50 px-3 py-1.5 rounded-xl border border-amber-200 transition";
+            }
+        }
+
+        function togglePublishState(index) {
             let customListings = JSON.parse(localStorage.getItem('psikohub_custom_listings') || '[]');
-            customListings.splice(index, 1);
-            localStorage.setItem('psikohub_custom_listings', JSON.stringify(customListings));
-            renderCustomListings();
-            alert("İlan yayından kaldırıldı.");
+            if (customListings[index]) {
+                customListings[index].published = customListings[index].published === false ? true : false;
+                localStorage.setItem('psikohub_custom_listings', JSON.stringify(customListings));
+                renderCustomListings();
+            }
+        }
+
+        function openEditModal(index) {
+            let customListings = JSON.parse(localStorage.getItem('psikohub_custom_listings') || '[]');
+            const item = customListings[index];
+            if (item) {
+                document.getElementById('editIndex').value = index;
+                document.getElementById('editQuotaTitle').value = item.title;
+                document.getElementById('editQuotaCount').value = item.quotaTotal;
+                document.getElementById('editQuotaPrice').value = item.priceDisplay;
+                openModal('editProgramModal');
+            }
+        }
+
+        function handleEditQuotaSubmit(event) {
+            event.preventDefault();
+            const index = document.getElementById('editIndex').value;
+            let customListings = JSON.parse(localStorage.getItem('psikohub_custom_listings') || '[]');
+            
+            if (customListings[index]) {
+                customListings[index].title = document.getElementById('editQuotaTitle').value;
+                customListings[index].quotaTotal = parseInt(document.getElementById('editQuotaCount').value);
+                customListings[index].priceDisplay = document.getElementById('editQuotaPrice').value;
+                
+                localStorage.setItem('psikohub_custom_listings', JSON.stringify(customListings));
+                closeModal('editProgramModal');
+                renderCustomListings();
+                alert("İlan başarıyla güncellendi!");
+            }
+        }
+
+        function deleteCustomListing(index) {
+            if (confirm("Bu ilanı silmek istediğinize emin misiniz?")) {
+                let customListings = JSON.parse(localStorage.getItem('psikohub_custom_listings') || '[]');
+                customListings.splice(index, 1);
+                localStorage.setItem('psikohub_custom_listings', JSON.stringify(customListings));
+                renderCustomListings();
+                alert("İlan yayından kaldırıldı.");
+            }
         }
 
         function renderApplicants() {
@@ -481,6 +568,7 @@
                 description: 'Akredite kurum tarafından açılan kontenjan detayları.',
                 curriculum: ['1. Modül: Kuramsal Altyapı', '2. Modül: Vaka Analizi'],
                 instructorBio: 'Uzman kadro.',
+                published: true,
                 accreditationNote: 'PsikoHub sicil profilinize tescil edilir.'
             };
 
