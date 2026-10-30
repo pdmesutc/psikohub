@@ -92,7 +92,7 @@
                     </div>
                     <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight text-white" id="dashGreeting">Özel Pendik Hera Aile Danışma Merkezi</h1>
                     <p class="text-xs text-slate-300 leading-relaxed" id="dashSubtitle">
-                        Eğitim ve Klinik Staj kontenjanlarınızı buradan yönetebilir; başvuru havuzunu inceleyebilirsiniz[cite: 6].
+                        Eğitim ve Klinik Staj kontenjanlarınızı buradan yönetebilir; başvuru havuzunu inceleyebilirsiniz.
                     </p>
                 </div>
 
@@ -158,10 +158,6 @@
                 <!-- Sekme 1: İlanlar -->
                 <div id="tabListings" class="space-y-4">
                     <div class="bg-white rounded-3xl border border-slate-200 p-5 sm:p-6 shadow-xs space-y-4">
-                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-                            <span class="text-xs font-bold text-slate-800 uppercase tracking-wider">Yayındaki Kontenjanlarınız</span>
-                            <span class="text-[11px] text-slate-400">Ana sayfada listelenmektedir.</span>
-                        </div>
                         <div id="quotaCardsList" class="space-y-3">
                             <!-- JS doldurur -->
                         </div>
@@ -225,7 +221,7 @@
                 </div>
                 <div>
                     <label class="block font-bold text-slate-700 mb-1">İlan / Program Başlığı *</label>
-                    <input type="text" id="modalQuotaTitle" placeholder="Örn: BDT Yönelimli Vaka Analizi Stajı" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:outline-none">
+                    <input type="text" id="modalQuotaTitle" placeholder="Örn: Klinik Gözlem ve Vaka Stajı" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:outline-none">
                 </div>
                 <div class="grid grid-cols-2 gap-3">
                     <div>
@@ -367,7 +363,7 @@
 
             let customListings = JSON.parse(localStorage.getItem('psikohub_custom_listings') || '[]');
 
-            // Varsayılan sabit örnek ilan (stili diğerleriyle birebir eşitlendi)
+            // Varsayılan sabit örnek ilan (diğerleriyle birebir aynı stil ve bilgilere sahip)
             let html = `
                 <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                     <div>
@@ -376,7 +372,7 @@
                         <p class="text-[11px] text-slate-500 mt-0.5">Pendik & Kartal Şube • 4 / 6 Dolu • Ücretsiz (Gönüllü)</p>
                     </div>
                     <div class="flex items-center gap-2">
-                        <button onclick="togglePublishStateDefault()" id="defaultPublishBtn" class="text-[11px] font-bold text-emerald-700 bg-white px-3 py-1.5 rounded-xl border border-emerald-200 transition">
+                        <button onclick="togglePublishStateDefault()" id="defaultPublishBtn" class="text-[11px] font-bold text-emerald-700 bg-white px-3.5 py-1.5 rounded-xl border border-emerald-200 transition shadow-2xs">
                             Yayında
                         </button>
                     </div>
@@ -384,7 +380,7 @@
             `;
 
             customListings.forEach((item, index) => {
-                const isPublished = item.published !== false; // Varsayılan yayında
+                const isPublished = item.published !== false;
                 const pubText = isPublished ? "Yayında" : "Yayında Değil";
                 const pubClass = isPublished ? "text-emerald-700 border-emerald-200 bg-white" : "text-amber-700 border-amber-200 bg-amber-50";
 
@@ -393,16 +389,16 @@
                         <div>
                             <span class="px-2 py-0.5 rounded text-[10px] font-bold ${item.typeBadgeColor} uppercase">${item.typeName}</span>
                             <h4 class="font-bold text-slate-900 mt-1 text-xs sm:text-sm">${item.title}</h4>
-                            <p class="text-[11px] text-slate-500 mt-0.5">Toplam Kontenjan: ${item.quotaTotal} • Bedel: ${item.priceDisplay}</p>
+                            <p class="text-[11px] text-slate-500 mt-0.5">${item.formatDisplay || 'Pendik Şube'} • Toplam ${item.quotaTotal} Kontenjan • ${item.priceDisplay}</p>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <button onclick="togglePublishState(${index})" class="text-[11px] font-bold ${pubClass} px-3 py-1.5 rounded-xl border transition shadow-2xs">
+                        <div class="flex items-center gap-2 shrink-0">
+                            <button onclick="togglePublishState(${index})" class="text-[11px] font-bold ${pubClass} px-3.5 py-1.5 rounded-xl border transition shadow-2xs">
                                 ${pubText}
                             </button>
-                            <button onclick="openEditModal(${index})" class="text-slate-600 hover:text-brand-secondary p-2 bg-white rounded-xl border border-slate-200 transition" title="Düzenle">
+                            <button onclick="openEditModal(${index})" class="text-amber-600 hover:text-amber-700 p-2 bg-white rounded-xl border border-amber-200 transition shadow-2xs" title="İlanı Düzenle">
                                 <i class="fa-solid fa-pen text-xs"></i>
                             </button>
-                            <button onclick="deleteCustomListing(${index})" class="text-slate-400 hover:text-rose-600 p-2 bg-white rounded-xl border border-slate-200 transition" title="Sil">
+                            <button onclick="deleteCustomListing(${index})" class="text-rose-600 hover:text-rose-700 p-2 bg-white rounded-xl border border-rose-200 transition shadow-2xs" title="İlanı Sil">
                                 <i class="fa-solid fa-trash-can text-xs"></i>
                             </button>
                         </div>
@@ -420,8 +416,8 @@
             if (btn) {
                 btn.textContent = defaultPublished ? "Yayında" : "Yayında Değil";
                 btn.className = defaultPublished 
-                    ? "text-[11px] font-bold text-emerald-700 bg-white px-3 py-1.5 rounded-xl border border-emerald-200 transition"
-                    : "text-[11px] font-bold text-amber-700 bg-amber-50 px-3 py-1.5 rounded-xl border border-amber-200 transition";
+                    ? "text-[11px] font-bold text-emerald-700 bg-white px-3.5 py-1.5 rounded-xl border border-emerald-200 transition shadow-2xs"
+                    : "text-[11px] font-bold text-amber-700 bg-amber-50 px-3.5 py-1.5 rounded-xl border border-amber-200 transition shadow-2xs";
             }
         }
 
@@ -452,7 +448,11 @@
             let customListings = JSON.parse(localStorage.getItem('psikohub_custom_listings') || '[]');
             
             if (customListings[index]) {
-                customListings[index].title = document.getElementById('editQuotaTitle').value;
+                let rawTitle = document.getElementById('editQuotaTitle').value.trim();
+                // İlk harfi büyük yapma garantisi
+                let formattedTitle = rawTitle.charAt(0).toLocaleUpperCase('tr-TR') + rawTitle.slice(1);
+
+                customListings[index].title = formattedTitle;
                 customListings[index].quotaTotal = parseInt(document.getElementById('editQuotaCount').value);
                 customListings[index].priceDisplay = document.getElementById('editQuotaPrice').value;
                 
@@ -464,12 +464,12 @@
         }
 
         function deleteCustomListing(index) {
-            if (confirm("Bu ilanı silmek istediğinize emin misiniz?")) {
+            if (confirm("Bu ilanı kalıcı olarak silmek istediğinize emin misiniz?")) {
                 let customListings = JSON.parse(localStorage.getItem('psikohub_custom_listings') || '[]');
                 customListings.splice(index, 1);
                 localStorage.setItem('psikohub_custom_listings', JSON.stringify(customListings));
                 renderCustomListings();
-                alert("İlan yayından kaldırıldı.");
+                alert("İlan silindi.");
             }
         }
 
@@ -522,7 +522,10 @@
         function handleNewQuotaSubmit(event) {
             event.preventDefault();
             const type = document.getElementById('modalQuotaType').value;
-            const title = document.getElementById('modalQuotaTitle').value;
+            let rawTitle = document.getElementById('modalQuotaTitle').value.trim();
+            // İlk harfi otomatik büyük yapma kuralı
+            const title = rawTitle.charAt(0).toLocaleUpperCase('tr-TR') + rawTitle.slice(1);
+
             const count = document.getElementById('modalQuotaCount').value;
             const price = document.getElementById('modalQuotaPrice').value;
 
