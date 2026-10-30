@@ -95,7 +95,7 @@
                     </div>
                     <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight text-white" id="dashGreeting">Özel Pendik Hera Aile Danışma Merkezi</h1>
                     <p class="text-xs text-slate-300 leading-relaxed" id="dashSubtitle">
-                        Eğitim ve Klinik Staj kontenjanlarınızı buradan yönetebilir; YÖK onaylı başvuru havuzunu inceleyebilirsiniz.
+                        Eğitim ve Klinik Staj kontenjanlarınızı buradan yönetebilir; YÖK onaylı başvuru havuzunu inceleyebilirsiniz[cite: 6].
                     </p>
                 </div>
 
@@ -173,7 +173,7 @@
                     <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-xs">
                         <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-100">
                             <span class="text-xs font-bold text-slate-800">Yayındaki Kontenjanlarınız</span>
-                            <span class="text-[11px] text-slate-400">Doğrudan ana sayfadaki vitrinde listelenmektedir.</span>
+                            <span class="text-[11px] text-slate-400">Doğrudan ana sayfadaki vitrinde listelenmektedir[cite: 6].</span>
                         </div>
                         <div id="quotaCardsList" class="space-y-3">
                             <!-- JS doldurur -->
@@ -260,13 +260,30 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400">
-        <p>PsikoHub © 2026 | Ruh Sağlığı Mesleki Standartlar ve Kontenjan Yönetim Portalı</p>
+    <!-- Footer (Optimize Edilmiş Sıkışmasız Yapı) -->
+    <footer class="bg-white border-t border-slate-200 py-8 px-4 text-center text-xs text-slate-500 space-y-3">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            
+            <div class="space-y-1 text-center sm:text-left">
+                <p class="font-bold text-slate-700">PsikoHub © 2026 | Ruh Sağlığı Mesleki Standartlar ve Sağlayıcı Yönetim Portalı</p>
+                <p class="text-[11px] text-slate-400 italic">"Mesleki liyakatin dijital güvencesi."</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center sm:justify-end gap-x-4 gap-y-2 text-[11px] text-slate-600 font-medium">
+                <a href="uzman-dogrulama.html" class="hover:text-brand-secondary transition">Uzman Doğrula</a>
+                <span class="text-slate-300">•</span>
+                <a href="saglayici-giris.html" class="hover:text-brand-secondary transition">Sağlayıcı Portalı</a>
+                <span class="text-slate-300">•</span>
+                <a href="kvkk-aydinlatma.html" class="hover:text-brand-secondary transition">KVKK Metni</a>
+                <span class="text-slate-300">•</span>
+                <a href="akreditasyon-sozlesmesi.html" class="hover:text-brand-secondary transition">Akreditasyon Sözleşmesi</a>
+            </div>
+
+        </div>
     </footer>
 
     <script>
-        let currentRole = 'kurum'; // 'kurum' veya 'uzman'
+        let currentRole = 'kurum';
 
         window.addEventListener('DOMContentLoaded', () => {
             const savedRole = localStorage.getItem('psikohub_provider_role');
