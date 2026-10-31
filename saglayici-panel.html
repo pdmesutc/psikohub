@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kurumsal & Eğitmen Yönetim Paneli | PsikoHub</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,7 +38,6 @@
     <!-- Üst Bar -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
         <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2">
-            
             <div class="flex items-center space-x-2">
                 <a href="index.html" class="flex items-center space-x-2">
                     <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-brand-primary to-brand-secondary flex items-center justify-center text-white shadow-md">
@@ -51,7 +49,6 @@
                 </a>
             </div>
 
-            <!-- Kompakt Mod Değiştirici -->
             <div class="bg-slate-100 p-0.5 rounded-xl flex items-center text-[11px] font-semibold shrink-0">
                 <button onclick="setDashboardView('kurum')" id="btnViewKurum" class="px-2 py-1 rounded-lg bg-white text-slate-900 shadow-2xs transition flex items-center gap-1">
                     <i class="fa-solid fa-building text-brand-primary text-[10px]"></i> Kurum
@@ -73,7 +70,6 @@
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 </a>
             </div>
-
         </div>
     </header>
 
@@ -83,17 +79,12 @@
         <!-- ÜST PANEL SAYAÇ KARTI -->
         <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-brand-primary rounded-3xl p-5 sm:p-7 text-white shadow-xs">
             <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-                
                 <div class="lg:w-1/3 space-y-1">
-                    <div class="flex items-center gap-2 mb-1">
-                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 flex items-center gap-1">
-                            <i class="fa-solid fa-building"></i> Kurumsal Sağlayıcı Statüsü
-                        </span>
-                    </div>
+                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 inline-flex items-center gap-1">
+                        <i class="fa-solid fa-building"></i> Kurumsal Sağlayıcı Statüsü
+                    </span>
                     <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight text-white" id="dashGreeting">Özel Pendik Hera Aile Danışma Merkezi</h1>
-                    <p class="text-xs text-slate-300 leading-relaxed" id="dashSubtitle">
-                        Eğitim ve Klinik Staj kontenjanlarınızı buradan yönetebilir; başvuru havuzunu inceleyebilirsiniz.
-                    </p>
+                    <p class="text-xs text-slate-300 leading-relaxed" id="dashSubtitle">Eğitim ve kontenjanlarınızı buradan yönetebilirsiniz.</p>
                 </div>
 
                 <div class="grid grid-cols-3 gap-2 sm:flex sm:items-center justify-center">
@@ -117,59 +108,46 @@
                         <span>Yeni Kontenjan Aç</span>
                     </button>
                 </div>
-
             </div>
         </div>
 
-        <!-- 2 Sütunlu Panel İçeriği -->
+        <!-- İçerik Alanı -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-            
-            <!-- Sol Kolon: Bilgiler (4 Kolon) -->
             <div class="lg:col-span-4 space-y-5">
                 <div class="bg-white rounded-3xl border border-slate-200 p-5 sm:p-6 shadow-xs">
                     <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
                         <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
                             <i class="fa-solid fa-id-card-clip text-brand-secondary"></i> Sağlayıcı Profili
                         </h3>
-                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                            Aktif Tescil
-                        </span>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">Aktif Tescil</span>
                     </div>
                     <div id="sideProfileContent" class="space-y-3 text-xs"></div>
                 </div>
             </div>
 
-            <!-- Sağ Kolon: İlan ve Başvuru Yönetimi (8 Kolon) -->
             <div class="lg:col-span-8 space-y-4">
-                
-                <!-- SEKME BUTONLARI -->
                 <div class="bg-white rounded-2xl border border-slate-200 p-1.5 shadow-xs grid grid-cols-2 gap-1">
                     <button onclick="switchMainTab('tabListings')" id="btnTabListings" class="tab-btn py-2.5 px-3 text-xs font-bold rounded-xl bg-slate-900 text-white transition text-center flex items-center justify-center gap-1.5">
-                        <i class="fa-solid fa-layer-group text-brand-secondary"></i>
-                        <span>Kontenjan Yönetimi</span>
+                        <i class="fa-solid fa-layer-group text-brand-secondary"></i> Kontenjan Yönetimi
                     </button>
-                    <button onclick="switchMainTab('tabApplicants')" id="btnTabApplicants" class="tab-btn py-2.5 px-3 text-xs font-semibold text-slate-600 hover:text-slate-900 rounded-xl transition text-center flex items-center justify-center gap-1.5">
-                        <i class="fa-solid fa-users-viewfinder text-brand-secondary"></i>
-                        <span>Başvuru Havuzu</span>
-                        <span class="bg-amber-100 text-amber-800 text-[10px] px-1.5 py-0.2 rounded-full font-bold">3</span>
+                    <button onclick="switchMainTab('tabApplicants')" id="btnTabApplicants" class="tab-btn py-2.5 px-3 text-xs font-semibold text-slate-600 hover:text-slate-900 transition text-center flex items-center justify-center gap-1.5">
+                        <i class="fa-solid fa-users-viewfinder text-brand-secondary"></i> Başvuru Havuzu <span class="bg-amber-100 text-amber-800 text-[10px] px-1.5 py-0.2 rounded-full font-bold">3</span>
                     </button>
                 </div>
 
-                <!-- Sekme 1: İlanlar -->
+                <!-- İlan Listesi -->
                 <div id="tabListings" class="space-y-4">
-                    <div class="bg-white rounded-3xl border border-slate-200 p-5 sm:p-6 shadow-xs space-y-4">
-                        <div id="quotaCardsList" class="space-y-3">
-                            <!-- JS doldurur -->
-                        </div>
+                    <div class="bg-white rounded-3xl border border-slate-200 p-5 sm:p-6 shadow-xs space-y-3" id="quotaCardsList">
+                        <!-- JS doldurur -->
                     </div>
                 </div>
 
-                <!-- Sekme 2: Başvuru Havuzu -->
+                <!-- Başvuru Havuzu -->
                 <div id="tabApplicants" class="space-y-4 hidden">
                     <div class="bg-white rounded-3xl border border-slate-200 p-5 sm:p-6 shadow-xs space-y-4">
                         <div class="pb-3 border-b border-slate-100">
                             <h3 class="text-sm font-bold text-slate-900">Aday Başvuru Havuzu</h3>
-                            <p class="text-[11px] text-slate-500 mt-0.5">YÖK lisans barkodu onaylanmış adayların başvuru dökümü.</p>
+                            <p class="text-[11px] text-slate-500 mt-0.5">YÖK lisans barkodu onaylanmış adaylar.</p>
                         </div>
                         <div class="overflow-x-auto">
                             <table class="w-full text-left text-xs">
@@ -186,34 +164,21 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
-
     </main>
 
-    <!-- ========================================== -->
-    <!-- YENİ KONTENJAN AÇMA MODALI -->
-    <!-- ========================================== -->
+    <!-- Modal: Yeni İlan Aç -->
     <div id="newProgramModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-3xl max-w-xl w-full overflow-hidden shadow-2xl border border-slate-100 p-6 sm:p-7 space-y-4">
             <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-                <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 rounded-xl bg-slate-900 text-white flex items-center justify-center text-xs">
-                        <i class="fa-solid fa-plus"></i>
-                    </div>
-                    <h3 class="text-sm font-extrabold text-slate-900">Yeni Kontenjan ve İlan Aç</h3>
-                </div>
-                <button onclick="closeModal('newProgramModal')" class="text-slate-400 hover:text-slate-700">
-                    <i class="fa-solid fa-xmark text-sm"></i>
-                </button>
+                <h3 class="text-sm font-extrabold text-slate-900">Yeni Kontenjan ve İlan Aç</h3>
+                <button onclick="closeModal('newProgramModal')" class="text-slate-400 hover:text-slate-700"><i class="fa-solid fa-xmark text-sm"></i></button>
             </div>
-
             <form onsubmit="handleNewQuotaSubmit(event)" class="space-y-3.5 text-xs">
                 <div>
                     <label class="block font-bold text-slate-700 mb-1">İlan Türü *</label>
-                    <select id="modalQuotaType" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:outline-none">
+                    <select id="modalQuotaType" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs">
                         <option value="staj">Klinik Staj Protokolü</option>
                         <option value="egitim">Akredite Eğitim</option>
                         <option value="supervizyon">Süpervizyon Grubu</option>
@@ -221,29 +186,24 @@
                 </div>
                 <div>
                     <label class="block font-bold text-slate-700 mb-1">İlan / Program Başlığı *</label>
-                    <input type="text" id="modalQuotaTitle" placeholder="Örn: Klinik Gözlem ve Vaka Stajı" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:outline-none">
+                    <input type="text" id="modalQuotaTitle" placeholder="Örn: Klinik gözlem ve vaka stajı" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs">
                 </div>
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block font-bold text-slate-700 mb-1">Toplam Kontenjan *</label>
-                        <input type="number" id="modalQuotaCount" value="6" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:outline-none">
+                        <input type="number" id="modalQuotaCount" value="6" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs">
                     </div>
                     <div>
                         <label class="block font-bold text-slate-700 mb-1">Katılım Bedeli *</label>
-                        <input type="text" id="modalQuotaPrice" value="Ücretsiz (Gönüllü)" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:outline-none">
+                        <input type="text" id="modalQuotaPrice" value="Ücretsiz (Gönüllü)" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs">
                     </div>
                 </div>
-                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-3 rounded-xl transition shadow-xs flex items-center justify-center gap-2 pt-2">
-                    <i class="fa-solid fa-paper-plane"></i>
-                    <span>Kontenjanı Yayına Al (Ana Sayfada Göster)</span>
-                </button>
+                <button type="submit" class="w-full bg-emerald-600 text-white font-bold text-xs py-3 rounded-xl">Kontenjanı Yayına Al</button>
             </form>
         </div>
     </div>
 
-    <!-- ========================================== -->
-    <!-- DÜZENLEME MODALI -->
-    <!-- ========================================== -->
+    <!-- Modal: Düzenle -->
     <div id="editProgramModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-3xl max-w-xl w-full overflow-hidden shadow-2xl border border-slate-100 p-6 sm:p-7 space-y-4">
             <div class="flex items-center justify-between pb-3 border-b border-slate-100">
@@ -271,22 +231,9 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="bg-white border-t border-slate-200 py-8 px-4 text-center text-xs text-slate-500 space-y-3">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="space-y-1 text-center sm:text-left">
-                <p class="font-bold text-slate-700">PsikoHub © 2026 | Sağlayıcı Yönetim Portalı</p>
-                <p class="text-[11px] text-slate-400 italic">"Mesleki liyakatin dijital güvencesi."</p>
-            </div>
-            <div class="flex flex-wrap justify-center sm:justify-end gap-x-4 gap-y-2 text-[11px] text-slate-600 font-medium">
-                <a href="uzman-dogrulama.html" class="hover:text-brand-secondary transition">Uzman Doğrula</a>
-                <span class="text-slate-300">•</span>
-                <a href="saglayici-giris.html" class="hover:text-brand-secondary transition">Sağlayıcı Portalı</a>
-                <span class="text-slate-300">•</span>
-                <a href="kvkk-aydinlatma.html" class="hover:text-brand-secondary transition">KVKK Metni</a>
-                <span class="text-slate-300">•</span>
-                <a href="akreditasyon-sozlesmesi.html" class="hover:text-brand-secondary transition">Akreditasyon Sözleşmesi</a>
-            </div>
+            <p class="font-bold text-slate-700">PsikoHub © 2026 | Sağlayıcı Yönetim Portalı</p>
         </div>
     </footer>
 
@@ -326,7 +273,7 @@
                 if (btnK) btnK.className = "px-2 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition flex items-center gap-1";
                 if (greeting) greeting.textContent = "Doç. Dr. Mesut Çakır";
                 if (topTitle) topTitle.textContent = "Doç. Dr. Mesut Çakır";
-                if (subtitle) subtitle.textContent = "Süpervizyon ve ileri düzey vaka gruplarınızı şahsi akademik unvanınızla yönetebilirsiniz.";
+                if (subtitle) subtitle.textContent = "Süpervizyon ve vaka gruplarınızı yönetebilirsiniz.";
                 if (avatar) avatar.textContent = "MÇ";
                 renderSideProfileUzman();
             }
@@ -350,9 +297,8 @@
             const el = document.getElementById('sideProfileContent');
             if (el) {
                 el.innerHTML = `
-                    <div class="flex justify-between"><span class="text-slate-500">Unvan:</span><span class="font-bold text-slate-800">Klinik Psikolog & Süpervizör</span></div>
+                    <div class="flex justify-between"><span class="text-slate-500">Unvan:</span><span class="font-bold text-slate-800">Klinik Psikolog</span></div>
                     <div class="flex justify-between"><span class="text-slate-500">Akademik:</span><span class="font-bold text-emerald-700">Doç. Dr. Tescilli</span></div>
-                    <div class="flex justify-between"><span class="text-slate-500">Yetkili Ekol:</span><span class="font-medium text-slate-800">Sistemik & Çift, BDT</span></div>
                 `;
             }
         }
@@ -362,18 +308,27 @@
             if (!container) return;
 
             let customListings = JSON.parse(localStorage.getItem('psikohub_custom_listings') || '[]');
+            const isDefaultPublished = window.defaultPublished !== false;
+            const defaultPubText = isDefaultPublished ? "Yayında" : "Yayında Değil";
+            const defaultPubClass = isDefaultPublished ? "text-emerald-700 border-emerald-200 bg-white" : "text-amber-700 border-amber-200 bg-amber-50";
 
-            // Varsayılan sabit örnek ilan (Stili diğerleriyle %100 eşitlendi)
+            // Varsayılan ilk ilan (Artık diğerleriyle birebir aynı stil, rozet ve metin butonlarına sahip)
             let html = `
                 <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                     <div>
                         <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800">Klinik Staj</span>
                         <h4 class="font-bold text-slate-900 mt-1 text-xs sm:text-sm">Klinik Gözlem ve Uygulamalı Vaka Staj Protokolü</h4>
-                        <p class="text-[11px] text-slate-500 mt-0.5">Pendik & Kartal Şube • 4 / 6 Dolu • Ücretsiz (Gönüllü)</p>
+                        <p class="text-[11px] text-slate-500 mt-0.5">Pendik & Kartal Şube • Toplam 6 Kontenjan • Ücretsiz (Gönüllü)</p>
                     </div>
-                    <div class="flex items-center gap-2 shrink-0">
-                        <button onclick="togglePublishStateDefault()" id="defaultPublishBtn" class="text-[11px] font-bold text-emerald-700 bg-white px-3.5 py-1.5 rounded-xl border border-emerald-200 transition shadow-2xs">
-                            Yayında
+                    <div class="flex items-center gap-2 shrink-0 flex-wrap sm:flex-nowrap">
+                        <button onclick="togglePublishStateDefault()" id="defaultPublishBtn" class="text-[11px] font-bold ${defaultPubClass} px-3.5 py-1.5 rounded-xl border transition shadow-2xs">
+                            ${defaultPubText}
+                        </button>
+                        <button onclick="alert('Örnek sabit ilan, yönetim amaçlıdır.')" class="text-[11px] font-bold text-amber-700 bg-amber-50 hover:bg-amber-100 px-3.5 py-1.5 rounded-xl border border-amber-200 transition shadow-2xs">
+                            İlanı Düzenle
+                        </button>
+                        <button onclick="alert('Örnek sabit ilan silinemez.')" class="text-[11px] font-bold text-rose-700 bg-rose-50 hover:bg-rose-100 px-3.5 py-1.5 rounded-xl border border-rose-200 transition shadow-2xs">
+                            İlanı Sil
                         </button>
                     </div>
                 </div>
@@ -387,19 +342,19 @@
                 html += `
                     <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                         <div>
-                            <span class="px-2 py-0.5 rounded text-[10px] font-bold ${item.typeBadgeColor} uppercase">${item.typeName}</span>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold ${item.typeBadgeColor}">${item.typeName}</span>
                             <h4 class="font-bold text-slate-900 mt-1 text-xs sm:text-sm">${item.title}</h4>
                             <p class="text-[11px] text-slate-500 mt-0.5">${item.formatDisplay || 'Pendik Şube'} • Toplam ${item.quotaTotal} Kontenjan • ${item.priceDisplay}</p>
                         </div>
-                        <div class="flex items-center gap-2 shrink-0">
+                        <div class="flex items-center gap-2 shrink-0 flex-wrap sm:flex-nowrap">
                             <button onclick="togglePublishState(${index})" class="text-[11px] font-bold ${pubClass} px-3.5 py-1.5 rounded-xl border transition shadow-2xs">
                                 ${pubText}
                             </button>
-                            <button onclick="openEditModal(${index})" class="text-[11px] font-bold text-amber-700 bg-amber-50 hover:bg-amber-100 px-3.5 py-1.5 rounded-xl border border-amber-200 transition shadow-2xs flex items-center gap-1.5">
-                                <i class="fa-solid fa-pen text-[10px]"></i> İlanı Düzenle
+                            <button onclick="openEditModal(${index})" class="text-[11px] font-bold text-amber-700 bg-amber-50 hover:bg-amber-100 px-3.5 py-1.5 rounded-xl border border-amber-200 transition shadow-2xs">
+                                İlanı Düzenle
                             </button>
-                            <button onclick="deleteCustomListing(${index})" class="text-[11px] font-bold text-rose-700 bg-rose-50 hover:bg-rose-100 px-3.5 py-1.5 rounded-xl border border-rose-200 transition shadow-2xs flex items-center gap-1.5">
-                                <i class="fa-solid fa-trash-can text-[10px]"></i> İlanı Sil
+                            <button onclick="deleteCustomListing(${index})" class="text-[11px] font-bold text-rose-700 bg-rose-50 hover:bg-rose-100 px-3.5 py-1.5 rounded-xl border border-rose-200 transition shadow-2xs">
+                                İlanı Sil
                             </button>
                         </div>
                     </div>
@@ -409,16 +364,10 @@
             container.innerHTML = html;
         }
 
-        let defaultPublished = true;
+        window.defaultPublished = true;
         function togglePublishStateDefault() {
-            defaultPublished = !defaultPublished;
-            const btn = document.getElementById('defaultPublishBtn');
-            if (btn) {
-                btn.textContent = defaultPublished ? "Yayında" : "Yayında Değil";
-                btn.className = defaultPublished 
-                    ? "text-[11px] font-bold text-emerald-700 bg-white px-3.5 py-1.5 rounded-xl border border-emerald-200 transition shadow-2xs"
-                    : "text-[11px] font-bold text-amber-700 bg-amber-50 px-3.5 py-1.5 rounded-xl border border-amber-200 transition shadow-2xs";
-            }
+            window.defaultPublished = !window.defaultPublished;
+            renderCustomListings();
         }
 
         function togglePublishState(index) {
@@ -463,7 +412,7 @@
         }
 
         function deleteCustomListing(index) {
-            if (confirm("Bu ilanı kalıcı olarak silmek istediğinize emin misiniz?")) {
+            if (confirm("Bu ilanı silmek istediğinize emin misiniz?")) {
                 let customListings = JSON.parse(localStorage.getItem('psikohub_custom_listings') || '[]');
                 customListings.splice(index, 1);
                 localStorage.setItem('psikohub_custom_listings', JSON.stringify(customListings));
@@ -480,9 +429,7 @@
                         <td class="py-3 font-bold text-slate-900">Ahmet Yılmaz</td>
                         <td class="py-3 text-slate-600">PDR (Marmara Üni.)</td>
                         <td class="py-3 text-emerald-700 font-medium">Klinik Staj</td>
-                        <td class="py-3 text-right">
-                            <button onclick="alert('Adayın YÖK barkodu onaylandı.')" class="bg-emerald-600 text-white font-bold px-2.5 py-1 rounded-lg text-[10px]">Kabul Et</button>
-                        </td>
+                        <td class="py-3 text-right"><button onclick="alert('Onaylandı.')" class="bg-emerald-600 text-white font-bold px-2.5 py-1 rounded-lg text-[10px]">Kabul Et</button></td>
                     </tr>
                 `;
             }
@@ -500,41 +447,34 @@
             if (btn1) {
                 btn1.className = tab === 'tabListings' 
                     ? "tab-btn flex-1 py-2.5 px-3 text-xs font-bold rounded-xl bg-slate-900 text-white transition text-center flex items-center justify-center gap-1.5"
-                    : "tab-btn flex-1 py-2.5 px-3 text-xs font-semibold text-slate-600 hover:text-slate-900 rounded-xl transition text-center flex items-center justify-center gap-1.5";
+                    : "tab-btn flex-1 py-2.5 px-3 text-xs font-semibold text-slate-600 hover:text-slate-900 transition text-center flex items-center justify-center gap-1.5";
             }
             if (btn2) {
                 btn2.className = tab === 'tabApplicants'
                     ? "tab-btn flex-1 py-2.5 px-3 text-xs font-bold rounded-xl bg-slate-900 text-white transition text-center flex items-center justify-center gap-1.5"
-                    : "tab-btn flex-1 py-2.5 px-3 text-xs font-semibold text-slate-600 hover:text-slate-900 rounded-xl transition text-center flex items-center justify-center gap-1.5";
+                    : "tab-btn flex-1 py-2.5 px-3 text-xs font-semibold text-slate-600 hover:text-slate-900 transition text-center flex items-center justify-center gap-1.5";
             }
         }
 
-        function openModal(id) { 
-            const m = document.getElementById(id);
-            if (m) m.classList.remove('hidden'); 
-        }
-        function closeModal(id) { 
-            const m = document.getElementById(id);
-            if (m) m.classList.add('hidden'); 
-        }
+        function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+        function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
 
         function handleNewQuotaSubmit(event) {
             event.preventDefault();
             const type = document.getElementById('modalQuotaType').value;
             let rawTitle = document.getElementById('modalQuotaTitle').value.trim();
             let formattedTitle = rawTitle.charAt(0).toLocaleUpperCase('tr-TR') + rawTitle.slice(1);
-
             const count = document.getElementById('modalQuotaCount').value;
             const price = document.getElementById('modalQuotaPrice').value;
 
-            let typeName = "Akredite Eğitim";
-            let badgeColor = "bg-blue-100 text-blue-800";
-            let gradient = "from-blue-900 to-indigo-800";
+            let typeName = "Klinik Staj";
+            let badgeColor = "bg-emerald-100 text-emerald-800";
+            let gradient = "from-emerald-900 to-teal-800";
 
-            if (type === 'staj') {
-                typeName = "Klinik Staj";
-                badgeColor = "bg-emerald-100 text-emerald-800";
-                gradient = "from-emerald-900 to-teal-800";
+            if (type === 'egitim') {
+                typeName = "Akredite Eğitim";
+                badgeColor = "bg-blue-100 text-blue-800";
+                gradient = "from-blue-900 to-indigo-800";
             } else if (type === 'supervizyon') {
                 typeName = "Süpervizyon";
                 badgeColor = "bg-purple-100 text-purple-800";
@@ -573,18 +513,13 @@
                 accreditationNote: 'PsikoHub sicil profilinize tescil edilir.'
             };
 
-            try {
-                let customListings = JSON.parse(localStorage.getItem('psikohub_custom_listings') || '[]');
-                customListings.push(newListing);
-                localStorage.setItem('psikohub_custom_listings', JSON.stringify(customListings));
-                
-                alert(`"${formattedTitle}" kontenjanı başarıyla açıldı ve ana vitrinde yayına alındı!`);
-                closeModal('newProgramModal');
-                renderCustomListings();
-            } catch (err) {
-                console.error("Kayıt hatası:", err);
-                alert("İlan kaydedilirken hafızada hata oluştu.");
-            }
+            let customListings = JSON.parse(localStorage.getItem('psikohub_custom_listings') || '[]');
+            customListings.push(newListing);
+            localStorage.setItem('psikohub_custom_listings', JSON.stringify(customListings));
+            
+            alert(`"${formattedTitle}" ilanı başarıyla yayınlandı!`);
+            closeModal('newProgramModal');
+            renderCustomListings();
         }
     </script>
 </body>
