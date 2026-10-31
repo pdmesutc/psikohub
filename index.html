@@ -181,11 +181,31 @@
                     <select id="marketEcol" onchange="syncAndSearch('ecol', this.value)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 text-xs focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-secondary/30 transition">
                         <option value="all">Tüm Ekoller</option>
                         <option value="cbt">Bilişsel Davranışçı (BDT)</option>
-                        <option value="psychoanalytic">Psikanalitik & Dinamik</option>
-                        <option value="systemic">Sistemik, Çift & Aile</option>
+                        <option value="psychoanalytic">Psikanalitik & Dinamik Ekoller</option>
+                        <option value="humanistic">Hümanistik & Varoluşçu</option>
+                        <option value="systemic">Sistemik, Çift & Aile Terapisi</option>
+                        <option value="postmodern">Postmodern & Çözüm Odaklı</option>
+                        <option value="trauma_somatic">Travma & EMDR / Somatik</option>
                         <option value="child_dev">Çocuk & Oyun Terapisi</option>
+                        <option value="expressive">Sanat & Psikodrama</option>
                         <option value="integrative">Bütüncül Terapi</option>
                     </select>
+                </div>
+
+                <!-- Şehir ve İlçe Filtreleri -->
+                <div class="space-y-2 pt-2 border-t border-slate-100">
+                    <div>
+                        <label class="block font-bold text-slate-700 text-xs mb-1">Şehir (İl)</label>
+                        <select id="marketCity" onchange="onCityChange(this.value)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 text-xs focus:bg-white focus:outline-none">
+                            <option value="all">Tüm Şehirler</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 text-xs mb-1">İlçe</label>
+                        <select id="marketDistrict" onchange="syncAndSearch('district', this.value)" disabled class="w-full bg-slate-100 border border-slate-200 rounded-xl px-2.5 py-2 text-xs text-slate-400 focus:bg-white focus:outline-none">
+                            <option value="all">Önce İl Seçiniz</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="pt-2 border-t border-slate-100">
@@ -220,7 +240,7 @@
 
         </div>
 
-        <!-- SAYAÇLAR & UZMAN LİSANS SORGULAMA -->
+        <!-- SAYAÇLAR & UZMAN LİSANS SORGULAMA (TAM 4'LÜ BLOK) -->
         <section class="mt-16 bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-xs">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div class="lg:col-span-7">
@@ -247,6 +267,26 @@
                             <div>
                                 <span class="block text-xl font-black text-slate-900 leading-none">85+</span>
                                 <span class="text-[11px] font-bold text-slate-700 block mt-0.5">Akredite Danışma Merkezi</span>
+                            </div>
+                        </div>
+
+                        <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/70 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-blue-100/70 text-blue-800 flex items-center justify-center text-lg shrink-0">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xl font-black text-slate-900 leading-none">12.000+</span>
+                                <span class="text-[11px] font-bold text-slate-700 block mt-0.5">Tamamlanan Saat</span>
+                            </div>
+                        </div>
+
+                        <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/70 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-purple-100/70 text-purple-800 flex items-center justify-center text-lg shrink-0">
+                                <i class="fa-solid fa-stamp"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xl font-black text-brand-hera leading-none">%100</span>
+                                <span class="text-[11px] font-bold text-slate-700 block mt-0.5">Akademik Liyakat Şartı</span>
                             </div>
                         </div>
                     </div>
@@ -309,17 +349,32 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="w-64 h-28 rounded-2xl bg-[#283593] text-white px-4 py-3 flex flex-col items-center justify-center text-center shadow-xs shrink-0">
+                        <span class="block text-sm font-extrabold leading-tight">Dr. Öğr. Üyesi</span>
+                        <span class="block text-lg font-black leading-tight mt-0.5">Ayşe YILMAZ</span>
+                    </div>
+
+                    <div class="w-64 h-28 rounded-2xl bg-[#14532d] text-white px-4 py-3 flex items-center justify-center shadow-xs shrink-0">
+                        <div class="flex items-center gap-2.5">
+                            <div class="text-2xl"><i class="fa-solid fa-hospital-user"></i></div>
+                            <div class="border-l border-white/60 pl-2.5">
+                                <span class="block text-base font-black leading-none">AVRASYA</span>
+                                <span class="block text-[10px] text-emerald-100 mt-0.5">Klinik Psikoloji Enstitüsü</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- SIKÇA SORULAN SORULAR -->
+        <!-- SIKÇA SORULAN SORULAR (TAM KAPSAMLI 4 SORU) -->
         <section class="mt-16 pt-10 border-t border-slate-200">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 <div class="lg:col-span-4 space-y-3">
                     <span class="text-xs font-bold uppercase tracking-wider text-brand-secondary">Merak Edilenler</span>
                     <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 leading-tight">Sıkça Sorulan Sorular</h2>
-                    <p class="text-xs text-slate-500 leading-relaxed">Başvuru koşulları, liyakat teyidi ve akreditasyon işleyişi hakkında detaylar.</p>
+                    <p class="text-xs text-slate-500 leading-relaxed">Başvuru koşulları, liyakat teyidi, süpervizyon saatleri ve akreditasyon işleyişi hakkında detaylar.</p>
                 </div>
                 <div class="lg:col-span-8 space-y-3">
                     <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
@@ -329,6 +384,36 @@
                         </button>
                         <div id="faq1" class="hidden px-4 pb-4 text-xs text-slate-600 border-t border-slate-100 pt-3 leading-relaxed">
                             YÖK tescilli öğrenci belgenizle sisteme kaydolduğunuzda; sağlayıcının şart koyduğu teorik akredite eğitimlere ve klinik vaka gözlem staj protokollerine başvurabilirsiniz.
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+                        <button onclick="toggleFaq('faq2')" class="w-full p-4 text-left font-bold text-xs sm:text-sm text-slate-800 flex justify-between items-center">
+                            <span>Aldığım süpervizyon saatleri resmi olarak belgelendiriliyor mu?</span>
+                            <i id="icon-faq2" class="fa-solid fa-chevron-down text-xs transition duration-200"></i>
+                        </button>
+                        <div id="faq2" class="hidden px-4 pb-4 text-xs text-slate-600 border-t border-slate-100 pt-3 leading-relaxed">
+                            Evet. Tamamladığınız her süpervizyon saati, ilgili süpervizörün dijital onayıyla sistem kayıtlarına tescil edilir ve karekodlu belge olarak üretilir.
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+                        <button onclick="toggleFaq('faq3')" class="w-full p-4 text-left font-bold text-xs sm:text-sm text-slate-800 flex justify-between items-center">
+                            <span>Gönüllü staj protokollerinde süreç nasıl işliyor?</span>
+                            <i id="icon-faq3" class="fa-solid fa-chevron-down text-xs transition duration-200"></i>
+                        </button>
+                        <div id="faq3" class="hidden px-4 pb-4 text-xs text-slate-600 border-t border-slate-100 pt-3 leading-relaxed">
+                            Ücretsiz veya gönüllü staj protokolleri, merkezlerin klinik vaka gözlemini aktarmak için açtığı kontenjanlardır. Bu kontenjanlardan ücret talep edilmez.
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+                        <button onclick="toggleFaq('faq4')" class="w-full p-4 text-left font-bold text-xs sm:text-sm text-slate-800 flex justify-between items-center">
+                            <span>Kurum olarak nasıl kontenjan sağlayıcısı olabiliriz?</span>
+                            <i id="icon-faq4" class="fa-solid fa-chevron-down text-xs transition duration-200"></i>
+                        </button>
+                        <div id="faq4" class="hidden px-4 pb-4 text-xs text-slate-600 border-t border-slate-100 pt-3 leading-relaxed">
+                            Bakanlık onaylı Aile Danışma Merkezleri, üniversiteler veya tescilli süpervizörler ruhsat ve akademik unvan belgelerini ileterek akreditasyon talebinde bulunur.
                         </div>
                     </div>
                 </div>
@@ -362,8 +447,26 @@
                 <select id="mobileEcol" onchange="syncAndSearch('ecol', this.value)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs">
                     <option value="all">Tüm Ekoller</option>
                     <option value="cbt">Bilişsel Davranışçı (BDT)</option>
-                    <option value="systemic">Sistemik, Çift & Aile</option>
+                    <option value="psychoanalytic">Psikanalitik & Dinamik Ekoller</option>
+                    <option value="humanistic">Hümanistik & Varoluşçu</option>
+                    <option value="systemic">Sistemik, Çift & Aile Terapisi</option>
+                    <option value="postmodern">Postmodern & Çözüm Odaklı</option>
+                    <option value="trauma_somatic">Travma & EMDR / Somatik</option>
+                    <option value="child_dev">Çocuk & Oyun Terapisi</option>
+                    <option value="expressive">Sanat & Psikodrama</option>
                     <option value="integrative">Bütüncül Terapi</option>
+                </select>
+            </div>
+            <div>
+                <label class="block font-bold text-slate-700 mb-1">Şehir (İl)</label>
+                <select id="mobileCity" onchange="onCityChange(this.value)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs">
+                    <option value="all">Tüm Şehirler</option>
+                </select>
+            </div>
+            <div>
+                <label class="block font-bold text-slate-700 mb-1">İlçe</label>
+                <select id="mobileDistrict" onchange="syncAndSearch('district', this.value)" disabled class="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-400">
+                    <option value="all">Önce İl Seçin</option>
                 </select>
             </div>
         </div>
@@ -414,6 +517,13 @@
 
     <!-- SCRIPT VE FİLTRELEME MİMARİSİ -->
     <script>
+        const TURKEY_LOCATIONS = {
+            "İstanbul": ["Adalar", "Ataşehir", "Bakırköy", "Beşiktaş", "Kadıköy", "Kartal", "Maltepe", "Pendik", "Ümraniye", "Üsküdar", "Tuzla"],
+            "Ankara": ["Çankaya", "Keçiören", "Yenimahalle", "Mamak"],
+            "İzmir": ["Bornova", "Buca", "Karşıyaka", "Konak"]
+        };
+        const SORTED_CITIES = Object.keys(TURKEY_LOCATIONS).sort();
+
         const DEFAULT_MARKET_LISTINGS = [
             {
                 id: 'm1',
@@ -430,6 +540,8 @@
                 provider: 'Özel Pendik Hera Aile Danışma Merkezi',
                 format: 'Yuzyuze',
                 formatDisplay: 'Yüz Yüze',
+                city: 'İstanbul',
+                district: 'Pendik',
                 hours: '120 Saat',
                 quotaTotal: 6,
                 quotaOccupied: 4,
@@ -453,6 +565,8 @@
                 provider: 'Özel Pendik Hera Aile Danışma Merkezi',
                 format: 'Online',
                 formatDisplay: 'Çevrim İçi',
+                city: 'Tümü',
+                district: '',
                 hours: '40 Saat',
                 quotaTotal: 25,
                 quotaOccupied: 18,
@@ -476,6 +590,8 @@
                 provider: 'Dr. Ayşe Yılmaz (Klinik Psk.)',
                 format: 'Online',
                 formatDisplay: 'Çevrim İçi',
+                city: 'Tümü',
+                district: '',
                 hours: '10 Oturum',
                 quotaTotal: 10,
                 quotaOccupied: 8,
@@ -491,8 +607,62 @@
         window.addEventListener('DOMContentLoaded', () => {
             let customListings = JSON.parse(localStorage.getItem('psikohub_custom_listings') || '[]');
             MARKET_LISTINGS = [...customListings, ...DEFAULT_MARKET_LISTINGS];
+
+            initCityDropdowns();
             triggerMarketSearch();
         });
+
+        function initCityDropdowns() {
+            const citySelectDesktop = document.getElementById('marketCity');
+            const citySelectMobile = document.getElementById('mobileCity');
+            
+            if (citySelectDesktop) citySelectDesktop.innerHTML = '<option value="all">Tüm Şehirler</option>';
+            if (citySelectMobile) citySelectMobile.innerHTML = '<option value="all">Tüm Şehirler</option>';
+
+            SORTED_CITIES.forEach(city => {
+                if (citySelectDesktop) {
+                    const opt1 = document.createElement('option');
+                    opt1.value = city; opt1.textContent = city;
+                    citySelectDesktop.appendChild(opt1);
+                }
+                if (citySelectMobile) {
+                    const opt2 = document.createElement('option');
+                    opt2.value = city; opt2.textContent = city;
+                    citySelectMobile.appendChild(opt2);
+                }
+            });
+        }
+
+        function onCityChange(city) {
+            const districtDesktop = document.getElementById('marketDistrict');
+            const districtMobile = document.getElementById('mobileDistrict');
+
+            const handleDist = (selectEl) => {
+                if (!selectEl) return;
+                if (city === 'all') {
+                    selectEl.innerHTML = '<option value="all">Önce İl Seçin</option>';
+                    selectEl.disabled = true;
+                } else {
+                    selectEl.disabled = false;
+                    selectEl.innerHTML = '<option value="all">Tüm İlçeler</option>';
+                    if (TURKEY_LOCATIONS[city]) {
+                        TURKEY_LOCATIONS[city].forEach(d => {
+                            const opt = document.createElement('option');
+                            opt.value = d; opt.textContent = d;
+                            selectEl.appendChild(opt);
+                        });
+                    }
+                }
+            };
+
+            handleDist(districtDesktop);
+            handleDist(districtMobile);
+            triggerMarketSearch();
+        }
+
+        function syncAndSearch(field, value) {
+            triggerMarketSearch();
+        }
 
         function triggerMarketSearch() {
             const query = (document.getElementById('heroSearch') ? document.getElementById('heroSearch').value : '').toLowerCase().trim();
@@ -523,10 +693,6 @@
             });
 
             renderMarketplace(filtered);
-        }
-
-        function syncAndSearch(field, value) {
-            triggerMarketSearch();
         }
 
         function toggleMobileDrawer(isOpen) {
