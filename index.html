@@ -129,7 +129,7 @@
             </div>
         </div>
 
-        <!-- DOĞRUDAN İLAN VİTRİNİ -->
+        <!-- DOĞRUDAN İLAN VİTRİNİ VE FİLTRELER -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             
             <!-- Sol Filtre Paneli -->
@@ -143,6 +143,7 @@
                     </button>
                 </div>
 
+                <!-- 1. Program Türü -->
                 <div>
                     <label class="block font-bold text-slate-700 text-xs mb-2">Program Türü</label>
                     <div class="space-y-1.5 text-xs">
@@ -165,6 +166,7 @@
                     </div>
                 </div>
 
+                <!-- 2. Çalışma Alanı -->
                 <div>
                     <label class="block font-bold text-slate-700 text-xs mb-1.5">Çalışma Alanı</label>
                     <select id="marketTargetAudience" onchange="syncAndSearch('targetAudience', this.value)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 text-xs focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-secondary/30 transition">
@@ -176,16 +178,47 @@
                     </select>
                 </div>
 
+                <!-- 3. Terapi Ekolü -->
                 <div>
                     <label class="block font-bold text-slate-700 text-xs mb-1.5">Terapi Ekolü</label>
                     <select id="marketEcol" onchange="syncAndSearch('ecol', this.value)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 text-xs focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-secondary/30 transition">
                         <option value="all">Tüm Ekoller</option>
                         <option value="cbt">Bilişsel Davranışçı (BDT)</option>
+                        <option value="psychoanalytic">Psikanalitik & Dinamik</option>
                         <option value="systemic">Sistemik, Çift & Aile</option>
+                        <option value="child_dev">Çocuk & Oyun Terapisi</option>
                         <option value="integrative">Bütüncül Terapi</option>
                     </select>
                 </div>
 
+                <!-- 4. Katılım Türü -->
+                <div>
+                    <label class="block font-bold text-slate-700 text-xs mb-1.5">Katılım Türü</label>
+                    <select id="marketFormat" onchange="syncAndSearch('format', this.value)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 text-xs focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-secondary/30 transition">
+                        <option value="all">Tüm Katılım Türleri</option>
+                        <option value="Online">Çevrim İçi (Online)</option>
+                        <option value="Yuzyuze">Yüz Yüze</option>
+                        <option value="Hibrid">Hibrit</option>
+                    </select>
+                </div>
+
+                <!-- 5. Şehir ve İlçe -->
+                <div class="space-y-2">
+                    <div>
+                        <label class="block font-bold text-slate-700 text-xs mb-1">Şehir (İl)</label>
+                        <select id="marketCity" onchange="onCityChange(this.value)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 text-xs focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-secondary/30 transition">
+                            <option value="all">Tüm Şehirler</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 text-xs mb-1">İlçe</label>
+                        <select id="marketDistrict" onchange="syncAndSearch('district', this.value)" disabled class="w-full bg-slate-100 border border-slate-200 rounded-xl px-2.5 py-2 text-xs text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-secondary/30 transition">
+                            <option value="all">Önce İl Seçiniz</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 6. Yalnızca Ücretsiz Stajlar -->
                 <div class="pt-2 border-t border-slate-100">
                     <label class="flex items-center space-x-2 cursor-pointer bg-emerald-50/70 p-2.5 rounded-xl border border-emerald-200">
                         <input type="checkbox" id="marketFreeOnly" onchange="syncAndSearch('freeOnly', this.checked)" class="rounded text-emerald-600 focus:ring-0">
@@ -251,8 +284,15 @@
         </div>
     </footer>
 
-    <!-- SCRIPT MİMARİSİ -->
+    <!-- SCRIPT VE FİLTRELEME MİMARİSİ -->
     <script>
+        const TURKEY_LOCATIONS = {
+            "İstanbul": ["Adalar", "Ataşehir", "Bakırköy", "Beşiktaş", "Kadıköy", "Kartal", "Maltepe", "Pendik", "Ümraniye", "Üsküdar", "Tuzla"],
+            "Ankara": ["Çankaya", "Keçiören", "Yenimahalle", "Mamak"],
+            "İzmir": ["Bornova", "Buca", "Karşıyaka", "Konak"]
+        };
+        const SORTED_CITIES = Object.keys(TURKEY_LOCATIONS).sort();
+
         const DEFAULT_MARKET_LISTINGS = [
             {
                 id: 'm1',
@@ -261,11 +301,16 @@
                 typeBadgeColor: 'bg-emerald-100 text-emerald-800',
                 bannerGradient: 'from-emerald-900 to-teal-800',
                 icon: 'fa-hospital-user',
+                targetAudience: 'cift_aile',
                 targetAudienceName: 'Çift ve Aile',
+                ecol: 'systemic',
                 ecolName: 'Sistemik & Çift',
                 title: 'Klinik Gözlem ve Uygulamalı Vaka Staj Protokolü',
                 provider: 'Özel Pendik Hera Aile Danışma Merkezi',
+                format: 'Yuzyuze',
                 formatDisplay: 'Yüz Yüze',
+                city: 'İstanbul',
+                district: 'Pendik',
                 hours: '120 Saat',
                 quotaTotal: 6,
                 quotaOccupied: 4,
@@ -281,11 +326,16 @@
                 typeBadgeColor: 'bg-blue-100 text-blue-800',
                 bannerGradient: 'from-blue-900 to-indigo-800',
                 icon: 'fa-graduation-cap',
+                targetAudience: 'yetiskin',
                 targetAudienceName: 'Yetişkin',
+                ecol: 'cbt',
                 ecolName: 'BDT Ekolü',
                 title: 'Bilişsel Davranışçı Terapi Temel Kuramsal Eğitimi (Modül 1)',
                 provider: 'Özel Pendik Hera Aile Danışma Merkezi',
+                format: 'Online',
                 formatDisplay: 'Çevrim İçi',
+                city: 'Tümü',
+                district: '',
                 hours: '40 Saat',
                 quotaTotal: 25,
                 quotaOccupied: 18,
@@ -301,11 +351,16 @@
                 typeBadgeColor: 'bg-purple-100 text-purple-800',
                 bannerGradient: 'from-purple-900 to-fuchsia-900',
                 icon: 'fa-user-doctor',
+                targetAudience: 'cift_aile',
                 targetAudienceName: 'Çift ve Aile',
+                ecol: 'systemic',
                 ecolName: 'Sistemik Çift',
                 title: 'Sistemik Çift ve Aile Terapisi Kapalı Vaka Süpervizyon Grubu',
                 provider: 'Dr. Ayşe Yılmaz (Klinik Psk.)',
+                format: 'Online',
                 formatDisplay: 'Çevrim İçi',
+                city: 'Tümü',
+                district: '',
                 hours: '10 Oturum',
                 quotaTotal: 10,
                 quotaOccupied: 8,
@@ -321,13 +376,61 @@
         window.addEventListener('DOMContentLoaded', () => {
             let customListings = JSON.parse(localStorage.getItem('psikohub_custom_listings') || '[]');
             MARKET_LISTINGS = [...customListings, ...DEFAULT_MARKET_LISTINGS];
+
+            initCityDropdowns();
             triggerMarketSearch();
         });
+
+        function initCityDropdowns() {
+            const citySelect = document.getElementById('marketCity');
+            if (citySelect) {
+                citySelect.innerHTML = '<option value="all">Tüm Şehirler</option>';
+                SORTED_CITIES.forEach(city => {
+                    const opt = document.createElement('option');
+                    opt.value = city;
+                    opt.textContent = city;
+                    citySelect.appendChild(opt);
+                });
+            }
+        }
+
+        function onCityChange(city) {
+            const districtSelect = document.getElementById('marketDistrict');
+            if (!districtSelect) return;
+
+            if (city === 'all') {
+                districtSelect.innerHTML = '<option value="all">Önce İl Seçin</option>';
+                districtSelect.disabled = true;
+            } else {
+                districtSelect.disabled = false;
+                districtSelect.innerHTML = '<option value="all">Tüm İlçeler</option>';
+                if (TURKEY_LOCATIONS[city]) {
+                    TURKEY_LOCATIONS[city].forEach(d => {
+                        const opt = document.createElement('option');
+                        opt.value = d;
+                        opt.textContent = d;
+                        districtSelect.appendChild(opt);
+                    });
+                }
+            }
+            triggerMarketSearch();
+        }
+
+        function syncAndSearch(field, value) {
+            triggerMarketSearch();
+        }
 
         function triggerMarketSearch() {
             const query = (document.getElementById('heroSearch') ? document.getElementById('heroSearch').value : '').toLowerCase().trim();
             const marketTypeEl = document.querySelector('input[name="marketType"]:checked');
             const selectedType = marketTypeEl ? marketTypeEl.value : 'all';
+            
+            const selectedAudience = document.getElementById('marketTargetAudience') ? document.getElementById('marketTargetAudience').value : 'all';
+            const selectedEcol = document.getElementById('marketEcol') ? document.getElementById('marketEcol').value : 'all';
+            const selectedFormat = document.getElementById('marketFormat') ? document.getElementById('marketFormat').value : 'all';
+            const selectedCity = document.getElementById('marketCity') ? document.getElementById('marketCity').value : 'all';
+            const selectedDistrict = document.getElementById('marketDistrict') ? document.getElementById('marketDistrict').value : 'all';
+            const freeOnly = document.getElementById('marketFreeOnly') ? document.getElementById('marketFreeOnly').checked : false;
 
             let filtered = MARKET_LISTINGS.filter(item => {
                 // Yayından kaldırılanları ana sayfada gösterme
@@ -336,10 +439,17 @@
                 const matchesQuery = !query || 
                     item.title.toLowerCase().includes(query) || 
                     item.provider.toLowerCase().includes(query) || 
-                    item.ecolName.toLowerCase().includes(query);
+                    (item.ecolName && item.ecolName.toLowerCase().includes(query));
 
                 const matchesType = selectedType === 'all' || item.type === selectedType;
-                return matchesQuery && matchesType;
+                const matchesAudience = selectedAudience === 'all' || item.targetAudience === selectedAudience;
+                const matchesEcol = selectedEcol === 'all' || item.ecol === selectedEcol;
+                const matchesFormat = selectedFormat === 'all' || item.format === selectedFormat;
+                const matchesCity = selectedCity === 'all' || item.city === selectedCity || item.city === 'Tümü';
+                const matchesDistrict = selectedDistrict === 'all' || !selectedDistrict || item.district === selectedDistrict || item.city === 'Tümü';
+                const matchesFree = !freeOnly || item.isFree;
+
+                return matchesQuery && matchesType && matchesAudience && matchesEcol && matchesFormat && matchesCity && matchesDistrict && matchesFree;
             });
 
             renderMarketplace(filtered);
@@ -347,7 +457,14 @@
 
         function resetMarketFilters() {
             if (document.getElementById('heroSearch')) document.getElementById('heroSearch').value = '';
-            triggerMarketSearch();
+            const rAll = document.querySelector('input[name="marketType"][value="all"]');
+            if (rAll) rAll.checked = true;
+            if (document.getElementById('marketTargetAudience')) document.getElementById('marketTargetAudience').value = 'all';
+            if (document.getElementById('marketEcol')) document.getElementById('marketEcol').value = 'all';
+            if (document.getElementById('marketFormat')) document.getElementById('marketFormat').value = 'all';
+            if (document.getElementById('marketCity')) document.getElementById('marketCity').value = 'all';
+            if (document.getElementById('marketFreeOnly')) document.getElementById('marketFreeOnly').checked = false;
+            onCityChange('all');
         }
 
         function renderMarketplace(items) {
