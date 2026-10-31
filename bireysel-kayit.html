@@ -63,7 +63,6 @@
     <!-- Ana Gövde -->
     <main class="max-w-4xl mx-auto px-4 sm:px-6 py-8 w-full flex-1">
         
-        <!-- Eğer Bir İlandan Yönlenilmişse Çıkan Bilgi Kutusu -->
         <div id="targetProgramNotice" class="hidden mb-6 bg-emerald-50 border border-emerald-200 p-4 rounded-2xl flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-lg shrink-0">
@@ -96,7 +95,7 @@
                 </div>
             </div>
 
-            <!-- ADIM 1: HESAP VE EĞİTİM BİLGİLERİ -->
+            <!-- ADIM 1 -->
             <div id="step1" class="space-y-4">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
@@ -174,7 +173,7 @@
                 </button>
             </div>
 
-            <!-- ADIM 2: YÖK BELGESİ & BARKOD (E-DEVLET KIRMIZI LOGOLU) -->
+            <!-- ADIM 2 (MİNİMAL E-DEVLET BUTONU) -->
             <div id="step2" class="space-y-5 hidden">
                 <div class="bg-blue-50 border border-blue-200 rounded-xl p-3.5 flex items-start space-x-2.5">
                     <i class="fa-solid fa-scale-balanced text-brand-primary text-sm mt-0.5 shrink-0"></i>
@@ -185,12 +184,12 @@
                 </div>
 
                 <div class="bg-slate-50/80 p-4 rounded-xl border border-slate-200 space-y-3">
-                    <div class="flex items-center justify-between">
+                    <div class="flex items-center justify-between gap-2">
                         <span class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
                             <i class="fa-solid fa-file-shield text-brand-secondary"></i> YÖK Mezuniyet / Öğrenci Belgesi
                         </span>
-                        <!-- E-DEVLET KIRMIZI LOGOLU BAĞLANTI -->
-                        <a href="https://www.turkiye.gov.tr/yuksekogretim-mezun-belgesi-sorgulama" target="_blank" class="inline-flex items-center gap-1.5 text-[11px] font-bold text-white bg-brand-edevlet hover:bg-red-700 px-3 py-1.5 rounded-lg shadow-2xs transition">
+                        <!-- MİNİMAL E-DEVLET BUTONU -->
+                        <a href="https://www.turkiye.gov.tr/yuksekogretim-mezun-belgesi-sorgulama" target="_blank" class="inline-flex items-center gap-1.5 text-[11px] font-bold text-white bg-brand-edevlet hover:bg-red-700 px-3 py-2 rounded-xl shadow-2xs transition shrink-0">
                             <i class="fa-solid fa-building-columns"></i>
                             <span>e-Devlet'ten Al</span>
                         </a>
@@ -233,26 +232,46 @@
                 </div>
             </div>
 
-            <!-- ADIM 3: EKOL VE TAAHHÜT (2 SÜTUNLU KOMPAKT YAPI & İKON HİZALAMASI DÜZELTİLDİ) -->
+            <!-- ADIM 3 (TÜM ANA EKOLLER LİSTESİ - 2 SÜTUNLU KOMPAKT KAYDIRILABİLİR KUTU) -->
             <div id="step3" class="space-y-5 hidden">
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-2">Temelini Aldığınız / İlgilendiğiniz Terapi Ekolleri</label>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                        <label class="flex items-center space-x-2.5 p-3 bg-slate-50 rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-100 transition">
+                    <label class="block text-xs font-bold text-slate-700 mb-2">Temelini Aldığınız / İlgilendiğiniz Terapi Ekolleri (Tümü)</label>
+                    <div class="max-h-52 overflow-y-auto pr-1 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs border border-slate-200 p-2 rounded-2xl bg-slate-50/50">
+                        <label class="flex items-center space-x-2 p-2.5 bg-white rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-50 transition">
                             <input type="checkbox" name="ecolHistory" value="cbt" checked class="rounded text-brand-secondary focus:ring-0">
                             <span class="font-medium text-slate-800">Bilişsel Davranışçı Terapi (BDT)</span>
                         </label>
-                        <label class="flex items-center space-x-2.5 p-3 bg-slate-50 rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-100 transition">
+                        <label class="flex items-center space-x-2 p-2.5 bg-white rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-50 transition">
                             <input type="checkbox" name="ecolHistory" value="systemic" checked class="rounded text-brand-secondary focus:ring-0">
-                            <span class="font-medium text-slate-800">Sistemik Çift ve Aile Terapisi</span>
+                            <span class="font-medium text-slate-800">Sistemik Çift & Aile Terapisi</span>
                         </label>
-                        <label class="flex items-center space-x-2.5 p-3 bg-slate-50 rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-100 transition">
+                        <label class="flex items-center space-x-2 p-2.5 bg-white rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-50 transition">
                             <input type="checkbox" name="ecolHistory" value="psychoanalytic" class="rounded text-brand-secondary focus:ring-0">
                             <span class="font-medium text-slate-800">Psikanalitik & Dinamik Ekoller</span>
                         </label>
-                        <label class="flex items-center space-x-2.5 p-3 bg-slate-50 rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-100 transition">
+                        <label class="flex items-center space-x-2 p-2.5 bg-white rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-50 transition">
+                            <input type="checkbox" name="ecolHistory" value="humanistic" class="rounded text-brand-secondary focus:ring-0">
+                            <span class="font-medium text-slate-800">Hümanistik & Varoluşçu</span>
+                        </label>
+                        <label class="flex items-center space-x-2 p-2.5 bg-white rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-50 transition">
+                            <input type="checkbox" name="ecolHistory" value="postmodern" class="rounded text-brand-secondary focus:ring-0">
+                            <span class="font-medium text-slate-800">Postmodern & Çözüm Odaklı</span>
+                        </label>
+                        <label class="flex items-center space-x-2 p-2.5 bg-white rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-50 transition">
+                            <input type="checkbox" name="ecolHistory" value="trauma_somatic" class="rounded text-brand-secondary focus:ring-0">
+                            <span class="font-medium text-slate-800">Travma & EMDR / Somatik</span>
+                        </label>
+                        <label class="flex items-center space-x-2 p-2.5 bg-white rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-50 transition">
                             <input type="checkbox" name="ecolHistory" value="child_dev" class="rounded text-brand-secondary focus:ring-0">
                             <span class="font-medium text-slate-800">Çocuk & Oyun Terapisi</span>
+                        </label>
+                        <label class="flex items-center space-x-2 p-2.5 bg-white rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-50 transition">
+                            <input type="checkbox" name="ecolHistory" value="expressive" class="rounded text-brand-secondary focus:ring-0">
+                            <span class="font-medium text-slate-800">Sanat & Psikodrama</span>
+                        </label>
+                        <label class="flex items-center space-x-2 p-2.5 bg-white rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-50 transition">
+                            <input type="checkbox" name="ecolHistory" value="integrative" class="rounded text-brand-secondary focus:ring-0">
+                            <span class="font-medium text-slate-800">Bütüncül Terapi</span>
                         </label>
                     </div>
                 </div>
@@ -266,7 +285,7 @@
                     </label>
                 </div>
 
-                <!-- BUTONLAR AYNI YÜKSEKLİKTE VE İKON Dİpten KURTARILDI (px-4 gap-2.5) -->
+                <!-- Butonlar Eşit Yükseklikte ve İkon Orantılı -->
                 <div class="grid grid-cols-2 gap-3 pt-2">
                     <button onclick="goToStep(2)" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs py-3.5 rounded-xl transition flex items-center justify-center">
                         Geri Dön
