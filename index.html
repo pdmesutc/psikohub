@@ -240,53 +240,53 @@
 
         </div>
 
-        <!-- SAYAÇLAR & UZMAN LİSANS SORGULAMA -->
+        <!-- SAYAÇLAR & UZMAN LİSANS SORGULAMA (ORTALANMIŞ BAŞLIK VE DENGELİ KARTLAR) -->
         <section class="mt-16 bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-xs">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                <div class="lg:col-span-7">
-                    <div class="mb-4">
+                <div class="lg:col-span-7 space-y-5">
+                    <div class="text-center sm:text-left">
                         <span class="text-xs font-bold uppercase tracking-wider text-brand-hera block">Doğrulanmış Liyakat Göstergeleri</span>
                         <h2 class="text-lg sm:text-xl font-extrabold text-slate-900 mt-0.5">Liyakat ve Akreditasyon Güvencesi</h2>
                     </div>
 
-                    <div class="grid grid-cols-2 sm:grid-cols-2 gap-4">
-                        <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/70 flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-emerald-100/70 text-emerald-800 flex items-center justify-center text-lg shrink-0">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70 flex items-center gap-3.5">
+                            <div class="w-11 h-11 rounded-xl bg-emerald-100/70 text-emerald-800 flex items-center justify-center text-lg shrink-0">
                                 <i class="fa-solid fa-user-graduate"></i>
                             </div>
-                            <div>
-                                <span class="block text-xl font-black text-slate-900 leading-none">1.450+</span>
-                                <span class="text-[11px] font-bold text-slate-700 block mt-0.5">YÖK Teyitli Lisansiyer</span>
+                            <div class="min-w-0">
+                                <span class="block text-xl font-black text-slate-900 leading-none truncate">1.450+</span>
+                                <span class="text-[11px] font-bold text-slate-700 block mt-1 truncate">YÖK Teyitli Lisansiyer</span>
                             </div>
                         </div>
 
-                        <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/70 flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-teal-100/70 text-teal-800 flex items-center justify-center text-lg shrink-0">
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70 flex items-center gap-3.5">
+                            <div class="w-11 h-11 rounded-xl bg-teal-100/70 text-teal-800 flex items-center justify-center text-lg shrink-0">
                                 <i class="fa-solid fa-building-shield"></i>
                             </div>
-                            <div>
-                                <span class="block text-xl font-black text-slate-900 leading-none">85+</span>
-                                <span class="text-[11px] font-bold text-slate-700 block mt-0.5">Akredite Danışma Merkezi</span>
+                            <div class="min-w-0">
+                                <span class="block text-xl font-black text-slate-900 leading-none truncate">85+</span>
+                                <span class="text-[11px] font-bold text-slate-700 block mt-1 truncate">Akredite Danışma Merkezi</span>
                             </div>
                         </div>
 
-                        <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/70 flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-blue-100/70 text-blue-800 flex items-center justify-center text-lg shrink-0">
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70 flex items-center gap-3.5">
+                            <div class="w-11 h-11 rounded-xl bg-blue-100/70 text-blue-800 flex items-center justify-center text-lg shrink-0">
                                 <i class="fa-solid fa-clock-rotate-left"></i>
                             </div>
-                            <div>
-                                <span class="block text-xl font-black text-slate-900 leading-none">12.000+</span>
-                                <span class="text-[11px] font-bold text-slate-700 block mt-0.5">Tamamlanan Saat</span>
+                            <div class="min-w-0">
+                                <span class="block text-xl font-black text-slate-900 leading-none truncate">12.000+</span>
+                                <span class="text-[11px] font-bold text-slate-700 block mt-1 truncate">Tamamlanan Saat</span>
                             </div>
                         </div>
 
-                        <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/70 flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-purple-100/70 text-purple-800 flex items-center justify-center text-lg shrink-0">
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70 flex items-center gap-3.5">
+                            <div class="w-11 h-11 rounded-xl bg-purple-100/70 text-purple-800 flex items-center justify-center text-lg shrink-0">
                                 <i class="fa-solid fa-stamp"></i>
                             </div>
-                            <div>
-                                <span class="block text-xl font-black text-brand-hera leading-none">%100</span>
-                                <span class="text-[11px] font-bold text-slate-700 block mt-0.5">Akademik Liyakat Şartı</span>
+                            <div class="min-w-0">
+                                <span class="block text-xl font-black text-brand-hera leading-none truncate">%100</span>
+                                <span class="text-[11px] font-bold text-slate-700 block mt-1 truncate">Akademik Liyakat Şartı</span>
                             </div>
                         </div>
                     </div>
@@ -912,7 +912,7 @@
 
         function handleQuickVerify(event) {
             event.preventDefault();
-            const val = document.getElementById('verifyInput').value.trim();
+            val = document.getElementById('verifyInput').value.trim();
             if (!val) { alert('Uzman adı giriniz.'); return; }
             window.location.href = `uzman-dogrulama.html?q=${encodeURIComponent(val)}`;
         }
